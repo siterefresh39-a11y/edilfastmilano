@@ -1,48 +1,26 @@
 import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const Navigation = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY > 100;
       setIsVisible(scrolled);
-
-      // Update active section based on scroll position
-      const sections = ['home', 'chi-siamo', 'servizi', 'progetti', 'contatti'];
-      const currentSection = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      
-      if (currentSection) {
-        setActiveSection(currentSection);
-      }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'chi-siamo', label: 'Chi Siamo' },
-    { id: 'servizi', label: 'Servizi' },
-    { id: 'progetti', label: 'Progetti' },
-    { id: 'contatti', label: 'Contatti' },
+    { path: '/', label: 'Home' },
+    { path: '/servizi', label: 'Servizi' },
+    { path: '/progetti', label: 'Progetti' },
+    { path: '/contatti', label: 'Contatti' },
   ];
 
   return (
@@ -59,19 +37,19 @@ const Navigation = () => {
           {/* Navigation Links */}
           <div className="flex space-x-6">
             {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
+              <Link
+                key={item.path}
+                to={item.path}
                 className={cn(
                   "relative px-4 py-2 text-sm font-medium tracking-wide transition-all duration-300 rounded-full",
                   "hover:text-primary hover:bg-white/10",
-                  activeSection === item.id
+                  location.pathname === item.path
                     ? "text-primary bg-white/15"
                     : "text-secondary"
                 )}
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
           </div>
 

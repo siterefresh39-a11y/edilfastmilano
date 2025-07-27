@@ -10,6 +10,9 @@ import MaterialiPage from "./pages/MaterialiPage";
 import SmartTechPage from "./pages/SmartTechPage";
 import EfficienzaPage from "./pages/EfficienzaPage";
 import TempiPage from "./pages/TempiPage";
+import ServiziPage from "./pages/ServiziPage";
+import ProgettiPage from "./pages/ProgettiPage";
+import ContattiPage from "./pages/ContattiPage";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +29,9 @@ const App = () => (
           <Route path="/smart-tech" element={<SmartTechPage />} />
           <Route path="/efficienza" element={<EfficienzaPage />} />
           <Route path="/tempi" element={<TempiPage />} />
+          <Route path="/servizi" element={<ServiziPage />} />
+          <Route path="/progetti" element={<ProgettiPage />} />
+          <Route path="/contatti" element={<ContattiPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

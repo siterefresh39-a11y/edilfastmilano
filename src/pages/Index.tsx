@@ -1,10 +1,7 @@
 import HeroSection from '@/components/HeroSection';
 import Navigation from '@/components/Navigation';
 import AboutSection from '@/components/AboutSection';
-import ServicesSection from '@/components/ServicesSection';
 import InteractiveHouseSection from '@/components/InteractiveHouseSection';
-import ProjectsSection from '@/components/ProjectsSection';
-import ContactSection from '@/components/ContactSection';
 
 const Index = () => {
   return (
@@ -20,10 +17,7 @@ const Index = () => {
       {/* Main Content Sections */}
       <main className="relative z-10">
         <AboutSection />
-        <ServicesSection />
         <InteractiveHouseSection />
-        <ProjectsSection />
-        <ContactSection />
       </main>
 
       {/* Footer */}
