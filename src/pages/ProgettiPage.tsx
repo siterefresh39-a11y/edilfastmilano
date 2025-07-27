@@ -128,6 +128,18 @@ const ProgettiPage = () => {
                 alt="Mappa illustrata di Milano"
                 className="w-full h-full object-cover"
               />
+              
+              {/* Fade effect on borders */}
+              <div className="absolute inset-0 pointer-events-none" 
+                style={{
+                  background: `
+                    linear-gradient(to right, transparent 0%, transparent 5%, transparent 95%, rgba(248, 250, 252, 0.8) 100%),
+                    linear-gradient(to bottom, transparent 0%, transparent 5%, transparent 95%, rgba(248, 250, 252, 0.8) 100%),
+                    linear-gradient(to left, transparent 0%, transparent 5%, transparent 95%, rgba(248, 250, 252, 0.8) 100%),
+                    linear-gradient(to top, transparent 0%, transparent 5%, transparent 95%, rgba(248, 250, 252, 0.8) 100%)
+                  `
+                }}
+              />
             </div>
 
             {/* Interactive Pins */}
