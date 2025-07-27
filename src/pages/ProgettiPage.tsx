@@ -1,124 +1,265 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Building, Zap, Leaf, Clock, Hammer } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 
+interface Project {
+  id: string;
+  x: number; // percentuale dalla sinistra
+  y: number; // percentuale dall'alto
+  title: string;
+  description: string;
+  icon: React.ComponentType<any>;
+  category: string;
+  year: string;
+}
+
+const projects: Project[] = [
+  {
+    id: '1',
+    x: 25,
+    y: 30,
+    title: 'Residence Porta Nuova',
+    description: 'Complesso residenziale di lusso con tecnologie smart home e certificazione LEED Gold',
+    icon: Building,
+    category: 'Residenziale',
+    year: '2024'
+  },
+  {
+    id: '2', 
+    x: 45,
+    y: 25,
+    title: 'Torre Sustainable Energy',
+    description: 'Edificio per uffici 100% autonomo energeticamente con pannelli solari integrati',
+    icon: Zap,
+    category: 'Commerciale',
+    year: '2023'
+  },
+  {
+    id: '3',
+    x: 65,
+    y: 35,
+    title: 'Eco Village Navigli',
+    description: 'Quartiere sostenibile con materiali riciclati e sistema di raccolta acqua piovana',
+    icon: Leaf,
+    category: 'Residenziale',
+    year: '2023'
+  },
+  {
+    id: '4',
+    x: 35,
+    y: 55,
+    title: 'Fast Build Brera',
+    description: 'Ristrutturazione completata in tempi record utilizzando il metodo EDIL FAST',
+    icon: Clock,
+    category: 'Ristrutturazione',
+    year: '2024'
+  },
+  {
+    id: '5',
+    x: 75,
+    y: 60,
+    title: 'Milano Innovation Hub',
+    description: 'Centro tecnologico con spazi flessibili e sistemi domotici avanzati',
+    icon: Hammer,
+    category: 'Commerciale',
+    year: '2023'
+  },
+  {
+    id: '6',
+    x: 55,
+    y: 70,
+    title: 'Green Residences Sud',
+    description: 'Complesso abitativo con giardini verticali e sistemi geotermici',
+    icon: Leaf,
+    category: 'Residenziale',
+    year: '2024'
+  }
+];
+
 const ProgettiPage = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const projects = [
-    {
-      title: 'Residence Milano Centro',
-      category: 'Residenziale',
-      year: '2024',
-      description: 'Complesso residenziale di lusso nel cuore di Milano'
-    },
-    {
-      title: 'Torre Corporate',
-      category: 'Commerciale',
-      year: '2023',
-      description: 'Edificio per uffici con design architettonico innovativo'
-    },
-    {
-      title: 'Villa Moderna',
-      category: 'Residenziale',
-      year: '2023',
-      description: 'Villa unifamiliare con tecnologie smart home'
-    }
-  ];
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    setMousePosition({ x: e.clientX, y: e.clientY });
+  };
 
   return (
     <div className="relative">
       <Navigation />
       
-      <main className="pt-32">
-        <section
-          ref={sectionRef}
-          className="min-h-screen bg-background flex items-center py-24"
-        >
-          <div className="max-w-7xl mx-auto px-6">
-            <div
-              className={`text-center mb-20 transition-all duration-1000 ${
-                isVisible 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-12'
-              }`}
-            >
-              <h1 className="text-5xl lg:text-6xl font-light text-secondary mb-6">
-                I Nostri
-                <span className="block text-primary font-medium">Progetti</span>
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Scopri le nostre realizzazioni più prestigiose che definiscono 
-                il futuro dell'architettura milanese
-              </p>
+      <main className="pt-20 min-h-screen bg-background">
+        {/* Header Section */}
+        <div className="text-center py-16 px-6">
+          <motion.h1 
+            className="text-5xl lg:text-6xl font-light text-secondary mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            I Nostri
+            <span className="block text-primary font-medium">Progetti</span>
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Esplora i nostri progetti realizzati in tutta Milano. 
+            Passa il mouse sui pin per scoprire i dettagli di ogni realizzazione.
+          </motion.p>
+        </div>
+
+        {/* Interactive Map Section */}
+        <div className="max-w-7xl mx-auto px-6 pb-20">
+          <motion.div 
+            className="relative w-full aspect-[4/3] max-h-[80vh] bg-white rounded-3xl shadow-2xl overflow-hidden border border-border/20"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            onMouseMove={handleMouseMove}
+          >
+            {/* Milano Map */}
+            <div className="absolute inset-0">
+              <img 
+                src="/lovable-uploads/b37da651-34fa-4a23-a57d-a86da509e8bc.png"
+                alt="Mappa illustrata di Milano"
+                className="w-full h-full object-cover"
+              />
+              
+              {/* Subtle overlay to soften the map for better pin visibility */}
+              <div className="absolute inset-0 bg-white/10" />
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-8">
-              {projects.map((project, index) => (
-                <div
-                  key={project.title}
-                  className={`transition-all duration-1000 ${
-                    isVisible 
-                      ? 'opacity-100 translate-y-0' 
-                      : 'opacity-0 translate-y-12'
-                  }`}
-                  style={{ transitionDelay: `${index * 200}ms` }}
+            {/* Interactive Pins */}
+            {projects.map((project) => (
+              <div
+                key={project.id}
+                className="absolute z-10"
+                style={{
+                  left: `${project.x}%`,
+                  top: `${project.y}%`,
+                  transform: 'translate(-50%, -50%)'
+                }}
+                onMouseEnter={() => setHoveredProject(project.id)}
+                onMouseLeave={() => setHoveredProject(null)}
+              >
+                <motion.div
+                  className="relative w-8 h-8 cursor-pointer group"
+                  animate={{
+                    scale: hoveredProject === project.id ? 1.15 : [1, 1.05, 1],
+                  }}
+                  transition={{
+                    scale: hoveredProject === project.id ? { duration: 0.2 } : {
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }
+                  }}
+                  whileHover={{
+                    scale: 1.15,
+                  }}
                 >
-                  <div className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
-                    <div className="aspect-[4/3] bg-gradient-to-br from-primary/20 to-secondary/20 relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-secondary/40 group-hover:from-primary/60 group-hover:to-secondary/60 transition-all duration-500" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-white text-center">
-                          <div className="text-2xl font-light mb-2">{project.year}</div>
-                          <div className="text-sm tracking-wider">{project.category.toUpperCase()}</div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="p-8">
-                      <h3 className="text-xl font-semibold text-secondary mb-3 group-hover:text-primary transition-colors duration-300">
-                        {project.title}
-                      </h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {project.description}
-                      </p>
-                    </div>
+                  {/* Pin Background with Glass Effect */}
+                  <div className="absolute inset-0 rounded-full bg-white/20 backdrop-blur-md border-2 border-white/60 shadow-lg">
+                    {/* Glow Effect */}
+                    <div 
+                      className="absolute inset-0 rounded-full transition-all duration-300"
+                      style={{
+                        boxShadow: hoveredProject === project.id 
+                          ? '0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(59, 130, 246, 0.3)'
+                          : '0 0 10px rgba(255, 255, 255, 0.4)'
+                      }}
+                    />
                   </div>
-                </div>
-              ))}
-            </div>
+                  
+                  {/* Icon */}
+                  <div className="relative z-10 w-full h-full flex items-center justify-center">
+                    {(() => {
+                      const IconComponent = project.icon;
+                      return (
+                        <IconComponent 
+                          size={16} 
+                          className="text-white/90 stroke-[1.5] transition-colors duration-300 group-hover:text-white" 
+                        />
+                      );
+                    })()}
+                  </div>
+                </motion.div>
+              </div>
+            ))}
 
-            <div
-              className={`text-center mt-16 transition-all duration-1000 delay-700 ${
-                isVisible 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-12'
-              }`}
-            >
-              <button className="group relative px-8 py-4 bg-gradient-to-r from-primary to-primary-muted text-white rounded-2xl font-medium tracking-wide hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                <span className="relative z-10">Visualizza Tutti i Progetti</span>
-                <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              </button>
+            {/* Tooltip */}
+            <AnimatePresence>
+              {hoveredProject && (
+                <motion.div
+                  className="fixed z-50 pointer-events-none"
+                  style={{
+                    left: mousePosition.x + 20,
+                    top: mousePosition.y - 10,
+                  }}
+                  initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.8, y: 10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-4 shadow-2xl border border-white/30 max-w-sm">
+                    {(() => {
+                      const project = projects.find(p => p.id === hoveredProject);
+                      if (!project) return null;
+                      
+                      return (
+                        <div>
+                          <div className="flex items-center gap-3 mb-2">
+                            <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary-muted rounded-lg flex items-center justify-center">
+                              {(() => {
+                                const IconComponent = project.icon;
+                                return <IconComponent size={16} className="text-white" />;
+                              })()}
+                            </div>
+                            <div>
+                              <h3 className="font-semibold text-secondary text-sm">
+                                {project.title}
+                              </h3>
+                              <div className="flex gap-2 text-xs text-muted-foreground">
+                                <span>{project.category}</span>
+                                <span>•</span>
+                                <span>{project.year}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            {project.description}
+                          </p>
+                        </div>
+                      );
+                    })()}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+
+          {/* Legend */}
+          <motion.div 
+            className="mt-12 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            <div className="inline-flex items-center gap-6 bg-white/80 backdrop-blur-lg rounded-2xl px-6 py-4 shadow-lg border border-border/20">
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-full bg-white/20 backdrop-blur-md border border-white/60"></div>
+                <span className="text-sm text-muted-foreground">Progetti Realizzati</span>
+              </div>
+              <div className="text-sm text-muted-foreground">
+                Passa il mouse sui pin per maggiori dettagli
+              </div>
             </div>
-          </div>
-        </section>
+          </motion.div>
+        </div>
       </main>
 
       <footer className="bg-secondary text-white py-8">
