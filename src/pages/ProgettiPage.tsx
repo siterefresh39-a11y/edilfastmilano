@@ -163,14 +163,14 @@ const ProgettiPage = () => {
                   }}
                 >
                   {/* Pin Background with Glass Effect */}
-                  <div className="absolute inset-0 rounded-full bg-white/20 backdrop-blur-md border-2 border-white/60 shadow-lg">
+                  <div className="absolute inset-0 rounded-full bg-secondary/90 backdrop-blur-md border-2 border-secondary shadow-lg">
                     {/* Glow Effect */}
                     <div 
                       className="absolute inset-0 rounded-full transition-all duration-300"
                       style={{
                         boxShadow: hoveredProject === project.id 
-                          ? '0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(59, 130, 246, 0.3)'
-                          : '0 0 10px rgba(255, 255, 255, 0.4)'
+                          ? '0 0 20px rgba(59, 130, 246, 0.8), 0 0 40px rgba(59, 130, 246, 0.4)'
+                          : '0 0 10px rgba(0, 0, 0, 0.3)'
                       }}
                     />
                   </div>
@@ -182,7 +182,7 @@ const ProgettiPage = () => {
                       return (
                         <IconComponent 
                           size={16} 
-                          className="text-white/90 stroke-[1.5] transition-colors duration-300 group-hover:text-white" 
+                          className="text-white stroke-[1.5] transition-colors duration-300" 
                         />
                       );
                     })()}
@@ -251,7 +251,7 @@ const ProgettiPage = () => {
           >
             <div className="inline-flex items-center gap-6 bg-white/80 backdrop-blur-lg rounded-2xl px-6 py-4 shadow-lg border border-border/20">
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded-full bg-white/20 backdrop-blur-md border border-white/60"></div>
+                <div className="w-4 h-4 rounded-full bg-secondary border border-secondary"></div>
                 <span className="text-sm text-muted-foreground">Progetti Realizzati</span>
               </div>
               <div className="text-sm text-muted-foreground">
