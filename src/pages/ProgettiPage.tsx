@@ -115,7 +115,7 @@ const ProgettiPage = () => {
         {/* Interactive Map Section */}
         <div className="max-w-7xl mx-auto px-6 pb-20">
           <motion.div 
-            className="relative w-full aspect-[4/3] max-h-[80vh] bg-white rounded-3xl shadow-2xl overflow-hidden border border-border/20"
+            className="relative w-full aspect-[4/3] max-h-[80vh]"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
@@ -128,9 +128,6 @@ const ProgettiPage = () => {
                 alt="Mappa illustrata di Milano"
                 className="w-full h-full object-cover"
               />
-              
-              {/* Subtle overlay to soften the map for better pin visibility */}
-              <div className="absolute inset-0 bg-white/10" />
             </div>
 
             {/* Interactive Pins */}
