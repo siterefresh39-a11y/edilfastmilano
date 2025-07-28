@@ -2,6 +2,7 @@ import HeroSection from '@/components/HeroSection';
 import Navigation from '@/components/Navigation';
 import AboutSection from '@/components/AboutSection';
 import InteractiveHouseSection from '@/components/InteractiveHouseSection';
+import SocialMediaSection from '@/components/SocialMediaSection';
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <main className="relative z-10">
         <AboutSection />
         <InteractiveHouseSection />
+        <SocialMediaSection />
       </main>
 
       {/* Footer */}
