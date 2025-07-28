@@ -1,157 +1,145 @@
-import { Instagram, Linkedin, Facebook } from "lucide-react";
+import { Youtube, Instagram, Linkedin, Facebook } from "lucide-react";
 
 const SocialMediaSection = () => {
-  const socialPosts = [
+  const mainSocials = [
     {
-      id: 1,
-      platform: "instagram",
+      name: "YouTube",
+      icon: Youtube,
+      url: "https://youtube.com/@edilfastmilano",
+      color: "hover:text-red-500",
+      bgColor: "hover:bg-red-50",
+      description: "Video dei nostri progetti"
+    },
+    {
+      name: "TikTok", 
+      icon: () => (
+        <svg viewBox="0 0 24 24" className="w-full h-full" fill="currentColor">
+          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-.88-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
+        </svg>
+      ),
+      url: "https://tiktok.com/@edilfastmilano",
+      color: "hover:text-black",
+      bgColor: "hover:bg-gray-50",
+      description: "Contenuti creativi e innovativi"
+    }
+  ];
+
+  const otherSocials = [
+    {
+      name: "Instagram",
       icon: Instagram,
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      title: "Progetto Casa Moderna",
-      description: "Nuova realizzazione in zona Brera"
+      url: "https://instagram.com/edilfastmilano",
+      color: "hover:text-pink-500"
     },
     {
-      id: 2,
-      platform: "linkedin",
+      name: "LinkedIn",
       icon: Linkedin,
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      title: "Team al Lavoro",
-      description: "I nostri professionisti in azione"
+      url: "https://linkedin.com/company/edilfastmilano",
+      color: "hover:text-blue-600"
     },
     {
-      id: 3,
-      platform: "facebook",
+      name: "Facebook",
       icon: Facebook,
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      title: "Innovazione Tecnologica",
-      description: "Smart home del futuro"
-    },
-    {
-      id: 4,
-      platform: "instagram",
-      icon: Instagram,
-      image: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      title: "Design Sostenibile",
-      description: "Architettura verde e innovativa"
-    },
-    {
-      id: 5,
-      platform: "linkedin",
-      icon: Linkedin,
-      image: "https://images.unsplash.com/photo-1485833077593-4278bba3f11f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      title: "Cantiere Milano",
-      description: "Nuovi progetti in corso"
+      url: "https://facebook.com/edilfastmilano",
+      color: "hover:text-blue-500"
     }
   ];
 
   return (
-    <section className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-20 bg-background relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-primary animate-pulse"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-24 h-24 rounded-full bg-secondary animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 right-1/3 w-16 h-16 rounded-full bg-accent animate-pulse delay-500"></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-light text-foreground mb-4">
+          <h2 className="text-4xl font-light text-foreground mb-4 animate-fade-in">
             Seguici sui Social
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Scopri i nostri ultimi progetti e rimani aggiornato sulle novità di Edil Fast Milano
+          <p className="text-lg text-muted-foreground animate-fade-in delay-200">
+            Resta connesso con noi sui principali canali social
           </p>
         </div>
 
-        {/* Social Posts Grid */}
-        <div className="overflow-x-auto">
-          <div className="flex gap-6 pb-4" style={{ width: 'max-content', minWidth: '100%' }}>
-            {socialPosts.map((post, index) => {
-              const IconComponent = post.icon;
-              return (
-                <div
-                  key={post.id}
-                  className="group relative w-80 h-96 flex-shrink-0 cursor-pointer transform transition-all duration-500 ease-out hover:scale-105"
-                  style={{
-                    animationDelay: `${index * 100}ms`,
-                    animation: 'fade-in 0.6s ease-out forwards'
-                  }}
-                >
-                  {/* Card Container with Glass Effect */}
-                  <div className="relative w-full h-full rounded-2xl overflow-hidden backdrop-blur-sm bg-card/80 border border-border/50 shadow-lg hover:shadow-xl transition-all duration-300">
-                    
-                    {/* Image Container */}
-                    <div className="relative w-full h-full overflow-hidden">
-                      <img
-                        src={post.image}
-                        alt={post.title}
-                        className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:contrast-110"
-                      />
-                      
-                      {/* Subtle Overlay */}
-                      <div className="absolute inset-0 bg-background/10 group-hover:bg-background/5 transition-all duration-300" />
-                      
-                      {/* Social Icon */}
-                      <div className="absolute top-4 left-4 p-2 rounded-full bg-background/20 backdrop-blur-sm">
-                        <IconComponent className="w-5 h-5 text-background stroke-2" />
-                      </div>
-                      
-                      {/* Content Overlay */}
-                      <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background/90 via-background/60 to-transparent">
-                        <h3 className="text-lg font-medium text-foreground mb-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                          {post.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
-                          {post.description}
-                        </p>
-                        
-                        {/* Call to Action */}
-                        <div className="mt-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-150">
-                          <span className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors">
-                            Scopri di più
-                            <svg className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+        {/* Main Social Platforms */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {mainSocials.map((social, index) => {
+            const IconComponent = social.icon;
+            return (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group relative p-8 rounded-3xl border-2 border-border bg-card hover:border-primary transition-all duration-500 transform hover:scale-105 hover:shadow-2xl ${social.bgColor} animate-fade-in`}
+                style={{ animationDelay: `${index * 200}ms` }}
+              >
+                <div className="flex items-center space-x-6">
+                  {/* Icon Container */}
+                  <div className={`w-20 h-20 rounded-2xl bg-muted flex items-center justify-center transition-all duration-300 ${social.color} group-hover:scale-110 group-hover:rotate-12`}>
+                    <IconComponent className="w-10 h-10" />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-semibold text-foreground mb-2 group-hover:translate-x-2 transition-transform duration-300">
+                      {social.name}
+                    </h3>
+                    <p className="text-muted-foreground group-hover:translate-x-2 transition-transform duration-300 delay-75">
+                      {social.description}
+                    </p>
+                  </div>
+
+                  {/* Arrow */}
+                  <div className="text-muted-foreground group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
                   </div>
                 </div>
+
+                {/* Animated border */}
+                <div className="absolute inset-0 rounded-3xl border-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
+              </a>
+            );
+          })}
+        </div>
+
+        {/* Other Social Networks */}
+        <div className="text-center">
+          <h3 className="text-lg font-medium text-foreground mb-8 animate-fade-in delay-500">
+            Ci trovi anche su
+          </h3>
+          
+          <div className="flex justify-center space-x-6">
+            {otherSocials.map((social, index) => {
+              const IconComponent = social.icon;
+              return (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`group p-4 rounded-2xl bg-muted hover:bg-background border border-border transition-all duration-300 transform hover:scale-125 hover:-translate-y-2 ${social.color} animate-fade-in hover:shadow-lg`}
+                  style={{ animationDelay: `${600 + index * 100}ms` }}
+                  title={social.name}
+                >
+                  <IconComponent className="w-6 h-6 transition-transform duration-300 group-hover:rotate-12" />
+                </a>
               );
             })}
           </div>
         </div>
-
-        {/* Mobile Grid for smaller screens */}
-        <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-          {socialPosts.slice(0, 4).map((post, index) => {
-            const IconComponent = post.icon;
-            return (
-              <div
-                key={`mobile-${post.id}`}
-                className="group relative aspect-square cursor-pointer transform transition-all duration-500 ease-out hover:scale-105"
-              >
-                <div className="relative w-full h-full rounded-2xl overflow-hidden backdrop-blur-sm bg-card/80 border border-border/50 shadow-lg hover:shadow-xl transition-all duration-300">
-                  <div className="relative w-full h-full overflow-hidden">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-background/10 group-hover:bg-background/5 transition-all duration-300" />
-                    <div className="absolute top-3 left-3 p-1.5 rounded-full bg-background/20 backdrop-blur-sm">
-                      <IconComponent className="w-4 h-4 text-background stroke-2" />
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background/90 via-background/60 to-transparent">
-                      <h3 className="text-base font-medium text-foreground mb-1">
-                        {post.title}
-                      </h3>
-                      <p className="text-xs text-muted-foreground">
-                        {post.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
       </div>
+
+      {/* Floating Animation Elements */}
+      <div className="absolute top-10 left-10 w-2 h-2 bg-primary rounded-full animate-bounce delay-300"></div>
+      <div className="absolute bottom-20 right-20 w-3 h-3 bg-secondary rounded-full animate-bounce delay-700"></div>
+      <div className="absolute top-1/2 left-20 w-1 h-1 bg-accent rounded-full animate-bounce delay-1000"></div>
     </section>
   );
 };
