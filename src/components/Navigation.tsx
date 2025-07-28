@@ -5,8 +5,16 @@ import { cn } from '@/lib/utils';
 const Navigation = () => {
   const [isVisible, setIsVisible] = useState(false);
   const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
+    // Se non siamo nella home page, il menu è sempre visibile
+    if (!isHomePage) {
+      setIsVisible(true);
+      return;
+    }
+
+    // Solo nella home page, il menu appare con lo scroll
     const handleScroll = () => {
       const scrolled = window.scrollY > 100;
       setIsVisible(scrolled);
@@ -14,7 +22,7 @@ const Navigation = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isHomePage]);
 
   const navItems = [
     { path: '/', label: 'Home' },
