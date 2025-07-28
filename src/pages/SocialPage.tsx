@@ -51,7 +51,7 @@ const SocialPage = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-background to-muted/20">
+      <section className="pt-20 pb-20 bg-gradient-to-br from-background to-muted/20">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h1 className="text-5xl font-light text-foreground mb-6 animate-fade-in">
             I Nostri Social Media

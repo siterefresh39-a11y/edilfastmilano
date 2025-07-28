@@ -54,7 +54,7 @@ const ContattiPage = () => {
     <div className="relative">
       <Navigation />
       
-      <main className="pt-32">
+      <main className="pt-20">
         <section
           ref={sectionRef}
           className="min-h-screen bg-gradient-to-br from-secondary/5 to-primary/10 flex items-center py-24"

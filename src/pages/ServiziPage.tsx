@@ -54,7 +54,7 @@ const ServiziPage = () => {
     <div className="relative">
       <Navigation />
       
-      <main className="pt-32">
+      <main className="pt-20">
         <section
           ref={sectionRef}
           className="min-h-screen bg-accent/30 flex items-center py-24"
