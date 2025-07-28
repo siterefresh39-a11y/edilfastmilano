@@ -86,10 +86,10 @@ const ProgettiPage = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative bg-background">
       <Navigation />
       
-      <main className="pt-20 min-h-screen bg-background">
+      <main className="pt-16 min-h-screen bg-background">
         {/* Header Section */}
         <div className="text-center py-16 px-6">
           <motion.h1 

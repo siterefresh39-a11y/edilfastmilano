@@ -51,13 +51,13 @@ const ServiziPage = () => {
   ];
 
   return (
-    <div className="relative">
+    <div className="relative bg-background">
       <Navigation />
       
-      <main className="pt-20">
+      <main className="pt-16">
         <section
           ref={sectionRef}
-          className="min-h-screen bg-accent/30 flex items-center py-24"
+          className="min-h-screen bg-background flex items-center py-24"
         >
           <div className="max-w-7xl mx-auto px-6">
             <div
