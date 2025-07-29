@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Hammer, Leaf, Home, Zap, Clock } from 'lucide-react';
+import { Home } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 interface Pin {
@@ -16,47 +16,38 @@ interface Pin {
 const pins: Pin[] = [
   {
     id: '1',
-    x: 25,
-    y: 30,
+    x: 30,
+    y: 25,
     title: 'Progettazione 3D',
     description: 'Utilizziamo tecnologie avanzate per la progettazione tridimensionale, permettendo di visualizzare ogni dettaglio prima della costruzione.',
-    icon: Hammer,
+    icon: Home,
     link: '/progettazione'
   },
   {
     id: '2', 
-    x: 50,
-    y: 20,
+    x: 70,
+    y: 25,
     title: 'Materiali Sostenibili',
     description: 'Selezioniamo materiali eco-compatibili e di alta qualità per garantire efficienza energetica e durata nel tempo.',
-    icon: Leaf,
+    icon: Home,
     link: '/materiali'
   },
   {
     id: '3',
-    x: 75,
-    y: 35,
-    title: 'Smart Technology',
-    description: 'Integriamo sistemi domotici avanzati per il controllo intelligente di illuminazione, climatizzazione e sicurezza.',
-    icon: Home,
-    link: '/smart-tech'
-  },
-  {
-    id: '4',
     x: 30,
-    y: 60,
+    y: 65,
     title: 'Efficienza Energetica',
     description: 'Ogni progetto è ottimizzato per il massimo risparmio energetico con soluzioni innovative e certificazioni green.',
-    icon: Zap,
+    icon: Home,
     link: '/efficienza'
   },
   {
-    id: '5',
+    id: '4',
     x: 70,
     y: 65,
     title: 'Tempi Ridotti',
     description: 'Il nostro metodo EDIL FAST garantisce tempi di realizzazione ridotti del 40% rispetto ai metodi tradizionali.',
-    icon: Clock,
+    icon: Home,
     link: '/tempi'
   }
 ];
@@ -120,8 +111,7 @@ const InteractiveHouseSection = () => {
         </motion.div>
 
         <motion.div 
-          className="relative w-full max-w-4xl mx-auto aspect-square md:aspect-[4/3] cursor-none"
-          onMouseMove={handleMouseMove}
+          className="relative w-full max-w-5xl mx-auto aspect-square md:aspect-[4/3]"
           animate={{
             opacity: isAnimating ? 0.8 : 1,
           }}
@@ -130,23 +120,15 @@ const InteractiveHouseSection = () => {
             ease: "easeOut"
           }}
         >
-          {/* Casa centrale - senza animazioni di zoom */}
+          {/* Casa centrale - più grande e senza effetti 3D */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <motion.div
-              className="relative w-full max-w-2xl aspect-square"
-              animate={{
-                rotateY: !isAnimating ? (mousePosition.x - 50) * 0.1 : 0,
-                rotateX: !isAnimating ? (mousePosition.y - 50) * -0.05 : 0,
-              }}
-              transition={{ type: "spring", stiffness: 50, damping: 15 }}
-              style={{ transformStyle: "preserve-3d" }}
-            >
+            <div className="relative w-full max-w-3xl aspect-square">
               <img 
                 src="/lovable-uploads/4daa0b20-6767-4ff7-a2f4-0d8a007514e7.png"
                 alt="Progetto EDIL FAST"
                 className="w-full h-full object-contain drop-shadow-2xl"
               />
-            </motion.div>
+            </div>
           </div>
 
           {/* Pin interattivi */}
@@ -205,16 +187,20 @@ const InteractiveHouseSection = () => {
                     boxShadow: "0 0 40px rgba(255, 255, 255, 0.7)"
                   } : {}}
                 >
-                  {/* Background glass effect */}
+                  {/* Background glass effect - colori più scuri */}
                   <motion.div 
-                    className="absolute inset-0 rounded-full bg-white/10 backdrop-blur-md border-2 border-white/30 shadow-2xl"
+                    className="absolute inset-0 rounded-full backdrop-blur-md border-2 shadow-2xl"
+                    style={{
+                      backgroundColor: "rgba(60, 60, 60, 0.8)",
+                      borderColor: "rgba(40, 40, 40, 0.9)"
+                    }}
                     animate={{
                       backgroundColor: isAnimating && clickedPin?.id === pin.id 
-                        ? "rgba(255, 255, 255, 0.3)" 
-                        : "rgba(255, 255, 255, 0.1)",
+                        ? "rgba(80, 80, 80, 0.9)" 
+                        : "rgba(60, 60, 60, 0.8)",
                       borderColor: isAnimating && clickedPin?.id === pin.id 
-                        ? "rgba(255, 255, 255, 0.6)" 
-                        : "rgba(255, 255, 255, 0.3)"
+                        ? "rgba(100, 100, 100, 0.9)" 
+                        : "rgba(40, 40, 40, 0.9)"
                     }}
                     transition={{ duration: 0.5 }}
                   />
@@ -223,17 +209,20 @@ const InteractiveHouseSection = () => {
                   <div className="relative z-10 w-full h-full flex items-center justify-center">
                     {(() => {
                       const IconComponent = pin.icon;
-                      return <IconComponent size={20} className="text-white/90 stroke-[1.5]" />;
+                      return <IconComponent size={18} className="text-white stroke-[2]" />;
                     })()}
                   </div>
                   
-                  {/* Subtle glow */}
+                  {/* Subtle glow - colore più scuro */}
                   <motion.div 
-                    className="absolute inset-0 rounded-full bg-white/5 blur-sm group-hover:bg-white/10 transition-all duration-300"
+                    className="absolute inset-0 rounded-full blur-sm transition-all duration-300"
+                    style={{
+                      backgroundColor: "rgba(40, 40, 40, 0.3)"
+                    }}
                     animate={{
                       backgroundColor: isAnimating && clickedPin?.id === pin.id 
-                        ? "rgba(255, 255, 255, 0.2)" 
-                        : "rgba(255, 255, 255, 0.05)"
+                        ? "rgba(60, 60, 60, 0.4)" 
+                        : "rgba(40, 40, 40, 0.3)"
                     }}
                     transition={{ duration: 0.5 }}
                   />
