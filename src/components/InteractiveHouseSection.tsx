@@ -205,12 +205,9 @@ const InteractiveHouseSection = () => {
                     transition={{ duration: 0.5 }}
                   />
                   
-                  {/* Icona */}
+                  {/* Pallino neutrale */}
                   <div className="relative z-10 w-full h-full flex items-center justify-center">
-                    {(() => {
-                      const IconComponent = pin.icon;
-                      return <IconComponent size={18} className="text-white stroke-[2]" />;
-                    })()}
+                    <div className="w-3 h-3 bg-white rounded-full"></div>
                   </div>
                   
                   {/* Subtle glow - colore più scuro */}
