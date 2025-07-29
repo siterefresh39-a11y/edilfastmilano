@@ -142,7 +142,7 @@ const InteractiveHouseSection = () => {
               style={{ transformStyle: "preserve-3d" }}
             >
               <img 
-                src="/lovable-uploads/3901b7c0-4d51-4c4c-be57-f18c9ea1fb35.png"
+                src="/lovable-uploads/4daa0b20-6767-4ff7-a2f4-0d8a007514e7.png"
                 alt="Progetto EDIL FAST"
                 className="w-full h-full object-contain drop-shadow-2xl"
               />
