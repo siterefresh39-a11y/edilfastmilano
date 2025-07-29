@@ -111,7 +111,7 @@ const InteractiveHouseSection = () => {
         </motion.div>
 
         <motion.div 
-          className="relative w-full max-w-5xl mx-auto aspect-square md:aspect-[4/3]"
+          className="relative w-full max-w-6xl mx-auto aspect-square md:aspect-[4/3]"
           animate={{
             opacity: isAnimating ? 0.8 : 1,
           }}
@@ -120,9 +120,9 @@ const InteractiveHouseSection = () => {
             ease: "easeOut"
           }}
         >
-          {/* Casa centrale - più grande e senza effetti 3D */}
+          {/* Casa centrale - molto più grande e senza effetti 3D */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="relative w-full max-w-3xl aspect-square">
+            <div className="relative w-full max-w-4xl aspect-square">
               <img 
                 src="/lovable-uploads/4daa0b20-6767-4ff7-a2f4-0d8a007514e7.png"
                 alt="Progetto EDIL FAST"
