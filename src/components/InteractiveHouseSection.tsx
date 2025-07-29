@@ -83,7 +83,7 @@ const InteractiveHouseSection = () => {
     // Navigate after animation completes
     setTimeout(() => {
       navigate(pin.link);
-    }, 1800);
+    }, 900);
   };
 
   return (
@@ -95,7 +95,7 @@ const InteractiveHouseSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, delay: 1.3 }}
+            transition={{ duration: 0.4, delay: 0.5 }}
             className="fixed inset-0 bg-white z-50"
           />
         )}
@@ -123,54 +123,28 @@ const InteractiveHouseSection = () => {
           className="relative w-full max-w-4xl mx-auto aspect-square md:aspect-[4/3] cursor-none"
           onMouseMove={handleMouseMove}
           animate={{
-            scale: isAnimating ? 2.5 : 1,
-            rotateY: isAnimating ? 15 : 0,
-            rotateX: isAnimating ? -5 : 0,
+            opacity: isAnimating ? 0.8 : 1,
           }}
           transition={{ 
-            duration: 1.5, 
-            ease: [0.25, 0.1, 0.25, 1]
+            duration: 0.3, 
+            ease: "easeOut"
           }}
-          style={{ transformStyle: "preserve-3d" }}
         >
-          {/* Background blur overlay */}
-          <motion.div
-            className="absolute inset-0 backdrop-blur-sm rounded-lg"
-            style={{
-              background: 'radial-gradient(circle, transparent 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.6) 100%)'
-            }}
-            animate={{
-              opacity: isAnimating ? 1 : 0,
-            }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          />
-
-          {/* Casa centrale */}
+          {/* Casa centrale - senza animazioni di zoom */}
           <div className="absolute inset-0 flex items-center justify-center">
             <motion.div
               className="relative w-full max-w-2xl aspect-square"
               animate={{
-                rotateY: isAnimating ? 0 : (mousePosition.x - 50) * 0.1,
-                rotateX: isAnimating ? 0 : (mousePosition.y - 50) * -0.05,
-                scale: isAnimating ? 1.1 : 1,
+                rotateY: !isAnimating ? (mousePosition.x - 50) * 0.1 : 0,
+                rotateX: !isAnimating ? (mousePosition.y - 50) * -0.05 : 0,
               }}
-              transition={{ 
-                type: isAnimating ? "tween" : "spring", 
-                stiffness: 50, 
-                damping: 15,
-                duration: isAnimating ? 1.2 : undefined,
-                ease: isAnimating ? [0.25, 0.1, 0.25, 1] : undefined
-              }}
+              transition={{ type: "spring", stiffness: 50, damping: 15 }}
               style={{ transformStyle: "preserve-3d" }}
             >
-              <motion.img 
+              <img 
                 src="/lovable-uploads/3901b7c0-4d51-4c4c-be57-f18c9ea1fb35.png"
                 alt="Progetto EDIL FAST"
                 className="w-full h-full object-contain drop-shadow-2xl"
-                animate={{
-                  filter: isAnimating ? "brightness(1.2) contrast(1.1)" : "brightness(1) contrast(1)",
-                }}
-                transition={{ duration: 0.8 }}
               />
             </motion.div>
           </div>
@@ -193,10 +167,10 @@ const InteractiveHouseSection = () => {
                 whileTap={!isAnimating ? { scale: 0.95 } : {}}
                 className="relative"
                 animate={{
-                  scale: isAnimating && clickedPin?.id === pin.id ? 1.8 : 1,
-                  opacity: isAnimating && clickedPin?.id !== pin.id ? 0.3 : 1,
+                  scale: isAnimating && clickedPin?.id === pin.id ? 1.1 : 1,
+                  opacity: isAnimating && clickedPin?.id !== pin.id ? 0.5 : 1,
                 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
               >
                 {/* Pin moderno con effetto glass e breathing */}
                 <motion.div 
@@ -268,29 +242,53 @@ const InteractiveHouseSection = () => {
             </button>
           ))}
 
-          {/* Effetto di luce spotlight */}
+          {/* Effetto di alone espansivo elegante */}
           <AnimatePresence>
             {isAnimating && clickedPin && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ 
-                  opacity: [0, 0.6, 0],
-                  scale: [0.5, 3, 4]
-                }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
-                className="absolute pointer-events-none"
-                style={{
-                  left: `${clickedPin.x}%`,
-                  top: `${clickedPin.y}%`,
-                  transform: 'translate(-50%, -50%)',
-                  background: 'radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%)',
-                  width: '200px',
-                  height: '200px',
-                  borderRadius: '50%',
-                  filter: 'blur(20px)'
-                }}
-              />
+              <>
+                {/* Primo cerchio di luce */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.1 }}
+                  animate={{ 
+                    opacity: [0, 0.8, 0.4, 0],
+                    scale: [0.1, 2, 4, 6]
+                  }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="absolute pointer-events-none"
+                  style={{
+                    left: `${clickedPin.x}%`,
+                    top: `${clickedPin.y}%`,
+                    transform: 'translate(-50%, -50%)',
+                    background: 'radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.2) 40%, transparent 70%)',
+                    width: '80px',
+                    height: '80px',
+                    borderRadius: '50%',
+                    filter: 'blur(8px)'
+                  }}
+                />
+                {/* Secondo cerchio più ampio */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.1 }}
+                  animate={{ 
+                    opacity: [0, 0.4, 0.2, 0],
+                    scale: [0.1, 1.5, 3, 5]
+                  }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.9, ease: "easeOut", delay: 0.1 }}
+                  className="absolute pointer-events-none"
+                  style={{
+                    left: `${clickedPin.x}%`,
+                    top: `${clickedPin.y}%`,
+                    transform: 'translate(-50%, -50%)',
+                    background: 'radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 50%, transparent 80%)',
+                    width: '120px',
+                    height: '120px',
+                    borderRadius: '50%',
+                    filter: 'blur(15px)'
+                  }}
+                />
+              </>
             )}
           </AnimatePresence>
         </motion.div>
