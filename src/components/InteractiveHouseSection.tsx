@@ -16,8 +16,8 @@ interface Pin {
 const pins: Pin[] = [
   {
     id: '1',
-    x: 30,
-    y: 25,
+    x: 45,
+    y: 35,
     title: 'Progettazione 3D',
     description: 'Utilizziamo tecnologie avanzate per la progettazione tridimensionale, permettendo di visualizzare ogni dettaglio prima della costruzione.',
     icon: Home,
@@ -25,8 +25,8 @@ const pins: Pin[] = [
   },
   {
     id: '2', 
-    x: 70,
-    y: 25,
+    x: 60,
+    y: 20,
     title: 'Materiali Sostenibili',
     description: 'Selezioniamo materiali eco-compatibili e di alta qualità per garantire efficienza energetica e durata nel tempo.',
     icon: Home,
@@ -34,8 +34,8 @@ const pins: Pin[] = [
   },
   {
     id: '3',
-    x: 30,
-    y: 65,
+    x: 25,
+    y: 55,
     title: 'Efficienza Energetica',
     description: 'Ogni progetto è ottimizzato per il massimo risparmio energetico con soluzioni innovative e certificazioni green.',
     icon: Home,
@@ -43,7 +43,7 @@ const pins: Pin[] = [
   },
   {
     id: '4',
-    x: 70,
+    x: 75,
     y: 65,
     title: 'Tempi Ridotti',
     description: 'Il nostro metodo EDIL FAST garantisce tempi di realizzazione ridotti del 40% rispetto ai metodi tradizionali.',
