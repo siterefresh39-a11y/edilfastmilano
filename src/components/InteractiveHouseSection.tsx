@@ -135,7 +135,10 @@ const InteractiveHouseSection = () => {
         >
           {/* Background blur overlay */}
           <motion.div
-            className="absolute inset-0 bg-gradient-radial from-transparent via-white/20 to-white/60 backdrop-blur-sm rounded-lg"
+            className="absolute inset-0 backdrop-blur-sm rounded-lg"
+            style={{
+              background: 'radial-gradient(circle, transparent 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.6) 100%)'
+            }}
             animate={{
               opacity: isAnimating ? 1 : 0,
             }}
