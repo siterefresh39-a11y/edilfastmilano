@@ -67,11 +67,12 @@ const AboutSection = () => {
           >
             <div className="relative">
               <div className="aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl overflow-hidden shadow-2xl">
-                <div className="absolute inset-4 bg-white/5 backdrop-blur-sm border border-white/20 rounded-2xl flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <div className="text-4xl font-light mb-4">20+</div>
-                    <div className="text-sm tracking-wider">ANNI DI ESPERIENZA</div>
-                  </div>
+                <div className="absolute inset-4 bg-white/5 backdrop-blur-sm border border-white/20 rounded-2xl flex items-center justify-center p-8">
+                  <img 
+                    src="/lovable-uploads/012fb361-4926-4947-8016-0db47d733f90.png"
+                    alt="EDIL FAST MILANO Logo"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
               </div>
               
