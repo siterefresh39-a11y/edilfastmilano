@@ -43,8 +43,8 @@ const pins: Pin[] = [
   },
   {
     id: '4',
-    x: 75,
-    y: 65,
+    x: 65,
+    y: 40,
     title: 'Tempi Ridotti',
     description: 'Il nostro metodo EDIL FAST garantisce tempi di realizzazione ridotti del 40% rispetto ai metodi tradizionali.',
     icon: Home,
