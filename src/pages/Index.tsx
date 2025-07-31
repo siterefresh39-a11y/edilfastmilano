@@ -2,6 +2,7 @@ import HeroSection from '@/components/HeroSection';
 import Navigation from '@/components/Navigation';
 import AboutSection from '@/components/AboutSection';
 import InteractiveHouseSection from '@/components/InteractiveHouseSection';
+import WhatsAppButton from '@/components/WhatsAppButton';
 const Index = () => {
   return <div className="relative">
       {/* Hero Section - Full screen with background image */}
@@ -24,6 +25,9 @@ const Index = () => {
           <p className="text-sm opacity-80">© 2025 Edil Fast Milano. Tutti i diritti riservati.</p>
         </div>
       </footer>
+
+      {/* WhatsApp Button */}
+      <WhatsAppButton />
     </div>;
 };
 export default Index;
