@@ -205,12 +205,12 @@ const InteractiveHouseSection = () => {
                     transition={{ duration: 0.5 }}
                   />
                   
-                  {/* Icona casa con martello */}
-                  <div className="relative z-10 w-full h-full flex items-center justify-center">
+                  {/* Icona casa con martello che riempie il pin */}
+                  <div className="relative z-10 w-full h-full flex items-center justify-center p-1">
                     <img 
                       src="/lovable-uploads/cb8f97e5-a7ab-40df-b2e6-dd1c77820187.png" 
                       alt="EDIL FAST icon"
-                      className="w-6 h-6 object-contain"
+                      className="w-full h-full object-contain"
                     />
                   </div>
                   
