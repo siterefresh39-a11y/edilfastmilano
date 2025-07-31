@@ -124,7 +124,7 @@ const InteractiveHouseSection = () => {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative w-full max-w-4xl aspect-square">
               <img 
-                src="/lovable-uploads/4daa0b20-6767-4ff7-a2f4-0d8a007514e7.png"
+                src="/lovable-uploads/20b3c721-294a-443e-ba2d-afa196163db2.png"
                 alt="Progetto EDIL FAST"
                 className="w-full h-full object-contain drop-shadow-2xl"
               />
