@@ -205,9 +205,13 @@ const InteractiveHouseSection = () => {
                     transition={{ duration: 0.5 }}
                   />
                   
-                  {/* Pallino neutrale */}
+                  {/* Icona casa con martello */}
                   <div className="relative z-10 w-full h-full flex items-center justify-center">
-                    <div className="w-3 h-3 bg-white rounded-full"></div>
+                    <img 
+                      src="/lovable-uploads/cb8f97e5-a7ab-40df-b2e6-dd1c77820187.png" 
+                      alt="EDIL FAST icon"
+                      className="w-6 h-6 object-contain"
+                    />
                   </div>
                   
                   {/* Subtle glow - colore più scuro */}
