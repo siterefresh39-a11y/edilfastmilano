@@ -66,18 +66,18 @@ const AboutSection = () => {
             }`}
           >
             <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl overflow-hidden shadow-2xl">
-                <div className="absolute inset-4 bg-white/5 backdrop-blur-sm border border-white/20 rounded-2xl flex items-center justify-center p-8">
+              <div className="aspect-square bg-gradient-to-br from-orange-100 to-amber-50 rounded-3xl overflow-hidden shadow-2xl">
+                <div className="absolute inset-4 bg-orange-50/80 backdrop-blur-sm border border-orange-200/40 rounded-2xl flex items-center justify-center p-8">
                   <img 
                     src="/lovable-uploads/012fb361-4926-4947-8016-0db47d733f90.png"
                     alt="EDIL FAST MILANO Logo"
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain rounded-xl"
                   />
                 </div>
               </div>
               
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary rounded-full opacity-20" />
-              <div className="absolute -top-6 -left-6 w-24 h-24 bg-secondary rounded-full opacity-30" />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-orange-400 rounded-full opacity-20" />
+              <div className="absolute -top-6 -left-6 w-24 h-24 bg-teal-600 rounded-full opacity-30" />
             </div>
           </div>
         </div>
