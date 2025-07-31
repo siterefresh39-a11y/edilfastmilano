@@ -17,7 +17,7 @@ const pins: Pin[] = [
   {
     id: '1',
     x: 45,
-    y: 35,
+    y: 55,
     title: 'Progettazione 3D',
     description: 'Utilizziamo tecnologie avanzate per la progettazione tridimensionale, permettendo di visualizzare ogni dettaglio prima della costruzione.',
     icon: Home,
