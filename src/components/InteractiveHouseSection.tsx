@@ -207,11 +207,13 @@ const InteractiveHouseSection = () => {
                   
                   {/* Icona casa con martello che riempie il pin */}
                   <div className="relative z-10 w-full h-full flex items-center justify-center p-1">
-                    <img 
-                      src="/lovable-uploads/cb8f97e5-a7ab-40df-b2e6-dd1c77820187.png" 
-                      alt="EDIL FAST icon"
-                      className="w-full h-full object-contain"
-                    />
+                    <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
+                      <img 
+                        src="/lovable-uploads/cb8f97e5-a7ab-40df-b2e6-dd1c77820187.png" 
+                        alt="EDIL FAST icon"
+                        className="w-full h-full object-contain p-1"
+                      />
+                    </div>
                   </div>
                   
                   {/* Subtle glow - colore più scuro */}
