@@ -18,6 +18,15 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
       </div>
       
+      {/* EDIL FAST Text Overlay - Mobile Responsive */}
+      <div className="absolute inset-0 flex items-center justify-center z-10" style={{ opacity: opacity }}>
+        <h1 className="text-white text-6xl md:text-8xl lg:text-9xl font-bold tracking-wider text-center
+                       drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_0.8)]
+                       animate-fade-in px-4">
+          EDIL FAST
+        </h1>
+      </div>
+      
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce" style={{
       opacity: opacity
