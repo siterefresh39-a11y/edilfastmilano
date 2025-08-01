@@ -130,7 +130,7 @@ const MaterialiPage = () => {
           >
             <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl p-8 backdrop-blur-sm">
               <img 
-                src="/lovable-uploads/787d92dd-e8ca-46d5-8a1d-105a507d8494.png"
+                src="/lovable-uploads/cb8f97e5-a7ab-40df-b2e6-dd1c77820187.png"
                 alt="Ristrutturazione Bagno"
                 className="w-full h-auto rounded-lg shadow-2xl"
               />
