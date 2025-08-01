@@ -186,6 +186,27 @@ const ContattiPage = () => {
                       />
                     </div>
                     
+                    <div className="flex items-start space-x-3">
+                      <input
+                        type="checkbox"
+                        id="privacy-policy"
+                        className="mt-1 h-4 w-4 text-primary border-border rounded focus:ring-primary focus:ring-2"
+                        required
+                      />
+                      <label htmlFor="privacy-policy" className="text-sm text-secondary">
+                        Ho letto e compreso la{' '}
+                        <a 
+                          href="/privacy-policy" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-primary hover:underline"
+                        >
+                          Privacy Policy
+                        </a>
+                        {' '}e acconsento al trattamento dei miei dati personali. *
+                      </label>
+                    </div>
+                    
                     <button
                       type="submit"
                       className="group relative w-full px-8 py-4 bg-gradient-to-r from-primary to-primary-muted text-white rounded-2xl font-medium tracking-wide hover:shadow-2xl transition-all duration-300 overflow-hidden"
@@ -206,6 +227,14 @@ const ContattiPage = () => {
           <p className="text-sm opacity-80">
             © 2024 Edil Fast Milano. Tutti i diritti riservati.
           </p>
+          <div className="mt-4">
+            <a 
+              href="/privacy-policy" 
+              className="text-sm text-white/60 hover:text-white transition-colors underline"
+            >
+              Privacy Policy
+            </a>
+          </div>
         </div>
       </footer>
     </div>

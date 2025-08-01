@@ -14,6 +14,7 @@ import ServiziPage from "./pages/ServiziPage";
 import ProgettiPage from "./pages/ProgettiPage";
 import ContattiPage from "./pages/ContattiPage";
 import SocialPage from "./pages/SocialPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/progetti" element={<ProgettiPage />} />
           <Route path="/contatti" element={<ContattiPage />} />
           <Route path="/social" element={<SocialPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
