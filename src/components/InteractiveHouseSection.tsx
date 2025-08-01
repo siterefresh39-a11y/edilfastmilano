@@ -27,8 +27,8 @@ const pins: Pin[] = [
     id: '2', 
     x: 60,
     y: 20,
-    title: 'Materiali Sostenibili',
-    description: 'Selezioniamo materiali eco-compatibili e di alta qualità per garantire efficienza energetica e durata nel tempo.',
+    title: 'Ristrutturazione Bagno',
+    description: 'Trasformiamo il tuo bagno con soluzioni complete e professionali, dal design alla realizzazione.',
     icon: Home,
     link: '/materiali'
   },

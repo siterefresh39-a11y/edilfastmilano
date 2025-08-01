@@ -1,8 +1,55 @@
 import { motion } from 'framer-motion';
-import { Leaf, ArrowLeft } from 'lucide-react';
+import { Bath, ArrowLeft, Package, Hammer, Paintbrush, Recycle, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 const MaterialiPage = () => {
+  const [selectedPackage, setSelectedPackage] = useState<string>('');
+
+  const packages = {
+    'super-premium': {
+      title: 'Servizio Super Premium - Pensiamo a tutto noi',
+      description: 'Con il nostro servizio chiavi in mano, ci occupiamo dall\'inizio alla fine di ogni fase della ristrutturazione del tuo bagno.',
+      color: 'from-yellow-500/20 to-orange-500/20',
+      services: [
+        { icon: Package, title: 'Trasporto materiali e arredo nuovo', description: 'Gestiamo ritiro e consegna in totale sicurezza' },
+        { icon: Hammer, title: 'Rimozione professionale vecchi sanitari', description: 'Smontaggio accurato per evitare danni' },
+        { icon: Hammer, title: 'Demolizione completa del bagno', description: 'Rottura pavimentazioni e rivestimenti' },
+        { icon: Recycle, title: 'Smaltimento certificato', description: 'Smaltimento a norma di macerie e sanitari' },
+        { icon: Bath, title: 'Realizzazione nuovi rivestimenti e pavimenti', description: 'Posa con finiture a scelta del cliente' },
+        { icon: Bath, title: 'Installazione nuovi sanitari e rubinetteria', description: 'Montaggio preciso con test di funzionalità' },
+        { icon: Paintbrush, title: 'Imbiancatura del soffitto', description: 'Preparazione fondo e tinteggiatura' },
+        { icon: Package, title: 'Montaggio mobili e accessori bagno', description: 'Installazione arredo e illuminazione' },
+        { icon: Sparkles, title: 'Pulizia finale del cantiere', description: 'Detersione completa per consegna' }
+      ]
+    },
+    'premium': {
+      title: 'Pacchetto Premium - Il giusto equilibrio',
+      description: 'Pensiamo noi a tutte le operazioni fondamentali per consegnarti un ambiente rinnovato e pronto all\'uso.',
+      color: 'from-blue-500/20 to-purple-500/20',
+      services: [
+        { icon: Hammer, title: 'Demolizione rivestimenti e pavimentazione', description: 'Rimozione materiali obsoleti' },
+        { icon: Bath, title: 'Posa di pavimenti e rivestimenti', description: 'Installazione precisa con materiali professionali' },
+        { icon: Package, title: 'Montaggio arredo bagno', description: 'Assemblaggio mobili e complementi' },
+        { icon: Paintbrush, title: 'Tinteggiatura soffitto', description: 'Verniciatura con preparazione del fondo' },
+        { icon: Sparkles, title: 'Pulizia post-lavori', description: 'Riordino e pulizia finale dell\'ambiente' }
+      ]
+    },
+    'standard': {
+      title: 'Pacchetto Standard - Essenziale, preciso',
+      description: 'Un intervento mirato per rinfrescare e valorizzare il bagno senza interventi invasivi.',
+      color: 'from-green-500/20 to-teal-500/20',
+      services: [
+        { icon: Bath, title: 'Fornitura e posa rivestimenti/pavimenti', description: 'Posa professionale con tagli di precisione' },
+        { icon: Paintbrush, title: 'Tinteggiatura del soffitto', description: 'Preparazione e pittura con idropittura' },
+        { icon: Sparkles, title: 'Pulizia finale dell\'ambiente', description: 'Eliminazione residui e polveri' }
+      ]
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
       {/* Navigation */}
@@ -27,127 +74,122 @@ const MaterialiPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Leaf size={40} className="text-green-500" />
+            <div className="w-20 h-20 bg-blue-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Bath size={40} className="text-blue-500" />
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-              Materiali Sostenibili
+              Ristrutturazione Bagno
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Selezioniamo materiali eco-compatibili e di alta qualità per efficienza energetica e durata
+              Trasformiamo il tuo bagno con soluzioni complete e professionali
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Content */}
+      {/* Package Selection */}
       <section className="py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <h2 className="text-3xl font-bold text-foreground mb-6">
-                Costruire Responsabilmente
-              </h2>
-              <div className="space-y-4 text-muted-foreground">
-                <p>
-                  La nostra filosofia si basa sulla selezione di materiali che rispettano 
-                  l'ambiente senza compromettere la qualità e la durata. Ogni componente 
-                  viene scelto secondo rigorosi criteri di sostenibilità e performance.
-                </p>
-                <p>
-                  Investiamo in materiali innovativi che garantiscono isolamento termico 
-                  superiore, resistenza agli agenti atmosferici e un impatto ambientale 
-                  minimo durante tutto il ciclo di vita dell'edificio.
-                </p>
-              </div>
-              
-              <div className="mt-8 grid grid-cols-2 gap-6">
-                <div className="bg-card border border-border rounded-lg p-4">
-                  <h3 className="font-semibold text-card-foreground mb-2">Certificazioni</h3>
-                  <p className="text-sm text-muted-foreground">Materiali con certificazione green</p>
-                </div>
-                <div className="bg-card border border-border rounded-lg p-4">
-                  <h3 className="font-semibold text-card-foreground mb-2">Durabilità</h3>
-                  <p className="text-sm text-muted-foreground">Garanzia a lungo termine</p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="relative"
-            >
-              <div className="bg-gradient-to-br from-green-500/20 to-blue-500/20 rounded-2xl p-8 backdrop-blur-sm">
-                <img 
-                  src="/lovable-uploads/52676327-6506-4e69-9589-d64478bf5833.png"
-                  alt="Materiali Sostenibili"
-                  className="w-full h-auto rounded-lg shadow-2xl"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Materials Grid */}
-      <section className="py-16 bg-muted/20">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.h2
+        <div className="max-w-4xl mx-auto px-6">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-3xl font-bold text-center text-foreground mb-12"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-center mb-12"
           >
-            I Nostri Materiali Eco-Friendly
-          </motion.h2>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Legno Certificato FSC",
-                description: "Proveniente da foreste gestite in modo sostenibile"
-              },
-              {
-                title: "Isolanti Naturali",
-                description: "Fibra di legno, sughero e materiali a base vegetale"
-              },
-              {
-                title: "Calcestruzzo Verde",
-                description: "Formulazioni a basso impatto di carbonio"
-              },
-              {
-                title: "Acciaio Riciclato",
-                description: "Strutture metalliche da materiale di recupero"
-              },
-              {
-                title: "Vernici Ecologiche",
-                description: "A base d'acqua, senza solventi tossici"
-              },
-              {
-                title: "Pannelli Solari",
-                description: "Integrazione di energie rinnovabili"
-              }
-            ].map((material, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 + index * 0.1 }}
-                className="bg-card border border-border rounded-xl p-6"
-              >
-                <h3 className="font-semibold text-card-foreground mb-3">{material.title}</h3>
-                <p className="text-muted-foreground text-sm">{material.description}</p>
-              </motion.div>
-            ))}
-          </div>
+            <h2 className="text-3xl font-bold text-foreground mb-6">
+              Scegli il Pacchetto Perfetto per Te
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Seleziona dal menu a tendina il pacchetto che fa per te
+            </p>
+            
+            <div className="max-w-md mx-auto">
+              <Select value={selectedPackage} onValueChange={setSelectedPackage}>
+                <SelectTrigger className="w-full h-12 text-lg">
+                  <SelectValue placeholder="Seleziona un pacchetto..." />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="super-premium">🏆 Servizio Super Premium</SelectItem>
+                  <SelectItem value="premium">⭐ Pacchetto Premium</SelectItem>
+                  <SelectItem value="standard">✅ Pacchetto Standard</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </motion.div>
         </div>
       </section>
+
+      {/* Main Hero Image */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="relative"
+          >
+            <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl p-8 backdrop-blur-sm">
+              <img 
+                src="/lovable-uploads/787d92dd-e8ca-46d5-8a1d-105a507d8494.png"
+                alt="Ristrutturazione Bagno"
+                className="w-full h-auto rounded-lg shadow-2xl"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Package Details */}
+      {selectedPackage && (
+        <section className="py-16 bg-muted/20">
+          <div className="max-w-6xl mx-auto px-6">
+            <motion.div
+              key={selectedPackage}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className={`bg-gradient-to-br ${packages[selectedPackage as keyof typeof packages].color} rounded-2xl p-8 mb-8`}>
+                <h2 className="text-3xl font-bold text-foreground mb-4">
+                  {packages[selectedPackage as keyof typeof packages].title}
+                </h2>
+                <p className="text-lg text-muted-foreground mb-6">
+                  {packages[selectedPackage as keyof typeof packages].description}
+                </p>
+                
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {packages[selectedPackage as keyof typeof packages].services.map((service, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                    >
+                      <Card className="h-full">
+                        <CardHeader className="pb-3">
+                          <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-3">
+                            <service.icon size={24} className="text-primary" />
+                          </div>
+                          <CardTitle className="text-lg">{service.title}</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <CardDescription>{service.description}</CardDescription>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </div>
+                
+                <div className="mt-8 text-center">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90">
+                    Richiedi Preventivo per questo Pacchetto
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      )}
     </div>
   );
 };
