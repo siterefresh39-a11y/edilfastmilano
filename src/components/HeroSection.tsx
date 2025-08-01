@@ -11,7 +11,7 @@ const HeroSection = () => {
   const scale = Math.max(1, 1 + scrollY / 2000);
   return <section className="relative h-screen overflow-hidden">
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-out" style={{
-      backgroundImage: `url(/lovable-uploads/64163785-7a6f-4a78-b6da-fed942410df4.png)`,
+      backgroundImage: `url(/lovable-uploads/674ce96d-68d0-427c-b39a-58cb1544e8ec.png)`,
       opacity: opacity,
       transform: `scale(${scale})`
     }}>
