@@ -27,8 +27,8 @@ const ContattiPage = () => {
     {
       icon: Phone,
       title: 'Telefono',
-      value: '+39 02 1234 5678',
-      action: 'tel:+390212345678'
+      value: '+39 351 566 3803',
+      action: 'tel:+393515663803'
     },
     {
       icon: Mail,
