@@ -101,17 +101,17 @@ const InteractiveHouseSection = () => {
           }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             L'Esperienza EDIL FAST
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Scopri come trasformiamo le tue idee in realtà attraverso tecnologie innovative 
             e un approccio all'avanguardia
           </p>
         </motion.div>
 
         <motion.div 
-          className="relative w-full max-w-6xl mx-auto aspect-square md:aspect-[4/3]"
+          className="relative w-full max-w-6xl mx-auto aspect-square md:aspect-[4/3] px-4 md:px-0"
           animate={{
             opacity: isAnimating ? 0.8 : 1,
           }}
@@ -156,7 +156,7 @@ const InteractiveHouseSection = () => {
               >
                 {/* Pin moderno con effetto glass e breathing */}
                 <motion.div 
-                  className="relative w-12 h-12 rounded-full cursor-pointer group"
+                  className="relative w-12 h-12 md:w-14 md:h-14 rounded-full cursor-pointer group"
                   animate={{
                     scale: isAnimating && clickedPin?.id === pin.id 
                       ? [1, 1.2, 1] 

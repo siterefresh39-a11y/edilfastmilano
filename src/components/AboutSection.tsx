@@ -28,7 +28,7 @@ const AboutSection = () => {
       className="min-h-screen bg-background flex items-center py-24"
     >
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           <div
             className={`transition-all duration-1000 ${
               isVisible 
@@ -36,11 +36,11 @@ const AboutSection = () => {
                 : 'opacity-0 translate-y-12'
             }`}
           >
-            <h2 className="text-5xl lg:text-6xl font-light text-secondary mb-8 leading-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-secondary mb-6 md:mb-8 leading-tight">
               Chi
               <span className="block text-primary font-medium">Siamo</span>
             </h2>
-            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-4 md:space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
               <p>
                 Edil Fast Milano rappresenta l'eccellenza nell'edilizia moderna, 
                 combinando tradizione artigianale e innovazione tecnologica per 
