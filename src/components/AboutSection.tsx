@@ -25,10 +25,10 @@ const AboutSection = () => {
     <section
       id="chi-siamo"
       ref={sectionRef}
-      className="min-h-screen bg-background flex items-center py-24"
+      className="min-h-screen bg-background flex items-center py-32"
     >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="grid lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-center">
           <div
             className={`transition-all duration-1000 ${
               isVisible 
