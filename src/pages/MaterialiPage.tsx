@@ -155,31 +155,37 @@ const MaterialiPage = () => {
                         <SelectTrigger className="w-full h-16 text-lg border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 bg-background/80 backdrop-blur-sm">
                           <SelectValue placeholder="👆 Seleziona il pacchetto perfetto per te..." />
                         </SelectTrigger>
-                        <SelectContent className="backdrop-blur-md">
-                          <SelectItem value="super-premium" className="text-lg py-4">
-                            <div className="flex items-center gap-3">
-                              <span className="text-2xl">🏆</span>
-                              <div>
-                                <div className="font-semibold">Servizio Super Premium</div>
-                                <div className="text-sm text-muted-foreground">Chiavi in mano - Pensiamo a tutto noi</div>
+                        <SelectContent className="z-50 bg-background border border-border shadow-lg backdrop-blur-md min-w-[400px]">
+                          <SelectItem value="super-premium" className="text-base py-6 focus:bg-accent/10">
+                            <div className="flex items-start gap-3 w-full">
+                              <span className="text-2xl mt-1">🏆</span>
+                              <div className="flex-1 min-w-0">
+                                <div className="font-semibold text-foreground mb-1">Servizio Super Premium</div>
+                                <div className="text-sm text-muted-foreground leading-relaxed">
+                                  Chiavi in mano - Pensiamo a tutto noi
+                                </div>
                               </div>
                             </div>
                           </SelectItem>
-                          <SelectItem value="premium" className="text-lg py-4">
-                            <div className="flex items-center gap-3">
-                              <span className="text-2xl">⭐</span>
-                              <div>
-                                <div className="font-semibold">Pacchetto Premium</div>
-                                <div className="text-sm text-muted-foreground">Il giusto equilibrio qualità-prezzo</div>
+                          <SelectItem value="premium" className="text-base py-6 focus:bg-accent/10">
+                            <div className="flex items-start gap-3 w-full">
+                              <span className="text-2xl mt-1">⭐</span>
+                              <div className="flex-1 min-w-0">
+                                <div className="font-semibold text-foreground mb-1">Pacchetto Premium</div>
+                                <div className="text-sm text-muted-foreground leading-relaxed">
+                                  Il giusto equilibrio qualità-prezzo
+                                </div>
                               </div>
                             </div>
                           </SelectItem>
-                          <SelectItem value="standard" className="text-lg py-4">
-                            <div className="flex items-center gap-3">
-                              <span className="text-2xl">✅</span>
-                              <div>
-                                <div className="font-semibold">Pacchetto Standard</div>
-                                <div className="text-sm text-muted-foreground">Essenziale e preciso</div>
+                          <SelectItem value="standard" className="text-base py-6 focus:bg-accent/10">
+                            <div className="flex items-start gap-3 w-full">
+                              <span className="text-2xl mt-1">✅</span>
+                              <div className="flex-1 min-w-0">
+                                <div className="font-semibold text-foreground mb-1">Pacchetto Standard</div>
+                                <div className="text-sm text-muted-foreground leading-relaxed">
+                                  Essenziale e preciso
+                                </div>
                               </div>
                             </div>
                           </SelectItem>
