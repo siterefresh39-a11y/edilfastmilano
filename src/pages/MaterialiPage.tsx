@@ -250,10 +250,10 @@ const MaterialiPage = () => {
               transition={{ duration: 0.6 }}
             >
               <div className={`bg-gradient-to-br ${packages[selectedPackage as keyof typeof packages].color} rounded-2xl p-8 mb-8`}>
-                <h2 className="text-3xl font-bold text-foreground mb-4">
+                <h2 className="text-3xl font-bold text-foreground mb-4 text-center">
                   {packages[selectedPackage as keyof typeof packages].title}
                 </h2>
-                <p className="text-lg text-muted-foreground mb-6">
+                <p className="text-lg text-muted-foreground mb-6 text-center">
                   {packages[selectedPackage as keyof typeof packages].description}
                 </p>
                 
