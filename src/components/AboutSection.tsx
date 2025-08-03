@@ -28,9 +28,9 @@ const AboutSection = () => {
       className="min-h-screen bg-background flex items-center py-32"
     >
       <div className="max-w-7xl mx-auto px-8">
-        <div className="grid lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-center">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
           <div
-            className={`transition-all duration-1000 ${
+            className={`flex-1 transition-all duration-1000 ${
               isVisible 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-12'
@@ -59,15 +59,15 @@ const AboutSection = () => {
           </div>
 
           <div
-            className={`transition-all duration-1000 delay-300 ${
+            className={`w-full lg:w-80 transition-all duration-1000 delay-300 ${
               isVisible 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-12'
             }`}
           >
             <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-orange-100 to-amber-50 rounded-3xl overflow-hidden shadow-2xl">
-                <div className="absolute inset-4 bg-orange-50/80 backdrop-blur-sm border border-orange-200/40 rounded-2xl flex items-center justify-center p-8">
+              <div className="aspect-square bg-gradient-to-br from-orange-100 to-amber-50 rounded-3xl overflow-hidden shadow-2xl max-w-80 mx-auto">
+                <div className="absolute inset-4 bg-orange-50/80 backdrop-blur-sm border border-orange-200/40 rounded-2xl flex items-center justify-center p-6">
                   <img 
                     src="/lovable-uploads/012fb361-4926-4947-8016-0db47d733f90.png"
                     alt="EDIL FAST MILANO Logo"
@@ -76,8 +76,8 @@ const AboutSection = () => {
                 </div>
               </div>
               
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-orange-400 rounded-full opacity-20" />
-              <div className="absolute -top-6 -left-6 w-24 h-24 bg-teal-600 rounded-full opacity-30" />
+              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-orange-400 rounded-full opacity-20" />
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-teal-600 rounded-full opacity-30" />
             </div>
           </div>
         </div>
