@@ -121,15 +121,15 @@ const MaterialiPage = () => {
       </section>
 
       {/* Package Selection - Now Primary Focus */}
-      <section className="py-20 bg-gradient-to-br from-background via-muted/10 to-background">
+      <section className="py-8 md:py-20 bg-gradient-to-br from-background via-muted/10 to-background">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mb-16"
+            className="mb-8 lg:mb-16"
           >
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
               {/* Package Selection */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
@@ -228,7 +228,7 @@ const MaterialiPage = () => {
                         : selectedPackage === 'standard' 
                           ? "/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png"
                           : selectedPackage === 'premium'
-                            ? "/lovable-uploads/4c0d87c3-a988-4d2e-a00c-64954e6530ff.png"
+                            ? "/lovable-uploads/df7cdc40-846d-435b-94ad-e7adc8115c0c.png"
                             : "/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png"
                       }
                       alt={!selectedPackage 
