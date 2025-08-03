@@ -78,7 +78,7 @@ const InteractiveHouseSection = () => {
   };
 
   return (
-    <section className="relative py-20 bg-gradient-to-b from-background to-muted/20 overflow-hidden">
+    <section className="relative pt-32 pb-20 bg-gradient-to-b from-background to-muted/20 overflow-hidden">
       {/* Fade overlay per la transizione */}
       <AnimatePresence>
         {isAnimating && (
