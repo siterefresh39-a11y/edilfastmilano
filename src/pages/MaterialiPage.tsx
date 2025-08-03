@@ -227,13 +227,17 @@ const MaterialiPage = () => {
                         ? "/lovable-uploads/cea07f37-a634-457a-aaa8-9afa6497024b.png"
                         : selectedPackage === 'standard' 
                           ? "/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png"
-                          : "/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png"
+                          : selectedPackage === 'premium'
+                            ? "/lovable-uploads/4c0d87c3-a988-4d2e-a00c-64954e6530ff.png"
+                            : "/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png"
                       }
                       alt={!selectedPackage 
                         ? "EDIL FAST MILANO Logo"
                         : selectedPackage === 'standard'
                           ? "Bagno in ristrutturazione con materiali e strumenti"
-                          : "Bagno in ristrutturazione con materiali e strumenti"
+                          : selectedPackage === 'premium'
+                            ? "Bagno moderno isometrico premium"
+                            : "Bagno in ristrutturazione con materiali e strumenti"
                       }
                       className="w-full h-auto rounded-xl shadow-2xl"
                       initial={{ opacity: 0, scale: 0.9 }}
