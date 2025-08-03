@@ -228,7 +228,7 @@ const MaterialiPage = () => {
                         : selectedPackage === 'standard' 
                           ? "/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png"
                           : selectedPackage === 'premium'
-                            ? "/lovable-uploads/df7cdc40-846d-435b-94ad-e7adc8115c0c.png"
+                            ? "/lovable-uploads/db9bd4fc-3b93-4740-9ed4-f948be300f46.png"
                             : "/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png"
                       }
                       alt={!selectedPackage 
