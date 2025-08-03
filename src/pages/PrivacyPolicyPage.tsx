@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Shield, ArrowLeft, Construction } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Footer from '@/components/Footer';
 
 const PrivacyPolicyPage = () => {
   return (
@@ -100,13 +101,9 @@ const PrivacyPolicyPage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-secondary text-white py-8 mt-16">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-sm opacity-80">
-            © 2024 Edil Fast Milano. Tutti i diritti riservati.
-          </p>
-        </div>
-      </footer>
+      <div className="mt-16">
+        <Footer />
+      </div>
     </div>
   );
 };

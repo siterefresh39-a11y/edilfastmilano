@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import Footer from '@/components/Footer';
 
 const MaterialiPage = () => {
   const [selectedPackage, setSelectedPackage] = useState<string>('');
@@ -290,6 +291,8 @@ const MaterialiPage = () => {
           </div>
         </section>
       )}
+      
+      <Footer />
     </div>
   );
 };

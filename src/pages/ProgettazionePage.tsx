@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Hammer, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Footer from '@/components/Footer';
 
 const ProgettazionePage = () => {
   return (
@@ -137,6 +138,8 @@ const ProgettazionePage = () => {
           </div>
         </div>
       </section>
+      
+      <Footer />
     </div>
   );
 };

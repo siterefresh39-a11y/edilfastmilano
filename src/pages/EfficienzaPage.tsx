@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Zap, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Footer from '@/components/Footer';
 
 const EfficienzaPage = () => {
   return (
@@ -146,6 +147,8 @@ const EfficienzaPage = () => {
           </div>
         </div>
       </section>
+      
+      <Footer />
     </div>
   );
 };

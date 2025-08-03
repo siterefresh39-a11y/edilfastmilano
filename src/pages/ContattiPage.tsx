@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 
 const ContattiPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -222,21 +223,7 @@ const ContattiPage = () => {
         </section>
       </main>
 
-      <footer className="bg-secondary text-white py-8">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-sm opacity-80">
-            © 2024 Edil Fast Milano. Tutti i diritti riservati.
-          </p>
-          <div className="mt-4">
-            <a 
-              href="/privacy-policy" 
-              className="text-sm text-white/60 hover:text-white transition-colors underline"
-            >
-              Privacy Policy
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

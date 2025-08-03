@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Clock, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Footer from '@/components/Footer';
 
 const TempiPage = () => {
   return (
@@ -193,6 +194,8 @@ const TempiPage = () => {
           </div>
         </div>
       </section>
+      
+      <Footer />
     </div>
   );
 };
