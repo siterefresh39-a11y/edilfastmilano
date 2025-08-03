@@ -1,11 +1,48 @@
 import { useEffect, useRef, useState } from 'react';
-import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Loader2 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import emailjs from '@emailjs/browser';
+import { useToast } from '@/hooks/use-toast';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
+
+// Form validation schema
+const formSchema = z.object({
+  name: z.string().min(2, 'Il nome deve avere almeno 2 caratteri'),
+  surname: z.string().min(2, 'Il cognome deve avere almeno 2 caratteri'),
+  email: z.string().email('Inserisci un indirizzo email valido'),
+  phone: z.string().optional(),
+  interestedRooms: z.array(z.string()).min(1, 'Seleziona almeno una stanza'),
+  projectDescription: z.string().optional(),
+  privacy: z.boolean().refine(val => val === true, 'Devi accettare la privacy policy')
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 const ContattiPage = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { toast } = useToast();
+
+  const form = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: '',
+      surname: '',
+      email: '',
+      phone: '',
+      interestedRooms: [],
+      projectDescription: '',
+      privacy: false
+    }
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -23,6 +60,21 @@ const ContattiPage = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  // EmailJS configuration
+  const emailjsConfig = {
+    serviceId: 'service_hrgp14c',
+    templateId: 'template_o7vf7zd',
+    publicKey: 'BCHt0w0wHXivt1zly'
+  };
+
+  const roomOptions = [
+    { id: 'cucina', label: 'Cucina' },
+    { id: 'salotto', label: 'Salotto' },
+    { id: 'bagno', label: 'Bagno' },
+    { id: 'camera', label: 'Camera da letto' },
+    { id: 'altro', label: 'Altro' }
+  ];
 
   const contactInfo = [
     {
@@ -50,6 +102,56 @@ const ContattiPage = () => {
       action: null
     }
   ];
+
+  // Handle form submission
+  const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true);
+    
+    try {
+      // Format interested rooms for email
+      const formattedRooms = data.interestedRooms
+        .map(roomId => roomOptions.find(option => option.id === roomId)?.label)
+        .filter(Boolean)
+        .join(', ');
+
+      // Prepare email data
+      const emailData = {
+        name: data.name,
+        surname: data.surname,
+        email: data.email,
+        phone: data.phone || 'Non fornito',
+        interested_rooms: formattedRooms,
+        project_description: data.projectDescription || 'Nessuna descrizione fornita'
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(
+        emailjsConfig.serviceId,
+        emailjsConfig.templateId,
+        emailData,
+        emailjsConfig.publicKey
+      );
+
+      // Success feedback
+      toast({
+        title: "Messaggio inviato!",
+        description: "Ti ricontatteremo presto per discutere del tuo progetto.",
+      });
+
+      // Reset form
+      form.reset();
+      
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast({
+        title: "Errore nell'invio",
+        description: "Si è verificato un errore. Riprova più tardi o contattaci direttamente.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="relative bg-background">
@@ -130,92 +232,207 @@ const ContattiPage = () => {
                 }`}
               >
                 <div className="bg-white rounded-3xl p-8 shadow-2xl border border-border/50">
-                  <form className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-sm font-medium text-secondary mb-2">
-                          Nome *
-                        </label>
-                        <input
-                          type="text"
-                          className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300"
-                          placeholder="Il tuo nome"
+                  <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                      {/* Nome e Cognome */}
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <FormField
+                          control={form.control}
+                          name="name"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-sm font-medium text-secondary">
+                                Nome *
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  {...field}
+                                  placeholder="Il tuo nome"
+                                  className="px-4 py-3 rounded-xl border border-border bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300"
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        
+                        <FormField
+                          control={form.control}
+                          name="surname"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-sm font-medium text-secondary">
+                                Cognome *
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  {...field}
+                                  placeholder="Il tuo cognome"
+                                  className="px-4 py-3 rounded-xl border border-border bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300"
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
                         />
                       </div>
-                      <div>
-                        <label className="block text-sm font-medium text-secondary mb-2">
-                          Cognome *
-                        </label>
-                        <input
-                          type="text"
-                          className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300"
-                          placeholder="Il tuo cognome"
-                        />
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-secondary mb-2">
-                        Email *
-                      </label>
-                      <input
-                        type="email"
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300"
-                        placeholder="la-tua-email@esempio.it"
+
+                      {/* Email */}
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-sm font-medium text-secondary">
+                              Email *
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                {...field}
+                                type="email"
+                                placeholder="la-tua-email@esempio.it"
+                                className="px-4 py-3 rounded-xl border border-border bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300"
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-secondary mb-2">
-                        Telefono
-                      </label>
-                      <input
-                        type="tel"
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300"
-                        placeholder="+39 123 456 7890"
+
+                      {/* Telefono */}
+                      <FormField
+                        control={form.control}
+                        name="phone"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-sm font-medium text-secondary">
+                              Telefono
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                {...field}
+                                type="tel"
+                                placeholder="+39 123 456 7890"
+                                className="px-4 py-3 rounded-xl border border-border bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300"
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-secondary mb-2">
-                        Messaggio *
-                      </label>
-                      <textarea
-                        rows={4}
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300 resize-none"
-                        placeholder="Descrivi il tuo progetto..."
+
+                      {/* Selezione stanze */}
+                      <FormField
+                        control={form.control}
+                        name="interestedRooms"
+                        render={() => (
+                          <FormItem>
+                            <FormLabel className="text-sm font-medium text-secondary">
+                              Sei interessato a una ristrutturazione di? *
+                            </FormLabel>
+                            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-3">
+                              {roomOptions.map((room) => (
+                                <FormField
+                                  key={room.id}
+                                  control={form.control}
+                                  name="interestedRooms"
+                                  render={({ field }) => (
+                                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                                      <FormControl>
+                                        <Checkbox
+                                          checked={field.value?.includes(room.id)}
+                                          onCheckedChange={(checked) => {
+                                            const updatedValue = checked
+                                              ? [...(field.value || []), room.id]
+                                              : field.value?.filter((value) => value !== room.id) || [];
+                                            field.onChange(updatedValue);
+                                          }}
+                                        />
+                                      </FormControl>
+                                      <FormLabel className="text-sm font-normal cursor-pointer">
+                                        {room.label}
+                                      </FormLabel>
+                                    </FormItem>
+                                  )}
+                                />
+                              ))}
+                            </div>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
-                    </div>
-                    
-                    <div className="flex items-start space-x-3">
-                      <input
-                        type="checkbox"
-                        id="privacy-policy"
-                        className="mt-1 h-4 w-4 text-primary border-border rounded focus:ring-primary focus:ring-2"
-                        required
+
+                      {/* Descrizione progetto */}
+                      <FormField
+                        control={form.control}
+                        name="projectDescription"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-sm font-medium text-secondary">
+                              Descrivi brevemente i lavori che vorresti realizzare
+                            </FormLabel>
+                            <FormControl>
+                              <Textarea
+                                {...field}
+                                rows={4}
+                                placeholder="Descrivi il tuo progetto..."
+                                className="px-4 py-3 rounded-xl border border-border bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300 resize-none"
+                                maxLength={500}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
-                      <label htmlFor="privacy-policy" className="text-sm text-secondary">
-                        Ho letto e compreso la{' '}
-                        <a 
-                          href="/privacy-policy" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="text-primary hover:underline"
-                        >
-                          Privacy Policy
-                        </a>
-                        {' '}e acconsento al trattamento dei miei dati personali. *
-                      </label>
-                    </div>
-                    
-                    <button
-                      type="submit"
-                      className="group relative w-full px-8 py-4 bg-gradient-to-r from-primary to-primary-muted text-white rounded-2xl font-medium tracking-wide hover:shadow-2xl transition-all duration-300 overflow-hidden"
-                    >
-                      <span className="relative z-10">Invia Richiesta</span>
-                      <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                    </button>
-                  </form>
+
+                      {/* Privacy Policy */}
+                      <FormField
+                        control={form.control}
+                        name="privacy"
+                        render={({ field }) => (
+                          <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value}
+                                onCheckedChange={field.onChange}
+                              />
+                            </FormControl>
+                            <div className="space-y-1 leading-none">
+                              <FormLabel className="text-sm text-muted-foreground cursor-pointer">
+                                Accetto la{' '}
+                                <a href="/privacy-policy" className="text-primary hover:underline">
+                                  privacy policy
+                                </a>
+                                {' '}*
+                              </FormLabel>
+                              <FormMessage />
+                            </div>
+                          </FormItem>
+                        )}
+                      />
+
+                      {/* Submit Button */}
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="group relative w-full px-8 py-4 bg-gradient-to-r from-primary to-primary-muted text-white rounded-2xl font-medium tracking-wide hover:shadow-2xl transition-all duration-300 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        <span className="relative z-10 flex items-center justify-center">
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                              Invio in corso...
+                            </>
+                          ) : (
+                            'Invia Richiesta'
+                          )}
+                        </span>
+                        {!isSubmitting && (
+                          <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                        )}
+                      </button>
+                    </form>
+                  </Form>
                 </div>
               </div>
             </div>
