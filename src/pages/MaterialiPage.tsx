@@ -223,8 +223,18 @@ const MaterialiPage = () => {
                     transition={{ type: "spring", stiffness: 300 }}
                   >
                     <motion.img 
-                      src="/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png"
-                      alt="Bagno in ristrutturazione con materiali e strumenti"
+                      src={!selectedPackage 
+                        ? "/lovable-uploads/cea07f37-a634-457a-aaa8-9afa6497024b.png"
+                        : selectedPackage === 'standard' 
+                          ? "/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png"
+                          : "/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png"
+                      }
+                      alt={!selectedPackage 
+                        ? "EDIL FAST MILANO Logo"
+                        : selectedPackage === 'standard'
+                          ? "Bagno in ristrutturazione con materiali e strumenti"
+                          : "Bagno in ristrutturazione con materiali e strumenti"
+                      }
                       className="w-full h-auto rounded-xl shadow-2xl"
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
