@@ -66,17 +66,17 @@ const MaterialiPage = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="pt-24 pb-20">
+      {/* Hero Section - Compact */}
+      <section className="pt-24 pb-12">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="text-center mb-16"
+            className="text-center"
           >
             <motion.div 
-              className="w-24 h-24 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center mx-auto mb-8"
+              className="w-20 h-20 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center mx-auto mb-6"
               animate={{ 
                 scale: [1, 1.1, 1],
                 rotate: [0, 5, -5, 0] 
@@ -87,168 +87,179 @@ const MaterialiPage = () => {
                 ease: "easeInOut"
               }}
             >
-              <Bath size={48} className="text-primary" />
+              <Bath size={40} className="text-primary" />
             </motion.div>
             <motion.h1 
-              className="text-5xl md:text-7xl font-bold text-foreground mb-8 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+              className="text-4xl md:text-6xl font-bold text-foreground mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               Ristrutturazione Bagno
             </motion.h1>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="space-y-4"
-            >
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Trasformiamo il tuo bagno con soluzioni complete e professionali, 
-                dalla progettazione alla realizzazione finale.
-              </p>
-              <p className="text-lg text-muted-foreground/80 max-w-2xl mx-auto">
-                Tre pacchetti pensati per ogni esigenza e budget, con materiali di qualità superiore 
-                e maestranze specializzate. Ogni intervento è accompagnato da garanzia e assistenza post-vendita.
-              </p>
-              <p className="text-base text-muted-foreground/70 max-w-xl mx-auto">
-                Dalla demolizione alla pulizia finale, ci occupiamo di ogni dettaglio per consegnarti 
-                un ambiente completamente rinnovato e pronto all'uso.
-              </p>
-            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Package Selection - Now Primary Focus */}
-      <section className="py-8 md:py-20 bg-gradient-to-br from-background via-muted/10 to-background">
+      {/* Main Content Section - Text and Image Side by Side */}
+      <section className="py-8 md:py-16">
         <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start mb-12">
+            
+            {/* Left Column - Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-6"
+            >
+              <div className="bg-card/30 backdrop-blur-sm rounded-2xl p-8 border border-border/50">
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                  Servizi Completi per il Tuo Bagno
+                </h2>
+                <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+                  <p>
+                    Trasformiamo il tuo bagno con <strong className="text-foreground">soluzioni complete e professionali</strong>, 
+                    dalla progettazione alla realizzazione finale.
+                  </p>
+                  <p>
+                    Tre pacchetti pensati per ogni esigenza e budget, con <strong className="text-foreground">materiali di qualità superiore</strong> 
+                    e maestranze specializzate.
+                  </p>
+                  <p>
+                    Dalla demolizione alla pulizia finale, ci occupiamo di ogni dettaglio per consegnarti 
+                    un <strong className="text-foreground">ambiente completamente rinnovato</strong> e pronto all'uso.
+                  </p>
+                  <div className="mt-6 p-4 bg-primary/10 rounded-lg border border-primary/20">
+                    <p className="text-primary font-semibold">
+                      ✨ Ogni intervento è accompagnato da garanzia e assistenza post-vendita
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right Column - Dynamic Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <div className="sticky top-8">
+                <motion.div
+                  className="bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 rounded-2xl p-6 backdrop-blur-sm border border-border/50 shadow-xl"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <motion.img 
+                    key={selectedPackage}
+                    src={!selectedPackage 
+                      ? "/lovable-uploads/cea07f37-a634-457a-aaa8-9afa6497024b.png"
+                      : selectedPackage === 'standard' 
+                        ? "/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png"
+                        : selectedPackage === 'premium'
+                          ? "/lovable-uploads/bda3bec9-3e7e-45a8-abe0-f591ef371d8b.png"
+                          : "/lovable-uploads/819c5323-6436-4de6-9198-c17175c038bf.png"
+                    }
+                    alt={!selectedPackage 
+                      ? "EDIL FAST MILANO Logo"
+                      : selectedPackage === 'standard'
+                        ? "Bagno in ristrutturazione con materiali e strumenti"
+                        : selectedPackage === 'premium'
+                          ? "Bagno moderno isometrico premium - Mid Package"
+                          : "Bagno moderno isometrico luxury - Luxury Package"
+                    }
+                    className="w-full h-auto max-h-96 object-contain rounded-xl shadow-2xl"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6 }}
+                  />
+                  <div className="absolute -top-3 -right-3 w-6 h-6 bg-accent rounded-full animate-pulse"></div>
+                  <div className="absolute -bottom-3 -left-3 w-4 h-4 bg-primary rounded-full animate-pulse delay-1000"></div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Package Selection Section - Centered Below */}
+      <section className="py-8 md:py-16 bg-gradient-to-br from-muted/20 to-background">
+        <div className="max-w-4xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mb-8 lg:mb-16"
+            className="text-center"
           >
-            <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
-              {/* Package Selection */}
+            <div className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-border/50 shadow-lg">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                Scegli il Tuo Pacchetto
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+                Ogni pacchetto è studiato per offrire il massimo valore e la migliore esperienza. 
+                Seleziona quello più adatto alle tue esigenze.
+              </p>
+              
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="order-2 lg:order-1"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="max-w-lg mx-auto"
               >
-                <div className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-border/50 shadow-lg">
-                  <h2 className="text-4xl font-bold text-foreground mb-6 text-center lg:text-left">
-                    Scegli il Tuo Pacchetto
-                  </h2>
-                  <p className="text-lg text-muted-foreground mb-8 text-center lg:text-left">
-                    Ogni pacchetto è studiato per offrire il massimo valore e la migliore esperienza. 
-                    Seleziona quello più adatto alle tue esigenze.
+                <Select value={selectedPackage} onValueChange={setSelectedPackage}>
+                  <SelectTrigger className="w-full h-16 text-lg border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 bg-background/80 backdrop-blur-sm">
+                    <SelectValue placeholder="👆 Seleziona il pacchetto perfetto per te..." />
+                  </SelectTrigger>
+                  <SelectContent className="z-50 bg-background border border-border shadow-lg backdrop-blur-md min-w-[400px]">
+                    <SelectItem value="super-premium" className="text-base py-6 focus:bg-accent/10">
+                      <div className="flex items-start gap-3 w-full">
+                        <span className="text-2xl mt-1">🏆</span>
+                        <div className="flex-1 min-w-0">
+                          <div className="font-semibold text-foreground mb-1">Servizio Super Premium</div>
+                          <div className="text-sm text-muted-foreground leading-relaxed">
+                            Chiavi in mano - Pensiamo a tutto noi
+                          </div>
+                        </div>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="premium" className="text-base py-6 focus:bg-accent/10">
+                      <div className="flex items-start gap-3 w-full">
+                        <span className="text-2xl mt-1">⭐</span>
+                        <div className="flex-1 min-w-0">
+                          <div className="font-semibold text-foreground mb-1">Pacchetto Premium</div>
+                          <div className="text-sm text-muted-foreground leading-relaxed">
+                            Il giusto equilibrio qualità-prezzo
+                          </div>
+                        </div>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="standard" className="text-base py-6 focus:bg-accent/10">
+                      <div className="flex items-start gap-3 w-full">
+                        <span className="text-2xl mt-1">✅</span>
+                        <div className="flex-1 min-w-0">
+                          <div className="font-semibold text-foreground mb-1">Pacchetto Standard</div>
+                          <div className="text-sm text-muted-foreground leading-relaxed">
+                            Essenziale e preciso
+                          </div>
+                        </div>
+                      </div>
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+              </motion.div>
+              
+              {!selectedPackage && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/20 max-w-md mx-auto"
+                >
+                  <p className="text-sm text-primary font-medium">
+                    💡 Seleziona un pacchetto per vedere tutti i servizi inclusi e l'immagine di riferimento
                   </p>
-                  
-                  <div className="space-y-4">
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <Select value={selectedPackage} onValueChange={setSelectedPackage}>
-                        <SelectTrigger className="w-full h-16 text-lg border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 bg-background/80 backdrop-blur-sm">
-                          <SelectValue placeholder="👆 Seleziona il pacchetto perfetto per te..." />
-                        </SelectTrigger>
-                        <SelectContent className="z-50 bg-background border border-border shadow-lg backdrop-blur-md min-w-[400px]">
-                          <SelectItem value="super-premium" className="text-base py-6 focus:bg-accent/10">
-                            <div className="flex items-start gap-3 w-full">
-                              <span className="text-2xl mt-1">🏆</span>
-                              <div className="flex-1 min-w-0">
-                                <div className="font-semibold text-foreground mb-1">Servizio Super Premium</div>
-                                <div className="text-sm text-muted-foreground leading-relaxed">
-                                  Chiavi in mano - Pensiamo a tutto noi
-                                </div>
-                              </div>
-                            </div>
-                          </SelectItem>
-                          <SelectItem value="premium" className="text-base py-6 focus:bg-accent/10">
-                            <div className="flex items-start gap-3 w-full">
-                              <span className="text-2xl mt-1">⭐</span>
-                              <div className="flex-1 min-w-0">
-                                <div className="font-semibold text-foreground mb-1">Pacchetto Premium</div>
-                                <div className="text-sm text-muted-foreground leading-relaxed">
-                                  Il giusto equilibrio qualità-prezzo
-                                </div>
-                              </div>
-                            </div>
-                          </SelectItem>
-                          <SelectItem value="standard" className="text-base py-6 focus:bg-accent/10">
-                            <div className="flex items-start gap-3 w-full">
-                              <span className="text-2xl mt-1">✅</span>
-                              <div className="flex-1 min-w-0">
-                                <div className="font-semibold text-foreground mb-1">Pacchetto Standard</div>
-                                <div className="text-sm text-muted-foreground leading-relaxed">
-                                  Essenziale e preciso
-                                </div>
-                              </div>
-                            </div>
-                          </SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </motion.div>
-                    
-                    {!selectedPackage && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-center p-4 bg-primary/5 rounded-lg border border-primary/20"
-                      >
-                        <p className="text-sm text-primary font-medium">
-                          💡 Seleziona un pacchetto per vedere tutti i servizi inclusi
-                        </p>
-                      </motion.div>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Renovation Image */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="order-1 lg:order-2"
-              >
-                <div className="relative">
-                  <motion.div
-                    className="bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 rounded-2xl p-6 backdrop-blur-sm border border-border/50 shadow-xl"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <motion.img 
-                      src={!selectedPackage 
-                        ? "/lovable-uploads/cea07f37-a634-457a-aaa8-9afa6497024b.png"
-                        : selectedPackage === 'standard' 
-                          ? "/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png"
-                          : selectedPackage === 'premium'
-                            ? "/lovable-uploads/bda3bec9-3e7e-45a8-abe0-f591ef371d8b.png"
-                            : "/lovable-uploads/819c5323-6436-4de6-9198-c17175c038bf.png"
-                      }
-                      alt={!selectedPackage 
-                        ? "EDIL FAST MILANO Logo"
-                        : selectedPackage === 'standard'
-                          ? "Bagno in ristrutturazione con materiali e strumenti"
-                          : selectedPackage === 'premium'
-                            ? "Bagno moderno isometrico premium - Mid Package"
-                            : "Bagno moderno isometrico luxury - Luxury Package"
-                      }
-                      className="w-full h-auto rounded-xl shadow-2xl"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.8, delay: 0.6 }}
-                    />
-                    <div className="absolute -top-3 -right-3 w-6 h-6 bg-accent rounded-full animate-pulse"></div>
-                    <div className="absolute -bottom-3 -left-3 w-4 h-4 bg-primary rounded-full animate-pulse delay-1000"></div>
-                  </motion.div>
-                </div>
-              </motion.div>
+                </motion.div>
+              )}
             </div>
           </motion.div>
         </div>
