@@ -45,10 +45,10 @@ const pins: Pin[] = [
     id: '4',
     x: 65,
     y: 40,
-    title: 'Tempi Ridotti',
-    description: 'Il nostro metodo EDIL FAST garantisce tempi di realizzazione ridotti del 40% rispetto ai metodi tradizionali.',
+    title: 'Ristrutturazione Cucina',
+    description: 'Scopri i nostri pacchetti per la ristrutturazione della cucina: Entry Level, Premium e Super Premium.',
     icon: Home,
-    link: '/tempi'
+    link: '/cucina'
   }
 ];
 

@@ -9,7 +9,7 @@ import ProgettazionePage from "./pages/ProgettazionePage";
 import MaterialiPage from "./pages/MaterialiPage";
 import SmartTechPage from "./pages/SmartTechPage";
 import EfficienzaPage from "./pages/EfficienzaPage";
-import TempiPage from "./pages/TempiPage";
+import CucinaPage from "./pages/CucinaPage";
 import ServiziPage from "./pages/ServiziPage";
 import ProgettiPage from "./pages/ProgettiPage";
 import ContattiPage from "./pages/ContattiPage";
@@ -30,7 +30,7 @@ const App = () => (
           <Route path="/materiali" element={<MaterialiPage />} />
           <Route path="/smart-tech" element={<SmartTechPage />} />
           <Route path="/efficienza" element={<EfficienzaPage />} />
-          <Route path="/tempi" element={<TempiPage />} />
+          <Route path="/cucina" element={<CucinaPage />} />
           <Route path="/servizi" element={<ServiziPage />} />
           <Route path="/progetti" element={<ProgettiPage />} />
           <Route path="/contatti" element={<ContattiPage />} />
