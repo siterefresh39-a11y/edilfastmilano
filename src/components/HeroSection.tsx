@@ -15,11 +15,11 @@ const HeroSection = () => {
                       md:bg-cover md:bg-[center_top_15%]
                       lg:bg-cover lg:bg-[center_top_10%]
                       mobile:bg-contain mobile:bg-center" 
-           style={{
-             backgroundImage: `url(/lovable-uploads/a40ad856-6cad-4b3d-8aa6-0c9ef4e19ff6.png)`,
-             opacity: opacity,
-             transform: `scale(${scale})`
-           }}>
+            style={{
+              backgroundImage: `url(/lovable-uploads/12b055c6-e16c-429a-9cd0-410fdaab31bf.png)`,
+              opacity: opacity,
+              transform: `scale(${scale})`
+            }}>
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
       </div>
       
