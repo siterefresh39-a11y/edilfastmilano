@@ -1,144 +1,255 @@
-import { motion } from 'framer-motion';
-import { Hammer, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import Footer from '@/components/Footer';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { Home, Check, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ProgettazionePage = () => {
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <Link 
-            to="/" 
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <ArrowLeft size={20} />
-            Torna alla Home
-          </Link>
-        </div>
-      </nav>
+  const [selectedPackage, setSelectedPackage] = useState<'standard' | 'premium' | 'super-premium'>('standard');
+  const [isAnimating, setIsAnimating] = useState(false);
 
-      {/* Hero Section */}
-      <section className="pt-24 pb-16">
-        <div className="max-w-4xl mx-auto px-6">
+  const packages = {
+    'standard': {
+      title: "Pacchetto Standard Sala",
+      subtitle: "Rinnovo essenziale, risultato garantito",
+      description: "Intervento rapido e professionale per rinfrescare la tua zona giorno con le lavorazioni più richieste, mantenendo ordine, qualità e tempi contenuti.",
+      gradient: "from-blue-500 to-cyan-500",
+      services: [
+        { icon: "🏠", title: "Posa pavimento", description: "Installazione di rivestimenti a scelta (parquet, gres, laminato, PVC) con precisione e pulizia nei dettagli" },
+        { icon: "🎨", title: "Tinteggiatura", description: "Verniciatura con prodotti professionali per una resa uniforme e duratura" },
+        { icon: "🪟", title: "Cambio accessori tapparelle", description: "Cambio corda, cintino e mascherine per un funzionamento fluido e un aspetto rinnovato" },
+        { icon: "✨", title: "Pulizia finale", description: "Detersione di superfici e ambienti per consegnare uno spazio pronto all'uso" }
+      ]
+    },
+    'premium': {
+      title: "Pacchetto Premium Sala",
+      subtitle: "Restyling completo e funzionale",
+      description: "Un servizio su misura per chi desidera rinnovare e valorizzare la zona giorno, senza interventi strutturali ma con un impatto visivo e pratico notevole.",
+      gradient: "from-purple-500 to-pink-500",
+      services: [
+        { icon: "📦", title: "Sgombero e trasloco", description: "Rimozione completa di mobili, oggetti e materiali, con eventuale trasporto in altro luogo" },
+        { icon: "🏠", title: "Posa pavimento", description: "Installazione professionale di parquet, gres, PVC o laminato con finiture di precisione" },
+        { icon: "🚪", title: "Sostituzione porte", description: "Rimozione delle vecchie porte e montaggio delle nuove, con rifiniture pulite e coordinate" },
+        { icon: "🪟", title: "Cambio accessori tapparelle", description: "Cambio cintini, corde e mascherine per garantire funzionalità e pulizia estetica" },
+        { icon: "🎨", title: "Tinteggiatura", description: "Verniciatura eseguita con materiali traspiranti e coprenti per un effetto omogeneo" },
+        { icon: "🚚", title: "Trasporto gestione materiale", description: "Ritiro, stoccaggio e movimentazione di tutto ciò che serve per completare il lavoro" },
+        { icon: "🛠️", title: "Montaggio nuovo arredi", description: "Assemblaggio e posizionamento preciso del nuovo arredamento, anche su progetto del cliente" },
+        { icon: "✨", title: "Pulizia finale", description: "Rimozione di polveri e residui, lavaggio completo delle superfici" }
+      ]
+    },
+    'super-premium': {
+      title: "Pacchetto Super Premium Sala",
+      subtitle: "Restyling completo chiavi in mano",
+      description: "Un pacchetto pensato per chi desidera rinnovare totalmente il soggiorno con un intervento preciso, ordinato e di alto livello estetico. Ci occupiamo di ogni fase del lavoro.",
+      gradient: "from-amber-500 to-orange-500",
+      services: [
+        { icon: "📦", title: "Sgombero e trasloco dell'arredamento esistente", description: "Rimozione completa e trasporto degli arredi presenti, con possibilità di ricollocazione in altro spazio o smaltimento" },
+        { icon: "🗑️", title: "Smaltimento vecchi mobili e porte", description: "Disassemblaggio e conferimento in discarica autorizzata di porte interne usurate, arredi fuori uso e materiali ingombranti" },
+        { icon: "🏠", title: "Fornitura e posa nuova pavimentazione", description: "Installazione di pavimento a scelta tra gres, parquet o PVC, con preparazione fondo e finitura professionale" },
+        { icon: "🚪", title: "Sostituzione porte interne", description: "Rimozione delle vecchie porte e installazione di nuove porte moderne o classiche, complete di telaio, cerniere e maniglie" },
+        { icon: "🪟", title: "Sostituzione accessori tapparelle", description: "Cambio corde, cintini e mascherine delle tapparelle per migliorarne l'efficienza e l'estetica" },
+        { icon: "🎨", title: "Tinteggiatura completa della sala", description: "Verniciatura professionale con idropittura lavabile, eseguita dopo preparazione fondo e stuccatura" },
+        { icon: "💡", title: "Realizzazione controsoffitti, velette e illuminazione LED", description: "Progettazione e montaggio di controsoffitti in cartongesso o velette decorative, complete di impianto a faretti LED" },
+        { icon: "🏛️", title: "Rivestimento decorativo delle pareti", description: "Applicazione di pannelli decorativi (in legno, pietra ricostruita o altri materiali su richiesta)" },
+        { icon: "🚚", title: "Gestione completa logistica e trasporto materiali", description: "Fornitura, trasporto e movimentazione di tutti i materiali necessari alla realizzazione del progetto" },
+        { icon: "🛠️", title: "Smontaggio vecchi arredi e montaggio dei nuovi mobili", description: "Rimozione arredi obsoleti, trasporto nuovi arredi da magazzino o punto vendita, assemblaggio e installazione" },
+        { icon: "✨", title: "Pulizia professionale post-lavori", description: "Detersione profonda del cantiere, rimozione polveri e residui, lavaggio delle superfici" }
+      ]
+    }
+  };
+
+  const handlePackageChange = (packageType: 'standard' | 'premium' | 'super-premium') => {
+    if (packageType === selectedPackage) return;
+    
+    setIsAnimating(true);
+    setTimeout(() => {
+      setSelectedPackage(packageType);
+      setIsAnimating(false);
+    }, 300);
+  };
+
+  const currentPackage = packages[selectedPackage];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+      <Navigation />
+      
+      {/* Hero Section con icona casa stilizzata */}
+      <section className="relative pt-20 pb-12 overflow-hidden">
+        <div className="container mx-auto px-4 text-center">
           <motion.div
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ duration: 0.8, type: "spring", bounce: 0.5 }}
+            className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-primary to-primary/80 rounded-2xl mb-8 shadow-lg"
+          >
+            <Home className="w-10 h-10 text-white" />
+          </motion.div>
+          
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-6"
+          >
+            Ristrutturazione Sala Living
+          </motion.h1>
+          
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            transition={{ delay: 0.5 }}
+            className="text-xl text-muted-foreground max-w-3xl mx-auto"
           >
-            <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Hammer size={40} className="text-primary" />
+            Trasforma il cuore della tua casa con soluzioni innovative e design moderno
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Sezione di navigazione pacchetti innovativa */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-center mb-16">
+            <div className="flex bg-white dark:bg-slate-800 rounded-2xl p-2 shadow-xl border border-slate-200 dark:border-slate-700">
+              {Object.entries(packages).map(([key, pkg]) => (
+                <Button
+                  key={key}
+                  variant={selectedPackage === key ? "default" : "ghost"}
+                  onClick={() => handlePackageChange(key as any)}
+                  className={`
+                    relative px-8 py-4 rounded-xl transition-all duration-300 font-semibold
+                    ${selectedPackage === key 
+                      ? `bg-gradient-to-r ${pkg.gradient} text-white shadow-lg scale-105` 
+                      : 'hover:bg-slate-100 dark:hover:bg-slate-700'
+                    }
+                  `}
+                >
+                  {selectedPackage === key && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 rounded-xl"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  <span className="relative z-10">
+                    {key === 'standard' && 'Standard'}
+                    {key === 'premium' && 'Premium'} 
+                    {key === 'super-premium' && 'Super Premium'}
+                  </span>
+                </Button>
+              ))}
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-              Progettazione 3D
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Tecnologie avanzate per visualizzare ogni dettaglio prima della costruzione
-            </p>
+          </div>
+
+          {/* Layout innovativo a cards sovrapposte */}
+          <motion.div className="relative max-w-7xl mx-auto">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selectedPackage}
+                initial={{ opacity: 0, scale: 0.9, y: 50 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: -50 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className="relative"
+              >
+                {/* Header del pacchetto con design futuristico */}
+                <div className={`relative p-8 mb-8 rounded-3xl bg-gradient-to-r ${currentPackage.gradient} text-white shadow-2xl overflow-hidden`}>
+                  <div className="absolute inset-0 bg-black/10" />
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-32 translate-x-32" />
+                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-24 -translate-x-24" />
+                  
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-4 mb-4">
+                      <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+                        <Sparkles className="w-4 h-4 mr-2" />
+                        {selectedPackage === 'standard' && 'Essenziale'}
+                        {selectedPackage === 'premium' && 'Completo'}
+                        {selectedPackage === 'super-premium' && 'Luxury'}
+                      </Badge>
+                    </div>
+                    
+                    <h2 className="text-3xl md:text-4xl font-bold mb-3">{currentPackage.title}</h2>
+                    <p className="text-xl font-medium mb-4 text-white/90">{currentPackage.subtitle}</p>
+                    <p className="text-lg leading-relaxed text-white/80 max-w-4xl">{currentPackage.description}</p>
+                  </div>
+                </div>
+
+                {/* Grid di servizi con layout a masonry innovativo */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {currentPackage.services.map((service, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ 
+                        delay: index * 0.1,
+                        duration: 0.5,
+                        type: "spring",
+                        stiffness: 100
+                      }}
+                      className={`
+                        group relative p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg
+                        border border-slate-200 dark:border-slate-700
+                        hover:shadow-2xl hover:scale-105 transition-all duration-300
+                        ${index % 2 === 0 ? 'lg:mt-8' : ''}
+                        ${index % 3 === 1 ? 'md:mt-4' : ''}
+                      `}
+                    >
+                      <div className={`absolute inset-0 bg-gradient-to-r ${currentPackage.gradient} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`} />
+                      
+                      <div className="relative z-10">
+                        <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                          {service.icon}
+                        </div>
+                        
+                        <h3 className="text-lg font-semibold mb-3 text-slate-900 dark:text-slate-100 group-hover:text-primary transition-colors duration-300">
+                          {service.title}
+                        </h3>
+                        
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {service.description}
+                        </p>
+                        
+                        <div className="flex items-center mt-4">
+                          <Check className="w-4 h-4 text-green-500 mr-2" />
+                          <span className="text-xs text-green-600 dark:text-green-400 font-medium">Incluso</span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Call to action con design futuristico */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8 }}
+                  className="mt-16 text-center"
+                >
+                  <div className="relative inline-block">
+                    <div className={`absolute inset-0 bg-gradient-to-r ${currentPackage.gradient} blur-xl opacity-50 rounded-2xl`} />
+                    <Button 
+                      size="lg" 
+                      className={`relative z-10 bg-gradient-to-r ${currentPackage.gradient} hover:scale-105 transition-all duration-300 px-12 py-6 text-lg font-semibold shadow-2xl`}
+                    >
+                      <Sparkles className="w-5 h-5 mr-3" />
+                      Richiedi Preventivo {selectedPackage.charAt(0).toUpperCase() + selectedPackage.slice(1)}
+                    </Button>
+                  </div>
+                  
+                  <p className="mt-6 text-muted-foreground">
+                    🏡 Un vero e proprio lifting per il tuo soggiorno, con finiture su misura e un risultato che unisce comfort, estetica e valore abitativo.
+                  </p>
+                </motion.div>
+              </motion.div>
+            </AnimatePresence>
           </motion.div>
         </div>
       </section>
 
-      {/* Content */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <h2 className="text-3xl font-bold text-foreground mb-6">
-                Il Futuro della Progettazione Edile
-              </h2>
-              <div className="space-y-4 text-muted-foreground">
-                <p>
-                  Utilizziamo software CAD avanzati e tecnologie di modellazione 3D per creare 
-                  rappresentazioni precise e dettagliate di ogni progetto. Questo approccio 
-                  innovativo permette ai nostri clienti di visualizzare completamente il 
-                  risultato finale prima ancora di iniziare i lavori.
-                </p>
-                <p>
-                  La progettazione tridimensionale ci consente di identificare potenziali 
-                  problematiche in fase di planning, ottimizzare gli spazi e garantire la 
-                  massima efficienza nella realizzazione.
-                </p>
-              </div>
-              
-              <div className="mt-8 grid grid-cols-2 gap-6">
-                <div className="bg-card border border-border rounded-lg p-4">
-                  <h3 className="font-semibold text-card-foreground mb-2">Precisione</h3>
-                  <p className="text-sm text-muted-foreground">Modelli accurati al millimetro</p>
-                </div>
-                <div className="bg-card border border-border rounded-lg p-4">
-                  <h3 className="font-semibold text-card-foreground mb-2">Visualizzazione</h3>
-                  <p className="text-sm text-muted-foreground">Rendering fotorealistici</p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="relative"
-            >
-              <div className="bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl p-8 backdrop-blur-sm">
-                <img 
-                  src="/lovable-uploads/3901b7c0-4d51-4c4c-be57-f18c9ea1fb35.png"
-                  alt="Progettazione 3D"
-                  className="w-full h-auto rounded-lg shadow-2xl"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features */}
-      <section className="py-16 bg-muted/20">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-3xl font-bold text-center text-foreground mb-12"
-          >
-            Tecnologie Avanzate
-          </motion.h2>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "CAD 3D Professionale",
-                description: "Software di ultima generazione per modellazione architettonica completa"
-              },
-              {
-                title: "Rendering Real-time",
-                description: "Visualizzazione immediata delle modifiche durante la progettazione"
-              },
-              {
-                title: "Realtà Virtuale",
-                description: "Tour immersivi per esplorare gli spazi prima della costruzione"
-              }
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 + index * 0.1 }}
-                className="bg-card border border-border rounded-xl p-6 text-center"
-              >
-                <h3 className="font-semibold text-card-foreground mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm">{feature.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-      
       <Footer />
     </div>
   );
