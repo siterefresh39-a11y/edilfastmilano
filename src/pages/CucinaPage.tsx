@@ -315,9 +315,11 @@ const CucinaPage = () => {
                 </div>
                 
                 <div className="mt-8 text-center">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90">
-                    Richiedi Preventivo per questo Pacchetto
-                  </Button>
+                  <Link to="/contatti#contact-form">
+                    <Button size="lg" className="bg-primary hover:bg-primary/90">
+                      Richiedi Preventivo per questo Pacchetto
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </motion.div>

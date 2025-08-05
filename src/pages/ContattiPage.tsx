@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Mail, Phone, MapPin, Clock, Loader2 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -29,6 +30,8 @@ const ContattiPage = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
   const { toast } = useToast();
 
   const form = useForm<FormData>({
@@ -60,6 +63,18 @@ const ContattiPage = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  // Smooth scroll to contact form when hash is present
+  useEffect(() => {
+    if (location.hash === '#contact-form' && formRef.current) {
+      setTimeout(() => {
+        formRef.current?.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 100);
+    }
+  }, [location.hash]);
 
   // EmailJS configuration
   const emailjsConfig = {
@@ -225,6 +240,8 @@ const ContattiPage = () => {
 
               {/* Contact Form */}
               <div
+                id="contact-form"
+                ref={formRef}
                 className={`transition-all duration-1000 delay-500 ${
                   isVisible 
                     ? 'opacity-100 translate-y-0' 

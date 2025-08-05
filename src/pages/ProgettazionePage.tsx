@@ -231,13 +231,15 @@ const ProgettazionePage = () => {
                 >
                   <div className="relative inline-block">
                     <div className={`absolute inset-0 bg-gradient-to-r ${currentPackage.gradient} blur-xl opacity-50 rounded-2xl`} />
-                    <Button 
-                      size="lg" 
-                      className={`relative z-10 bg-gradient-to-r ${currentPackage.gradient} hover:scale-105 transition-all duration-300 px-12 py-6 text-lg font-semibold shadow-2xl`}
-                    >
-                      <Sparkles className="w-5 h-5 mr-3" />
-                      Richiedi Preventivo {selectedPackage.charAt(0).toUpperCase() + selectedPackage.slice(1)}
-                    </Button>
+                    <Link to="/contatti#contact-form">
+                      <Button 
+                        size="lg" 
+                        className={`relative z-10 bg-gradient-to-r ${currentPackage.gradient} hover:scale-105 transition-all duration-300 px-12 py-6 text-lg font-semibold shadow-2xl`}
+                      >
+                        <Sparkles className="w-5 h-5 mr-3" />
+                        Richiedi Preventivo {selectedPackage.charAt(0).toUpperCase() + selectedPackage.slice(1)}
+                      </Button>
+                    </Link>
                   </div>
                   
                   <p className="mt-6 text-muted-foreground">
