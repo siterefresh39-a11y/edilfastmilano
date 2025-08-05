@@ -36,64 +36,180 @@ const PrivacyPolicyPage = () => {
               Privacy Policy
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Protezione dei dati e trasparenza per Edil Fast Milano
+              Ultimo aggiornamento: 22/08/2025
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Under Construction Section */}
+      {/* Privacy Policy Content */}
       <section className="py-16">
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-4xl mx-auto px-6 space-y-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <Card className="text-center">
-              <CardHeader className="pb-8">
-                <div className="w-24 h-24 bg-orange-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Construction size={48} className="text-orange-500" />
-                </div>
-                <CardTitle className="text-3xl mb-4">Pagina in Costruzione</CardTitle>
-                <CardDescription className="text-lg">
-                  Stiamo attualmente lavorando alla nostra Privacy Policy per garantire la massima trasparenza nella gestione dei tuoi dati personali.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="bg-muted/50 rounded-lg p-6">
-                  <h3 className="font-semibold text-lg mb-3 text-foreground">
-                    Cosa includerà la nostra Privacy Policy:
-                  </h3>
-                  <ul className="text-left space-y-2 text-muted-foreground">
-                    <li>• Tipologie di dati raccolti e modalità di raccolta</li>
-                    <li>• Finalità del trattamento dei dati personali</li>
-                    <li>• Basi giuridiche del trattamento</li>
-                    <li>• Modalità di conservazione e sicurezza dei dati</li>
-                    <li>• Diritti dell'interessato (accesso, rettifica, cancellazione)</li>
-                    <li>• Condivisione dei dati con terze parti</li>
-                    <li>• Uso dei cookies e tecnologie di tracciamento</li>
-                    <li>• Informazioni di contatto del Responsabile della Protezione dei Dati</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-blue-500/10 rounded-lg p-6">
-                  <h4 className="font-semibold text-foreground mb-2">Nel frattempo...</h4>
-                  <p className="text-muted-foreground">
-                    I tuoi dati vengono trattati in conformità al GDPR (Regolamento UE 2016/679) 
-                    e alla normativa italiana sulla privacy. Per qualsiasi domanda o richiesta 
-                    relativa al trattamento dei tuoi dati personali, puoi contattarci.
-                  </p>
-                </div>
+            <Card>
+              <CardContent className="p-8">
+                <p className="text-muted-foreground mb-8 text-center">
+                  La presente informativa è redatta ai sensi dell'art. 13 del Regolamento (UE) 2016/679 (GDPR) e descrive le modalità di trattamento dei dati personali raccolti attraverso il presente sito web.
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
 
-                <div className="pt-4">
-                  <Link 
-                    to="/contatti"
-                    className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
-                  >
-                    Contattaci per informazioni
-                  </Link>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <Card>
+              <CardHeader>
+                <CardTitle>1. Titolare del trattamento</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">Il titolare del trattamento è:</p>
+                <div className="bg-muted/50 rounded-lg p-4">
+                  <p className="font-semibold">EDILFAST</p>
+                  <p>Email di contatto: <a href="mailto:edilfastmilan@gmail.com" className="text-primary hover:underline">edilfastmilan@gmail.com</a></p>
                 </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <Card>
+              <CardHeader>
+                <CardTitle>2. Tipologie di dati raccolti</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">Attraverso il modulo di richiesta preventivo o di ricontatto, raccogliamo esclusivamente i seguenti dati personali:</p>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li>• Nome e cognome</li>
+                  <li>• Numero di telefono</li>
+                  <li>• Indirizzo email</li>
+                  <li>• Preferenza su cosa si desidera ristrutturare</li>
+                  <li>• Altre informazioni fornite volontariamente relative alla ristrutturazione</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <Card>
+              <CardHeader>
+                <CardTitle>3. Finalità del trattamento</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">I dati personali sono trattati esclusivamente per le seguenti finalità:</p>
+                <ul className="space-y-2 text-muted-foreground mb-4">
+                  <li>• Rispondere alle richieste inviate tramite il modulo di contatto</li>
+                  <li>• Fornire preventivi e informazioni personalizzate in base alle esigenze espresse</li>
+                  <li>• Offrire un servizio più preciso ed efficace</li>
+                </ul>
+                <p className="text-muted-foreground">I dati vengono raccolti solo previo consenso espresso da parte dell'utente tramite invio volontario del modulo.</p>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <Card>
+              <CardHeader>
+                <CardTitle>4. Base giuridica del trattamento</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  La base giuridica del trattamento è il consenso dell'interessato (art. 6, par. 1, lett. a del GDPR), che viene espresso attraverso l'invio del modulo di contatto.
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+          >
+            <Card>
+              <CardHeader>
+                <CardTitle>5. Modalità di trattamento</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  I dati saranno trattati in forma elettronica, con strumenti adeguati a garantire la sicurezza e la riservatezza. Non utilizziamo i dati per fini commerciali non espressamente richiesti, né li cediamo a terzi.
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            <Card>
+              <CardHeader>
+                <CardTitle>6. Conservazione dei dati</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  I dati raccolti verranno conservati per il tempo strettamente necessario a soddisfare le finalità per cui sono stati raccolti, salvo diversi obblighi di legge.
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+          >
+            <Card>
+              <CardHeader>
+                <CardTitle>7. Diritti dell'utente</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">In ogni momento l'utente ha il diritto di:</p>
+                <ul className="space-y-2 text-muted-foreground mb-4">
+                  <li>• Accedere ai propri dati personali</li>
+                  <li>• Chiederne la rettifica o la cancellazione</li>
+                  <li>• Limitare o opporsi al trattamento</li>
+                  <li>• Revocare il consenso precedentemente prestato</li>
+                  <li>• Presentare reclamo all'Autorità Garante per la protezione dei dati personali</li>
+                </ul>
+                <p className="text-muted-foreground">
+                  Per esercitare i propri diritti è possibile scrivere a: <a href="mailto:edilfastmilan@gmail.com" className="text-primary hover:underline">edilfastmilan@gmail.com</a>
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
+          >
+            <Card>
+              <CardHeader>
+                <CardTitle>9. Modifiche alla presente policy</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  La presente informativa potrà essere soggetta a modifiche nel tempo. In caso di cambiamenti rilevanti, gli utenti verranno informati tramite questo sito.
+                </p>
               </CardContent>
             </Card>
           </motion.div>
