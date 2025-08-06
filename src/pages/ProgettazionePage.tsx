@@ -31,8 +31,8 @@ const ProgettazionePage = () => {
       subtitle: "Restyling completo e funzionale",
       description: "Un servizio su misura per chi desidera rinnovare e valorizzare la zona giorno, senza interventi strutturali ma con un impatto visivo e pratico notevole.",
       gradient: "from-purple-500 to-pink-500",
-      image: "/lovable-uploads/b37da651-34fa-4a23-a57d-a86da509e8bc.png",
-      imageAlt: "Ristrutturazione elegante sala living - Pacchetto Premium",
+      image: "/lovable-uploads/864e5ad9-2366-4aba-824b-9a51a154d926.png",
+      imageAlt: "Ristrutturazione cucina con parete verde - Pacchetto Premium",
       services: [
         { icon: "📦", title: "Sgombero e trasloco", description: "Rimozione completa di mobili, oggetti e materiali, con eventuale trasporto in altro luogo" },
         { icon: "🏠", title: "Posa pavimento", description: "Installazione professionale di parquet, gres, PVC o laminato con finiture di precisione" },
@@ -49,8 +49,8 @@ const ProgettazionePage = () => {
       subtitle: "Restyling completo chiavi in mano",
       description: "Un pacchetto pensato per chi desidera rinnovare totalmente il soggiorno con un intervento preciso, ordinato e di alto livello estetico. Ci occupiamo di ogni fase del lavoro.",
       gradient: "from-amber-500 to-orange-500",
-      image: "/lovable-uploads/cea07f37-a634-457a-aaa8-9afa6497024b.png",
-      imageAlt: "Ristrutturazione completa e lussuosa - Pacchetto Super Premium",
+      image: "/lovable-uploads/ec6c37b8-066e-44bf-b28f-1cb86548bcd5.png",
+      imageAlt: "Cucina elegante con parete blu navy - Pacchetto Super Premium",
       services: [
         { icon: "📦", title: "Sgombero e trasloco dell'arredamento esistente", description: "Rimozione completa e trasporto degli arredi presenti, con possibilità di ricollocazione in altro spazio o smaltimento" },
         { icon: "🗑️", title: "Smaltimento vecchi mobili e porte", description: "Disassemblaggio e conferimento in discarica autorizzata di porte interne usurate, arredi fuori uso e materiali ingombranti" },
