@@ -169,8 +169,24 @@ const ProgettazionePage = () => {
                   
                   {/* Layout responsive: due colonne su desktop, immagine sopra su mobile */}
                   <div className="relative z-10 flex flex-col lg:flex-row lg:items-center gap-8">
-                    {/* Immagine - mostrata prima su mobile, a destra su desktop */}
-                    <div className="flex justify-center lg:order-2 lg:flex-shrink-0">
+                    {/* Contenuto testuale - occupa metà spazio a sinistra su desktop */}
+                    <div className="flex-1 lg:w-1/2 text-center lg:text-left">
+                      <div className="flex items-center justify-center lg:justify-start gap-4 mb-4">
+                        <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+                          <Sparkles className="w-4 h-4 mr-2" />
+                          {selectedPackage === 'standard' && 'Essenziale'}
+                          {selectedPackage === 'premium' && 'Completo'}
+                          {selectedPackage === 'super-premium' && 'Luxury'}
+                        </Badge>
+                      </div>
+                      
+                      <h2 className="text-3xl md:text-4xl font-bold mb-3">{currentPackage.title}</h2>
+                      <p className="text-xl font-medium mb-4 text-white/90">{currentPackage.subtitle}</p>
+                      <p className="text-lg leading-relaxed text-white/80">{currentPackage.description}</p>
+                    </div>
+                    
+                    {/* Immagine - occupa metà spazio a destra su desktop, sopra su mobile */}
+                    <div className="flex justify-center lg:justify-end lg:w-1/2">
                       <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -184,22 +200,6 @@ const ProgettazionePage = () => {
                           className="relative w-[120px] h-[120px] sm:w-[160px] sm:h-[160px] lg:w-[200px] lg:h-[200px] object-cover rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.1)] border-2 border-white/30"
                         />
                       </motion.div>
-                    </div>
-                    
-                    {/* Contenuto testuale - a sinistra su desktop */}
-                    <div className="flex-1 lg:order-1 text-center lg:text-left lg:max-w-[70%]">
-                      <div className="flex items-center justify-center lg:justify-start gap-4 mb-4">
-                        <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
-                          <Sparkles className="w-4 h-4 mr-2" />
-                          {selectedPackage === 'standard' && 'Essenziale'}
-                          {selectedPackage === 'premium' && 'Completo'}
-                          {selectedPackage === 'super-premium' && 'Luxury'}
-                        </Badge>
-                      </div>
-                      
-                      <h2 className="text-3xl md:text-4xl font-bold mb-3">{currentPackage.title}</h2>
-                      <p className="text-xl font-medium mb-4 text-white/90">{currentPackage.subtitle}</p>
-                      <p className="text-lg leading-relaxed text-white/80">{currentPackage.description}</p>
                     </div>
                   </div>
                 </div>
