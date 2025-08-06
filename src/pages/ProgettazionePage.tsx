@@ -17,6 +17,8 @@ const ProgettazionePage = () => {
       subtitle: "Rinnovo essenziale, risultato garantito",
       description: "Intervento rapido e professionale per rinfrescare la tua zona giorno con le lavorazioni più richieste, mantenendo ordine, qualità e tempi contenuti.",
       gradient: "from-blue-500 to-cyan-500",
+      image: "/lovable-uploads/9ff1f306-f456-4b2a-a066-af82388974f8.png",
+      imageAlt: "Cucina in fase di ristrutturazione - Pacchetto Standard",
       services: [
         { icon: "🏠", title: "Posa pavimento", description: "Installazione di rivestimenti a scelta (parquet, gres, laminato, PVC) con precisione e pulizia nei dettagli" },
         { icon: "🎨", title: "Tinteggiatura", description: "Verniciatura con prodotti professionali per una resa uniforme e duratura" },
@@ -29,6 +31,8 @@ const ProgettazionePage = () => {
       subtitle: "Restyling completo e funzionale",
       description: "Un servizio su misura per chi desidera rinnovare e valorizzare la zona giorno, senza interventi strutturali ma con un impatto visivo e pratico notevole.",
       gradient: "from-purple-500 to-pink-500",
+      image: "/lovable-uploads/b37da651-34fa-4a23-a57d-a86da509e8bc.png",
+      imageAlt: "Ristrutturazione elegante sala living - Pacchetto Premium",
       services: [
         { icon: "📦", title: "Sgombero e trasloco", description: "Rimozione completa di mobili, oggetti e materiali, con eventuale trasporto in altro luogo" },
         { icon: "🏠", title: "Posa pavimento", description: "Installazione professionale di parquet, gres, PVC o laminato con finiture di precisione" },
@@ -45,6 +49,8 @@ const ProgettazionePage = () => {
       subtitle: "Restyling completo chiavi in mano",
       description: "Un pacchetto pensato per chi desidera rinnovare totalmente il soggiorno con un intervento preciso, ordinato e di alto livello estetico. Ci occupiamo di ogni fase del lavoro.",
       gradient: "from-amber-500 to-orange-500",
+      image: "/lovable-uploads/cea07f37-a634-457a-aaa8-9afa6497024b.png",
+      imageAlt: "Ristrutturazione completa e lussuosa - Pacchetto Super Premium",
       services: [
         { icon: "📦", title: "Sgombero e trasloco dell'arredamento esistente", description: "Rimozione completa e trasporto degli arredi presenti, con possibilità di ricollocazione in altro spazio o smaltimento" },
         { icon: "🗑️", title: "Smaltimento vecchi mobili e porte", description: "Disassemblaggio e conferimento in discarica autorizzata di porte interne usurate, arredi fuori uso e materiali ingombranti" },
@@ -155,25 +161,46 @@ const ProgettazionePage = () => {
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 className="relative"
               >
-                {/* Header del pacchetto con design futuristico */}
-                <div className={`relative p-8 mb-8 rounded-3xl bg-gradient-to-r ${currentPackage.gradient} text-white shadow-2xl overflow-hidden`}>
+                {/* Header del pacchetto con design futuristico e immagine */}
+                <div className={`relative p-8 py-12 mb-8 rounded-3xl bg-gradient-to-r ${currentPackage.gradient} text-white shadow-2xl overflow-hidden`}>
                   <div className="absolute inset-0 bg-black/10" />
                   <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-32 translate-x-32" />
                   <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-24 -translate-x-24" />
                   
-                  <div className="relative z-10">
-                    <div className="flex items-center gap-4 mb-4">
-                      <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
-                        <Sparkles className="w-4 h-4 mr-2" />
-                        {selectedPackage === 'standard' && 'Essenziale'}
-                        {selectedPackage === 'premium' && 'Completo'}
-                        {selectedPackage === 'super-premium' && 'Luxury'}
-                      </Badge>
+                  {/* Layout responsive: due colonne su desktop, immagine sopra su mobile */}
+                  <div className="relative z-10 flex flex-col lg:flex-row lg:items-center gap-8">
+                    {/* Immagine - mostrata prima su mobile, a destra su desktop */}
+                    <div className="flex justify-center lg:order-2 lg:flex-shrink-0">
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.3, duration: 0.6 }}
+                        className="relative"
+                      >
+                        <div className="absolute inset-0 bg-white/20 rounded-lg blur-md transform rotate-1" />
+                        <img
+                          src={currentPackage.image}
+                          alt={currentPackage.imageAlt}
+                          className="relative w-[120px] h-[120px] sm:w-[160px] sm:h-[160px] lg:w-[200px] lg:h-[200px] object-cover rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.1)] border-2 border-white/30"
+                        />
+                      </motion.div>
                     </div>
                     
-                    <h2 className="text-3xl md:text-4xl font-bold mb-3">{currentPackage.title}</h2>
-                    <p className="text-xl font-medium mb-4 text-white/90">{currentPackage.subtitle}</p>
-                    <p className="text-lg leading-relaxed text-white/80 max-w-4xl">{currentPackage.description}</p>
+                    {/* Contenuto testuale - a sinistra su desktop */}
+                    <div className="flex-1 lg:order-1 text-center lg:text-left lg:max-w-[70%]">
+                      <div className="flex items-center justify-center lg:justify-start gap-4 mb-4">
+                        <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+                          <Sparkles className="w-4 h-4 mr-2" />
+                          {selectedPackage === 'standard' && 'Essenziale'}
+                          {selectedPackage === 'premium' && 'Completo'}
+                          {selectedPackage === 'super-premium' && 'Luxury'}
+                        </Badge>
+                      </div>
+                      
+                      <h2 className="text-3xl md:text-4xl font-bold mb-3">{currentPackage.title}</h2>
+                      <p className="text-xl font-medium mb-4 text-white/90">{currentPackage.subtitle}</p>
+                      <p className="text-lg leading-relaxed text-white/80">{currentPackage.description}</p>
+                    </div>
                   </div>
                 </div>
 
