@@ -118,6 +118,7 @@ const projects: Project[] = [
 const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
   const [sliderValue, setSliderValue] = useState([0]);
   const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
 
   return (
     <motion.div
@@ -125,9 +126,39 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       className="group"
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={() => !isDragging && setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      {/* Animated slider value for hover effect */}
+      <motion.div
+        animate={isHovered && !isDragging ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.3, delay: isHovered ? 0.2 : 0 }}
+        onAnimationComplete={() => {
+          if (isHovered && !isDragging) {
+            // Animate slider to 100% on hover
+            const interval = setInterval(() => {
+              setSliderValue(prev => {
+                const newValue = Math.min(prev[0] + 2, 100);
+                if (newValue >= 100) {
+                  clearInterval(interval);
+                }
+                return [newValue];
+              });
+            }, 16);
+          } else if (!isHovered && !isDragging) {
+            // Animate back to 0% when not hovered
+            const interval = setInterval(() => {
+              setSliderValue(prev => {
+                const newValue = Math.max(prev[0] - 2, 0);
+                if (newValue <= 0) {
+                  clearInterval(interval);
+                }
+                return [newValue];
+              });
+            }, 16);
+          }
+        }}
+      />
       <Card className="overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500">
         <div className="relative aspect-[4/3] overflow-hidden">
           {/* Before/After Images */}
@@ -173,6 +204,8 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
               <Slider
                 value={sliderValue}
                 onValueChange={setSliderValue}
+                onPointerDown={() => setIsDragging(true)}
+                onPointerUp={() => setIsDragging(false)}
                 max={100}
                 step={1}
                 className="w-full h-full opacity-0 cursor-grab active:cursor-grabbing"
