@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Building, Zap, Leaf, Clock, Hammer, TrendingUp, Calendar, Euro } from 'lucide-react';
+import { Building, Zap, Leaf, Clock, Hammer, TrendingUp, Calendar, Euro, X, ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Slider } from '@/components/ui/slider';
 import { Card, CardContent } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 
 interface Project {
   id: string;
@@ -20,6 +23,11 @@ interface Project {
   valueIncrease: string;
   roi: string;
   location: string;
+  gallery: string[];
+  features: string[];
+  fullDescription: string;
+  client: string;
+  challenges: string[];
 }
 
 const projects: Project[] = [
@@ -36,7 +44,17 @@ const projects: Project[] = [
     investment: '€280.000',
     valueIncrease: '€420.000',
     roi: '+50%',
-    location: 'Porta Nuova, Milano'
+    location: 'Porta Nuova, Milano',
+    gallery: [
+      '/lovable-uploads/012fb361-4926-4947-8016-0db47d733f90.png',
+      '/lovable-uploads/20b3c721-294a-443e-ba2d-afa196163db2.png',
+      '/lovable-uploads/36938368-ad52-4a38-b70d-1ae8cda58b44.png',
+      '/lovable-uploads/3901b7c0-4d51-4c4c-be57-f18c9ea1fb35.png'
+    ],
+    features: ['Vista skyline Milano', 'Domotica KNX', 'Cucina Boffi', 'Parquet pregiato', 'Terrazza 50mq'],
+    fullDescription: 'Trasformazione completa di un attico nel prestigioso quartiere di Porta Nuova. Il progetto ha previsto la ridistribuzione degli spazi per massimizzare la vista panoramica sulla città, l\'integrazione di un sistema domotico KNX all\'avanguardia e l\'utilizzo di materiali di lusso selezionati. Il risultato è un ambiente contemporaneo che celebra il lifestyle milanese moderno.',
+    client: 'Executive multinazionale',
+    challenges: ['Vincoli condominiali', 'Logistica centro città', 'Tempi ristretti', 'Coordinamento fornitori luxury']
   },
   {
     id: '2',
@@ -51,7 +69,17 @@ const projects: Project[] = [
     investment: '€450.000',
     valueIncrease: '€650.000',
     roi: '+44%',
-    location: 'Monza e Brianza'
+    location: 'Monza e Brianza',
+    gallery: [
+      '/lovable-uploads/36938368-ad52-4a38-b70d-1ae8cda58b44.png',
+      '/lovable-uploads/3901b7c0-4d51-4c4c-be57-f18c9ea1fb35.png',
+      '/lovable-uploads/4daa0b20-6767-4ff7-a2f4-0d8a007514e7.png',
+      '/lovable-uploads/52676327-6506-4e69-9589-d64478bf5833.png'
+    ],
+    features: ['Pannelli solari', 'Isolamento cappotto', 'Pompa di calore', 'Giardino zen', 'Garage doppio'],
+    fullDescription: 'Completa riqualificazione energetica e architettonica di una villa degli anni \'70. L\'intervento ha trasformato un\'abitazione obsoleta in una moderna residenza ad alta efficienza energetica, classe A+. Particolare attenzione è stata dedicata all\'integrazione con il verde circostante e alla sostenibilità ambientale.',
+    client: 'Famiglia con bambini',
+    challenges: ['Efficienza energetica', 'Preservare alberi esistenti', 'Normative locali', 'Budget ottimizzato']
   },
   {
     id: '3',
@@ -66,7 +94,17 @@ const projects: Project[] = [
     investment: '€320.000',
     valueIncrease: '€480.000',
     roi: '+50%',
-    location: 'Navigli, Milano'
+    location: 'Navigli, Milano',
+    gallery: [
+      '/lovable-uploads/4daa0b20-6767-4ff7-a2f4-0d8a007514e7.png',
+      '/lovable-uploads/52676327-6506-4e69-9589-d64478bf5833.png',
+      '/lovable-uploads/819c5323-6436-4de6-9198-c17175c038bf.png',
+      '/lovable-uploads/864e5ad9-2366-4aba-824b-9a51a154d926.png'
+    ],
+    features: ['Soffitti alti 4m', 'Travi a vista', 'Cucina open space', 'Mezzanino studio', 'Cortile privato'],
+    fullDescription: 'Straordinaria conversione di un ex-capannone industriale nei Navigli in un esclusivo loft contemporaneo. Il progetto ha saputo valorizzare gli elementi architettonici originali, come i soffitti alti e le strutture in ferro, integrandoli con soluzioni di design moderne e funzionali per creare uno spazio abitativo unico.',
+    client: 'Artista contemporaneo',
+    challenges: ['Strutture industriali esistenti', 'Acustica spazi aperti', 'Normative antincendio', 'Integrazione impianti moderni']
   },
   {
     id: '4',
@@ -81,7 +119,16 @@ const projects: Project[] = [
     investment: '€180.000',
     valueIncrease: '€260.000',
     roi: '+44%',
-    location: 'Brera, Milano'
+    location: 'Brera, Milano',
+    gallery: [
+      '/lovable-uploads/819c5323-6436-4de6-9198-c17175c038bf.png',
+      '/lovable-uploads/864e5ad9-2366-4aba-824b-9a51a154d926.png',
+      '/lovable-uploads/8c69dd49-3b04-426a-addf-0157c027eb9a.png'
+    ],
+    features: ['Affreschi restaurati', 'Pavimenti originali', 'Illuminazione LED', 'Climatizzazione invisibile', 'Arredamento su misura'],
+    fullDescription: 'Delicata ristrutturazione di un appartamento storico nel cuore di Brera, con particolare attenzione alla conservazione degli elementi originali. Il progetto ha integrato le tecnologie moderne nel rispetto dell\'identità storica dell\'immobile, creando un perfetto equilibrio tra passato e presente.',
+    client: 'Collezionista d\'arte',
+    challenges: ['Vincoli soprintendenza', 'Elementi storici da preservare', 'Spazi compatti', 'Integrazione discreta tecnologie']
   },
   {
     id: '5',
@@ -96,7 +143,17 @@ const projects: Project[] = [
     investment: '€550.000',
     valueIncrease: '€850.000',
     roi: '+55%',
-    location: 'CityLife, Milano'
+    location: 'CityLife, Milano',
+    gallery: [
+      '/lovable-uploads/8c69dd49-3b04-426a-addf-0157c027eb9a.png',
+      '/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png',
+      '/lovable-uploads/9ff1f306-f456-4b2a-a066-af82388974f8.png',
+      '/lovable-uploads/a40ad856-6cad-4b3d-8aa6-0c9ef4e19ff6.png'
+    ],
+    features: ['Terrazza 120mq', 'Vista Bosco Verticale', 'Home theater', 'Wine cellar', 'Sistema domotico integrale'],
+    fullDescription: 'Esclusivo penthouse nel prestigioso quartiere CityLife, progettato per offrire il massimo del comfort e del lusso. La terrazza panoramica offre una vista mozzafiato sui grattacieli e sul Bosco Verticale, mentre gli interni sono stati concepiti come un\'opera d\'arte abitabile con tecnologie all\'avanguardia.',
+    client: 'Imprenditore fashion',
+    challenges: ['Logistica grattacielo', 'Peso strutturale terrazza', 'Integrazione domotica complessa', 'Standard luxury internazionali']
   },
   {
     id: '6',
@@ -111,11 +168,21 @@ const projects: Project[] = [
     investment: '€380.000',
     valueIncrease: '€520.000',
     roi: '+37%',
-    location: 'Centro Storico, Milano'
+    location: 'Centro Storico, Milano',
+    gallery: [
+      '/lovable-uploads/9ff1f306-f456-4b2a-a066-af82388974f8.png',
+      '/lovable-uploads/a40ad856-6cad-4b3d-8aa6-0c9ef4e19ff6.png',
+      '/lovable-uploads/b37da651-34fa-4a23-a57d-a86da509e8bc.png',
+      '/lovable-uploads/b413d1ec-e2d9-46b5-ac7e-7c0586505184.png'
+    ],
+    features: ['Affreschi XVIII secolo', 'Pavimenti alla veneziana', 'Caminetto restaurato', 'Impianti a scomparsa', 'Giardino interno'],
+    fullDescription: 'Prestigioso restauro conservativo di un appartamento in palazzo storico del XVIII secolo. Il progetto ha riportato agli antichi splendori gli elementi decorativi originali, integrando discretamente tutti i comfort moderni per creare un ambiente di rara eleganza e comfort.',
+    client: 'Famiglia storica milanese',
+    challenges: ['Approvazione soprintendenza', 'Tecniche restauro tradizionali', 'Impianti non invasivi', 'Coordinamento artigiani specializzati']
   }
 ];
 
-const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
+const ProjectCard = ({ project, index, onOpenModal }: { project: Project; index: number; onOpenModal: (project: Project) => void }) => {
   const [sliderValue, setSliderValue] = useState([0]);
   const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -159,7 +226,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           }
         }}
       />
-      <Card className="overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500">
+      <Card className="overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer" onClick={() => onOpenModal(project)}>
         <div className="relative aspect-[4/3] overflow-hidden">
           {/* Before/After Images */}
           <div className="relative w-full h-full">
@@ -288,6 +355,14 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
 };
 
 const ProgettiPage = () => {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const handleOpenModal = (project: Project) => {
+    setSelectedProject(project);
+    setCurrentImageIndex(0);
+  };
+
   return (
     <div className="relative bg-background">
       <Navigation />
@@ -319,7 +394,12 @@ const ProgettiPage = () => {
         <div className="max-w-7xl mx-auto px-6 pb-20">
           <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
+              <ProjectCard 
+                key={project.id} 
+                project={project} 
+                index={index} 
+                onOpenModal={handleOpenModal}
+              />
             ))}
           </div>
 
@@ -346,6 +426,164 @@ const ProgettiPage = () => {
           </motion.div>
         </div>
       </main>
+
+      {/* Project Modal */}
+      <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
+        <DialogContent className="max-w-7xl w-full h-[90vh] p-0 overflow-hidden">
+          {selectedProject && (
+            <div className="grid lg:grid-cols-2 h-full">
+              {/* Image Gallery Section */}
+              <div className="relative bg-secondary/5">
+                <DialogHeader className="absolute top-4 right-4 z-10">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="h-8 w-8 p-0 bg-white/90 hover:bg-white"
+                    onClick={() => setSelectedProject(null)}
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
+                </DialogHeader>
+                
+                <div className="relative h-full">
+                  <img
+                    src={selectedProject.gallery[currentImageIndex]}
+                    alt={`${selectedProject.title} - Immagine ${currentImageIndex + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                  
+                  {/* Navigation arrows */}
+                  {selectedProject.gallery.length > 1 && (
+                    <>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="absolute left-4 top-1/2 transform -translate-y-1/2 h-10 w-10 p-0 bg-white/90 hover:bg-white"
+                        onClick={() => setCurrentImageIndex(prev => 
+                          prev === 0 ? selectedProject.gallery.length - 1 : prev - 1
+                        )}
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 h-10 w-10 p-0 bg-white/90 hover:bg-white"
+                        onClick={() => setCurrentImageIndex(prev => 
+                          prev === selectedProject.gallery.length - 1 ? 0 : prev + 1
+                        )}
+                      >
+                        <ChevronRight className="h-4 w-4" />
+                      </Button>
+                    </>
+                  )}
+                  
+                  {/* Image indicators */}
+                  {selectedProject.gallery.length > 1 && (
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                      {selectedProject.gallery.map((_, index) => (
+                        <button
+                          key={index}
+                          className={`w-2 h-2 rounded-full transition-all ${
+                            index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+                          }`}
+                          onClick={() => setCurrentImageIndex(index)}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Content Section */}
+              <div className="p-8 overflow-y-auto">
+                <div className="space-y-6">
+                  {/* Header */}
+                  <div>
+                    <div className="flex items-center gap-3 mb-2">
+                      <Badge variant="secondary" className="text-xs">
+                        {selectedProject.category}
+                      </Badge>
+                      <span className="text-sm text-muted-foreground">{selectedProject.year}</span>
+                    </div>
+                    <DialogTitle className="text-3xl font-bold text-secondary mb-4">
+                      {selectedProject.title}
+                    </DialogTitle>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      {selectedProject.fullDescription}
+                    </p>
+                  </div>
+
+                  {/* Project Details */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2 text-sm">
+                        <MapPin className="h-4 w-4 text-primary" />
+                        <span>{selectedProject.location}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm">
+                        <Calendar className="h-4 w-4 text-primary" />
+                        <span>{selectedProject.duration}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm">
+                        <Building className="h-4 w-4 text-primary" />
+                        <span>{selectedProject.area}</span>
+                      </div>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2 text-sm">
+                        <Euro className="h-4 w-4 text-primary" />
+                        <span>{selectedProject.investment}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm">
+                        <TrendingUp className="h-4 w-4 text-primary" />
+                        <span className="text-green-600 font-medium">{selectedProject.roi}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm">
+                        <span className="text-primary">👤</span>
+                        <span>{selectedProject.client}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Features */}
+                  <div>
+                    <h3 className="text-lg font-semibold text-secondary mb-3">Caratteristiche Principali</h3>
+                    <div className="grid grid-cols-1 gap-2">
+                      {selectedProject.features.map((feature, index) => (
+                        <div key={index} className="flex items-center gap-2 text-sm">
+                          <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Challenges */}
+                  <div>
+                    <h3 className="text-lg font-semibold text-secondary mb-3">Sfide Superate</h3>
+                    <div className="grid grid-cols-1 gap-2">
+                      {selectedProject.challenges.map((challenge, index) => (
+                        <div key={index} className="flex items-center gap-2 text-sm">
+                          <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
+                          <span>{challenge}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+                  <div className="pt-4 border-t">
+                    <Button className="w-full">
+                      Richiedi Preventivo per Progetto Simile
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </div>
