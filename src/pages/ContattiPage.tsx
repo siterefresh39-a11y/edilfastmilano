@@ -101,8 +101,8 @@ const ContattiPage = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'info@edilfastmilano.it',
-      action: 'mailto:info@edilfastmilano.it'
+      value: 'edilfastmilan@gmail.com',
+      action: 'mailto:edilfastmilan@gmail.com'
     },
     {
       icon: MapPin,
