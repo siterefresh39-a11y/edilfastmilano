@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Home, Check, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import { Home, Check, ChevronLeft, ChevronRight, Sparkles, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const ProgettazionePage = () => {
@@ -81,7 +81,18 @@ const ProgettazionePage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
-      <Navigation />
+      {/* Navigation with back to home */}
+      <nav className="relative z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
+        <div className="container mx-auto px-4 py-4">
+          <Link 
+            to="/" 
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <ArrowLeft size={20} />
+            Torna alla Home
+          </Link>
+        </div>
+      </nav>
       
       {/* Hero Section con icona casa stilizzata */}
       <section className="relative pt-20 pb-12 overflow-hidden">
