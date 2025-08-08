@@ -8,7 +8,7 @@ import NotFound from "./pages/NotFound";
 import ProgettazionePage from "./pages/ProgettazionePage";
 import MaterialiPage from "./pages/MaterialiPage";
 import SmartTechPage from "./pages/SmartTechPage";
-import EfficienzaPage from "./pages/EfficienzaPage";
+
 import CucinaPage from "./pages/CucinaPage";
 import ServiziPage from "./pages/ServiziPage";
 import ProgettiPage from "./pages/ProgettiPage";
@@ -30,7 +30,7 @@ const App = () => (
           <Route path="/progettazione" element={<ProgettazionePage />} />
           <Route path="/materiali" element={<MaterialiPage />} />
           <Route path="/smart-tech" element={<SmartTechPage />} />
-          <Route path="/efficienza" element={<EfficienzaPage />} />
+          
           <Route path="/cucina" element={<CucinaPage />} />
           <Route path="/camera" element={<CameraPage />} />
           <Route path="/servizi" element={<ServiziPage />} />

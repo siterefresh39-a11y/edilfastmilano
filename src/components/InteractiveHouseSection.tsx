@@ -36,10 +36,10 @@ const pins: Pin[] = [
     id: '3',
     x: 25,
     y: 55,
-    title: 'Efficienza Energetica',
-    description: 'Ogni progetto è ottimizzato per il massimo risparmio energetico con soluzioni innovative e certificazioni green.',
+    title: 'Ristrutturazione Camera da letto',
+    description: 'Rinnova la zona notte con soluzioni su misura e finiture coordinate.',
     icon: Home,
-    link: '/efficienza'
+    link: '/camera'
   },
   {
     id: '4',
@@ -49,15 +49,6 @@ const pins: Pin[] = [
     description: 'Scopri i nostri pacchetti per la ristrutturazione della cucina: Entry Level, Premium e Super Premium.',
     icon: Home,
     link: '/cucina'
-  },
-  {
-    id: '5',
-    x: 35,
-    y: 25,
-    title: 'Ristrutturazione Camera da letto',
-    description: 'Rinnova la zona notte con soluzioni su misura e finiture coordinate.',
-    icon: Home,
-    link: '/camera'
   }
 ];
 
