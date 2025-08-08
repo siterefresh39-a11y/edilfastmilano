@@ -15,6 +15,7 @@ import ProgettiPage from "./pages/ProgettiPage";
 import ContattiPage from "./pages/ContattiPage";
 import SocialPage from "./pages/SocialPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import CameraPage from "./pages/CameraPage";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/smart-tech" element={<SmartTechPage />} />
           <Route path="/efficienza" element={<EfficienzaPage />} />
           <Route path="/cucina" element={<CucinaPage />} />
+          <Route path="/camera" element={<CameraPage />} />
           <Route path="/servizi" element={<ServiziPage />} />
           <Route path="/progetti" element={<ProgettiPage />} />
           <Route path="/contatti" element={<ContattiPage />} />
