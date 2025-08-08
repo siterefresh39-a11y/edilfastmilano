@@ -106,10 +106,13 @@ const ServicesSection = () => {
                   
                   <div className="relative z-10 p-6">
                     <div className="aspect-video mb-4 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
-                      <room.icon 
-                        size={48}
-                        className="text-primary group-hover:text-secondary transition-colors duration-300"
-                      />
+                      {(() => {
+                        const IconComponent = room.icon;
+                        return <IconComponent 
+                          size={48}
+                          className="text-primary group-hover:text-secondary transition-colors duration-300"
+                        />;
+                      })()}
                     </div>
                     
                     <h3 className="text-lg font-semibold text-secondary mb-3 group-hover:text-primary transition-colors duration-300">
@@ -135,10 +138,13 @@ const ServicesSection = () => {
                   
                   <div className="relative z-10 p-6">
                     <div className="aspect-video mb-4 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
-                      <room.icon 
-                        size={48}
-                        className="text-primary group-hover:text-secondary transition-colors duration-300"
-                      />
+                      {(() => {
+                        const IconComponent = room.icon;
+                        return <IconComponent 
+                          size={48}
+                          className="text-primary group-hover:text-secondary transition-colors duration-300"
+                        />;
+                      })()}
                     </div>
                     
                     <h3 className="text-lg font-semibold text-secondary mb-3 group-hover:text-primary transition-colors duration-300">
