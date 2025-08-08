@@ -33,28 +33,26 @@ interface Project {
 const projects: Project[] = [
   {
     id: '1',
-    title: 'Attico Porta Nuova',
-    description: 'Ristrutturazione completa di attico con vista skyline, tecnologie smart home e finiture di lusso',
-    beforeImage: '/lovable-uploads/012fb361-4926-4947-8016-0db47d733f90.png',
-    afterImage: '/lovable-uploads/20b3c721-294a-443e-ba2d-afa196163db2.png',
-    category: 'Residenziale Premium',
+    title: 'Ristrutturazione Bagno Premium',
+    description: 'Trasformazione completa di bagno con finiture di pregio, doppio lavabo e cabina doccia in cristallo',
+    beforeImage: '/lovable-uploads/c15b2e02-5ad6-4a92-badf-34df1fda79ed.png',
+    afterImage: '/lovable-uploads/7af50e1d-329a-4409-9f15-dfbe30a8643f.png',
+    category: 'Bagno Premium',
     year: '2024',
-    area: '180 m²',
-    duration: '4 mesi',
-    investment: '€280.000',
-    valueIncrease: '€420.000',
-    roi: '+50%',
-    location: 'Porta Nuova, Milano',
+    area: '12 m²',
+    duration: '3 settimane',
+    investment: '€18.000',
+    valueIncrease: '€28.000',
+    roi: '+55%',
+    location: 'Residenza privata',
     gallery: [
-      '/lovable-uploads/012fb361-4926-4947-8016-0db47d733f90.png',
-      '/lovable-uploads/20b3c721-294a-443e-ba2d-afa196163db2.png',
-      '/lovable-uploads/36938368-ad52-4a38-b70d-1ae8cda58b44.png',
-      '/lovable-uploads/3901b7c0-4d51-4c4c-be57-f18c9ea1fb35.png'
+      '/lovable-uploads/c15b2e02-5ad6-4a92-badf-34df1fda79ed.png',
+      '/lovable-uploads/7af50e1d-329a-4409-9f15-dfbe30a8643f.png'
     ],
-    features: ['Vista skyline Milano', 'Domotica KNX', 'Cucina Boffi', 'Parquet pregiato', 'Terrazza 50mq'],
-    fullDescription: 'Trasformazione completa di un attico nel prestigioso quartiere di Porta Nuova. Il progetto ha previsto la ridistribuzione degli spazi per massimizzare la vista panoramica sulla città, l\'integrazione di un sistema domotico KNX all\'avanguardia e l\'utilizzo di materiali di lusso selezionati. Il risultato è un ambiente contemporaneo che celebra il lifestyle milanese moderno.',
-    client: 'Executive multinazionale',
-    challenges: ['Vincoli condominiali', 'Logistica centro città', 'Tempi ristretti', 'Coordinamento fornitori luxury']
+    features: ['Rivestimenti in gres effetto marmo', 'Doppio lavabo con top in legno', 'Cabina doccia su misura', 'Illuminazione LED integrata', 'Termoarredo di design'],
+    fullDescription: 'Completa ristrutturazione di un bagno principale con demolizione e ricostruzione totale. Il progetto ha previsto la riorganizzazione degli spazi per ottimizzare la funzionalità, l\'installazione di rivestimenti in gres porcellanato effetto marmo grigio e la realizzazione di un mobile bagno su misura con doppio lavabo. La cabina doccia in cristallo temperato e il sistema di illuminazione LED creano un ambiente moderno e rilassante.',
+    client: 'Famiglia privata',
+    challenges: ['Rifacimento impianti', 'Coordinamento tempi ristretti', 'Smaltimento materiali', 'Impermeabilizzazione avanzata']
   },
   {
     id: '2',
