@@ -8,7 +8,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-
 interface Project {
   id: string;
   title: string;
@@ -29,227 +28,192 @@ interface Project {
   client: string;
   challenges: string[];
 }
-
-const projects: Project[] = [
-  {
-    id: '1',
-    title: 'Ristrutturazione Bagno Premium',
-    description: 'Trasformazione completa di bagno con finiture di pregio, doppio lavabo e cabina doccia in cristallo',
-    beforeImage: '/lovable-uploads/c15b2e02-5ad6-4a92-badf-34df1fda79ed.png',
-    afterImage: '/lovable-uploads/7af50e1d-329a-4409-9f15-dfbe30a8643f.png',
-    category: 'Bagno Premium',
-    year: '2024',
-    area: '12 m²',
-    duration: '3 settimane',
-    investment: '€18.000',
-    valueIncrease: '€28.000',
-    roi: '+55%',
-    location: 'Residenza privata',
-    gallery: [
-      '/lovable-uploads/c15b2e02-5ad6-4a92-badf-34df1fda79ed.png',
-      '/lovable-uploads/7af50e1d-329a-4409-9f15-dfbe30a8643f.png'
-    ],
-    features: ['Rivestimenti in gres effetto marmo', 'Doppio lavabo con top in legno', 'Cabina doccia su misura', 'Illuminazione LED integrata', 'Termoarredo di design'],
-    fullDescription: 'Completa ristrutturazione di un bagno principale con demolizione e ricostruzione totale. Il progetto ha previsto la riorganizzazione degli spazi per ottimizzare la funzionalità, l\'installazione di rivestimenti in gres porcellanato effetto marmo grigio e la realizzazione di un mobile bagno su misura con doppio lavabo. La cabina doccia in cristallo temperato e il sistema di illuminazione LED creano un ambiente moderno e rilassante.',
-    client: 'Famiglia privata',
-    challenges: ['Rifacimento impianti', 'Coordinamento tempi ristretti', 'Smaltimento materiali', 'Impermeabilizzazione avanzata']
-  },
-  {
-    id: '2',
-    title: 'Villa Moderna Brianza',
-    description: 'Trasformazione completa di villa anni \'70 in moderna residenza eco-sostenibile',
-    beforeImage: '/lovable-uploads/36938368-ad52-4a38-b70d-1ae8cda58b44.png',
-    afterImage: '/lovable-uploads/3901b7c0-4d51-4c4c-be57-f18c9ea1fb35.png',
-    category: 'Residenziale',
-    year: '2023',
-    area: '350 m²',
-    duration: '6 mesi',
-    investment: '€450.000',
-    valueIncrease: '€650.000',
-    roi: '+44%',
-    location: 'Monza e Brianza',
-    gallery: [
-      '/lovable-uploads/36938368-ad52-4a38-b70d-1ae8cda58b44.png',
-      '/lovable-uploads/3901b7c0-4d51-4c4c-be57-f18c9ea1fb35.png',
-      '/lovable-uploads/4daa0b20-6767-4ff7-a2f4-0d8a007514e7.png',
-      '/lovable-uploads/52676327-6506-4e69-9589-d64478bf5833.png'
-    ],
-    features: ['Pannelli solari', 'Isolamento cappotto', 'Pompa di calore', 'Giardino zen', 'Garage doppio'],
-    fullDescription: 'Completa riqualificazione energetica e architettonica di una villa degli anni \'70. L\'intervento ha trasformato un\'abitazione obsoleta in una moderna residenza ad alta efficienza energetica, classe A+. Particolare attenzione è stata dedicata all\'integrazione con il verde circostante e alla sostenibilità ambientale.',
-    client: 'Famiglia con bambini',
-    challenges: ['Efficienza energetica', 'Preservare alberi esistenti', 'Normative locali', 'Budget ottimizzato']
-  },
-  {
-    id: '3',
-    title: 'Loft Industriale Navigli',
-    description: 'Conversione di ex-fabbrica in lussuoso loft con design industriale contemporaneo',
-    beforeImage: '/lovable-uploads/4daa0b20-6767-4ff7-a2f4-0d8a007514e7.png',
-    afterImage: '/lovable-uploads/52676327-6506-4e69-9589-d64478bf5833.png',
-    category: 'Conversione',
-    year: '2024',
-    area: '220 m²',
-    duration: '5 mesi',
-    investment: '€320.000',
-    valueIncrease: '€480.000',
-    roi: '+50%',
-    location: 'Navigli, Milano',
-    gallery: [
-      '/lovable-uploads/4daa0b20-6767-4ff7-a2f4-0d8a007514e7.png',
-      '/lovable-uploads/52676327-6506-4e69-9589-d64478bf5833.png',
-      '/lovable-uploads/819c5323-6436-4de6-9198-c17175c038bf.png',
-      '/lovable-uploads/864e5ad9-2366-4aba-824b-9a51a154d926.png'
-    ],
-    features: ['Soffitti alti 4m', 'Travi a vista', 'Cucina open space', 'Mezzanino studio', 'Cortile privato'],
-    fullDescription: 'Straordinaria conversione di un ex-capannone industriale nei Navigli in un esclusivo loft contemporaneo. Il progetto ha saputo valorizzare gli elementi architettonici originali, come i soffitti alti e le strutture in ferro, integrandoli con soluzioni di design moderne e funzionali per creare uno spazio abitativo unico.',
-    client: 'Artista contemporaneo',
-    challenges: ['Strutture industriali esistenti', 'Acustica spazi aperti', 'Normative antincendio', 'Integrazione impianti moderni']
-  },
-  {
-    id: '4',
-    title: 'Appartamento Brera',
-    description: 'Ristrutturazione conservativa con materiali di pregio e tecnologie integrate',
-    beforeImage: '/lovable-uploads/819c5323-6436-4de6-9198-c17175c038bf.png',
-    afterImage: '/lovable-uploads/864e5ad9-2366-4aba-824b-9a51a154d926.png',
-    category: 'Ristrutturazione',
-    year: '2023',
-    area: '120 m²',
-    duration: '3 mesi',
-    investment: '€180.000',
-    valueIncrease: '€260.000',
-    roi: '+44%',
-    location: 'Brera, Milano',
-    gallery: [
-      '/lovable-uploads/819c5323-6436-4de6-9198-c17175c038bf.png',
-      '/lovable-uploads/864e5ad9-2366-4aba-824b-9a51a154d926.png',
-      '/lovable-uploads/8c69dd49-3b04-426a-addf-0157c027eb9a.png'
-    ],
-    features: ['Affreschi restaurati', 'Pavimenti originali', 'Illuminazione LED', 'Climatizzazione invisibile', 'Arredamento su misura'],
-    fullDescription: 'Delicata ristrutturazione di un appartamento storico nel cuore di Brera, con particolare attenzione alla conservazione degli elementi originali. Il progetto ha integrato le tecnologie moderne nel rispetto dell\'identità storica dell\'immobile, creando un perfetto equilibrio tra passato e presente.',
-    client: 'Collezionista d\'arte',
-    challenges: ['Vincoli soprintendenza', 'Elementi storici da preservare', 'Spazi compatti', 'Integrazione discreta tecnologie']
-  },
-  {
-    id: '5',
-    title: 'Penthouse Citylife',
-    description: 'Creazione di penthouse di lusso con terrazza panoramica e domotica avanzata',
-    beforeImage: '/lovable-uploads/8c69dd49-3b04-426a-addf-0157c027eb9a.png',
-    afterImage: '/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png',
-    category: 'Luxury',
-    year: '2024',
-    area: '280 m²',
-    duration: '7 mesi',
-    investment: '€550.000',
-    valueIncrease: '€850.000',
-    roi: '+55%',
-    location: 'CityLife, Milano',
-    gallery: [
-      '/lovable-uploads/8c69dd49-3b04-426a-addf-0157c027eb9a.png',
-      '/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png',
-      '/lovable-uploads/9ff1f306-f456-4b2a-a066-af82388974f8.png',
-      '/lovable-uploads/a40ad856-6cad-4b3d-8aa6-0c9ef4e19ff6.png'
-    ],
-    features: ['Terrazza 120mq', 'Vista Bosco Verticale', 'Home theater', 'Wine cellar', 'Sistema domotico integrale'],
-    fullDescription: 'Esclusivo penthouse nel prestigioso quartiere CityLife, progettato per offrire il massimo del comfort e del lusso. La terrazza panoramica offre una vista mozzafiato sui grattacieli e sul Bosco Verticale, mentre gli interni sono stati concepiti come un\'opera d\'arte abitabile con tecnologie all\'avanguardia.',
-    client: 'Imprenditore fashion',
-    challenges: ['Logistica grattacielo', 'Peso strutturale terrazza', 'Integrazione domotica complessa', 'Standard luxury internazionali']
-  },
-  {
-    id: '6',
-    title: 'Casa Storica Centro',
-    description: 'Restauro conservativo di palazzo storico con modernizzazione degli impianti',
-    beforeImage: '/lovable-uploads/9ff1f306-f456-4b2a-a066-af82388974f8.png',
-    afterImage: '/lovable-uploads/a40ad856-6cad-4b3d-8aa6-0c9ef4e19ff6.png',
-    category: 'Restauro',
-    year: '2023',
-    area: '200 m²',
-    duration: '8 mesi',
-    investment: '€380.000',
-    valueIncrease: '€520.000',
-    roi: '+37%',
-    location: 'Centro Storico, Milano',
-    gallery: [
-      '/lovable-uploads/9ff1f306-f456-4b2a-a066-af82388974f8.png',
-      '/lovable-uploads/a40ad856-6cad-4b3d-8aa6-0c9ef4e19ff6.png',
-      '/lovable-uploads/b37da651-34fa-4a23-a57d-a86da509e8bc.png',
-      '/lovable-uploads/b413d1ec-e2d9-46b5-ac7e-7c0586505184.png'
-    ],
-    features: ['Affreschi XVIII secolo', 'Pavimenti alla veneziana', 'Caminetto restaurato', 'Impianti a scomparsa', 'Giardino interno'],
-    fullDescription: 'Prestigioso restauro conservativo di un appartamento in palazzo storico del XVIII secolo. Il progetto ha riportato agli antichi splendori gli elementi decorativi originali, integrando discretamente tutti i comfort moderni per creare un ambiente di rara eleganza e comfort.',
-    client: 'Famiglia storica milanese',
-    challenges: ['Approvazione soprintendenza', 'Tecniche restauro tradizionali', 'Impianti non invasivi', 'Coordinamento artigiani specializzati']
-  }
-];
-
-const ProjectCard = ({ project, index, onOpenModal }: { project: Project; index: number; onOpenModal: (project: Project) => void }) => {
+const projects: Project[] = [{
+  id: '1',
+  title: 'Ristrutturazione Bagno Premium',
+  description: 'Trasformazione completa di bagno con finiture di pregio, doppio lavabo e cabina doccia in cristallo',
+  beforeImage: '/lovable-uploads/c15b2e02-5ad6-4a92-badf-34df1fda79ed.png',
+  afterImage: '/lovable-uploads/7af50e1d-329a-4409-9f15-dfbe30a8643f.png',
+  category: 'Bagno Premium',
+  year: '2024',
+  area: '12 m²',
+  duration: '3 settimane',
+  investment: '€18.000',
+  valueIncrease: '€28.000',
+  roi: '+55%',
+  location: 'Residenza privata',
+  gallery: ['/lovable-uploads/c15b2e02-5ad6-4a92-badf-34df1fda79ed.png', '/lovable-uploads/7af50e1d-329a-4409-9f15-dfbe30a8643f.png'],
+  features: ['Rivestimenti in gres effetto marmo', 'Doppio lavabo con top in legno', 'Cabina doccia su misura', 'Illuminazione LED integrata', 'Termoarredo di design'],
+  fullDescription: 'Completa ristrutturazione di un bagno principale con demolizione e ricostruzione totale. Il progetto ha previsto la riorganizzazione degli spazi per ottimizzare la funzionalità, l\'installazione di rivestimenti in gres porcellanato effetto marmo grigio e la realizzazione di un mobile bagno su misura con doppio lavabo. La cabina doccia in cristallo temperato e il sistema di illuminazione LED creano un ambiente moderno e rilassante.',
+  client: 'Famiglia privata',
+  challenges: ['Rifacimento impianti', 'Coordinamento tempi ristretti', 'Smaltimento materiali', 'Impermeabilizzazione avanzata']
+}, {
+  id: '2',
+  title: 'Villa Moderna Brianza',
+  description: 'Trasformazione completa di villa anni \'70 in moderna residenza eco-sostenibile',
+  beforeImage: '/lovable-uploads/36938368-ad52-4a38-b70d-1ae8cda58b44.png',
+  afterImage: '/lovable-uploads/3901b7c0-4d51-4c4c-be57-f18c9ea1fb35.png',
+  category: 'Residenziale',
+  year: '2023',
+  area: '350 m²',
+  duration: '6 mesi',
+  investment: '€450.000',
+  valueIncrease: '€650.000',
+  roi: '+44%',
+  location: 'Monza e Brianza',
+  gallery: ['/lovable-uploads/36938368-ad52-4a38-b70d-1ae8cda58b44.png', '/lovable-uploads/3901b7c0-4d51-4c4c-be57-f18c9ea1fb35.png', '/lovable-uploads/4daa0b20-6767-4ff7-a2f4-0d8a007514e7.png', '/lovable-uploads/52676327-6506-4e69-9589-d64478bf5833.png'],
+  features: ['Pannelli solari', 'Isolamento cappotto', 'Pompa di calore', 'Giardino zen', 'Garage doppio'],
+  fullDescription: 'Completa riqualificazione energetica e architettonica di una villa degli anni \'70. L\'intervento ha trasformato un\'abitazione obsoleta in una moderna residenza ad alta efficienza energetica, classe A+. Particolare attenzione è stata dedicata all\'integrazione con il verde circostante e alla sostenibilità ambientale.',
+  client: 'Famiglia con bambini',
+  challenges: ['Efficienza energetica', 'Preservare alberi esistenti', 'Normative locali', 'Budget ottimizzato']
+}, {
+  id: '3',
+  title: 'Loft Industriale Navigli',
+  description: 'Conversione di ex-fabbrica in lussuoso loft con design industriale contemporaneo',
+  beforeImage: '/lovable-uploads/4daa0b20-6767-4ff7-a2f4-0d8a007514e7.png',
+  afterImage: '/lovable-uploads/52676327-6506-4e69-9589-d64478bf5833.png',
+  category: 'Conversione',
+  year: '2024',
+  area: '220 m²',
+  duration: '5 mesi',
+  investment: '€320.000',
+  valueIncrease: '€480.000',
+  roi: '+50%',
+  location: 'Navigli, Milano',
+  gallery: ['/lovable-uploads/4daa0b20-6767-4ff7-a2f4-0d8a007514e7.png', '/lovable-uploads/52676327-6506-4e69-9589-d64478bf5833.png', '/lovable-uploads/819c5323-6436-4de6-9198-c17175c038bf.png', '/lovable-uploads/864e5ad9-2366-4aba-824b-9a51a154d926.png'],
+  features: ['Soffitti alti 4m', 'Travi a vista', 'Cucina open space', 'Mezzanino studio', 'Cortile privato'],
+  fullDescription: 'Straordinaria conversione di un ex-capannone industriale nei Navigli in un esclusivo loft contemporaneo. Il progetto ha saputo valorizzare gli elementi architettonici originali, come i soffitti alti e le strutture in ferro, integrandoli con soluzioni di design moderne e funzionali per creare uno spazio abitativo unico.',
+  client: 'Artista contemporaneo',
+  challenges: ['Strutture industriali esistenti', 'Acustica spazi aperti', 'Normative antincendio', 'Integrazione impianti moderni']
+}, {
+  id: '4',
+  title: 'Appartamento Brera',
+  description: 'Ristrutturazione conservativa con materiali di pregio e tecnologie integrate',
+  beforeImage: '/lovable-uploads/819c5323-6436-4de6-9198-c17175c038bf.png',
+  afterImage: '/lovable-uploads/864e5ad9-2366-4aba-824b-9a51a154d926.png',
+  category: 'Ristrutturazione',
+  year: '2023',
+  area: '120 m²',
+  duration: '3 mesi',
+  investment: '€180.000',
+  valueIncrease: '€260.000',
+  roi: '+44%',
+  location: 'Brera, Milano',
+  gallery: ['/lovable-uploads/819c5323-6436-4de6-9198-c17175c038bf.png', '/lovable-uploads/864e5ad9-2366-4aba-824b-9a51a154d926.png', '/lovable-uploads/8c69dd49-3b04-426a-addf-0157c027eb9a.png'],
+  features: ['Affreschi restaurati', 'Pavimenti originali', 'Illuminazione LED', 'Climatizzazione invisibile', 'Arredamento su misura'],
+  fullDescription: 'Delicata ristrutturazione di un appartamento storico nel cuore di Brera, con particolare attenzione alla conservazione degli elementi originali. Il progetto ha integrato le tecnologie moderne nel rispetto dell\'identità storica dell\'immobile, creando un perfetto equilibrio tra passato e presente.',
+  client: 'Collezionista d\'arte',
+  challenges: ['Vincoli soprintendenza', 'Elementi storici da preservare', 'Spazi compatti', 'Integrazione discreta tecnologie']
+}, {
+  id: '5',
+  title: 'Penthouse Citylife',
+  description: 'Creazione di penthouse di lusso con terrazza panoramica e domotica avanzata',
+  beforeImage: '/lovable-uploads/8c69dd49-3b04-426a-addf-0157c027eb9a.png',
+  afterImage: '/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png',
+  category: 'Luxury',
+  year: '2024',
+  area: '280 m²',
+  duration: '7 mesi',
+  investment: '€550.000',
+  valueIncrease: '€850.000',
+  roi: '+55%',
+  location: 'CityLife, Milano',
+  gallery: ['/lovable-uploads/8c69dd49-3b04-426a-addf-0157c027eb9a.png', '/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png', '/lovable-uploads/9ff1f306-f456-4b2a-a066-af82388974f8.png', '/lovable-uploads/a40ad856-6cad-4b3d-8aa6-0c9ef4e19ff6.png'],
+  features: ['Terrazza 120mq', 'Vista Bosco Verticale', 'Home theater', 'Wine cellar', 'Sistema domotico integrale'],
+  fullDescription: 'Esclusivo penthouse nel prestigioso quartiere CityLife, progettato per offrire il massimo del comfort e del lusso. La terrazza panoramica offre una vista mozzafiato sui grattacieli e sul Bosco Verticale, mentre gli interni sono stati concepiti come un\'opera d\'arte abitabile con tecnologie all\'avanguardia.',
+  client: 'Imprenditore fashion',
+  challenges: ['Logistica grattacielo', 'Peso strutturale terrazza', 'Integrazione domotica complessa', 'Standard luxury internazionali']
+}, {
+  id: '6',
+  title: 'Casa Storica Centro',
+  description: 'Restauro conservativo di palazzo storico con modernizzazione degli impianti',
+  beforeImage: '/lovable-uploads/9ff1f306-f456-4b2a-a066-af82388974f8.png',
+  afterImage: '/lovable-uploads/a40ad856-6cad-4b3d-8aa6-0c9ef4e19ff6.png',
+  category: 'Restauro',
+  year: '2023',
+  area: '200 m²',
+  duration: '8 mesi',
+  investment: '€380.000',
+  valueIncrease: '€520.000',
+  roi: '+37%',
+  location: 'Centro Storico, Milano',
+  gallery: ['/lovable-uploads/9ff1f306-f456-4b2a-a066-af82388974f8.png', '/lovable-uploads/a40ad856-6cad-4b3d-8aa6-0c9ef4e19ff6.png', '/lovable-uploads/b37da651-34fa-4a23-a57d-a86da509e8bc.png', '/lovable-uploads/b413d1ec-e2d9-46b5-ac7e-7c0586505184.png'],
+  features: ['Affreschi XVIII secolo', 'Pavimenti alla veneziana', 'Caminetto restaurato', 'Impianti a scomparsa', 'Giardino interno'],
+  fullDescription: 'Prestigioso restauro conservativo di un appartamento in palazzo storico del XVIII secolo. Il progetto ha riportato agli antichi splendori gli elementi decorativi originali, integrando discretamente tutti i comfort moderni per creare un ambiente di rara eleganza e comfort.',
+  client: 'Famiglia storica milanese',
+  challenges: ['Approvazione soprintendenza', 'Tecniche restauro tradizionali', 'Impianti non invasivi', 'Coordinamento artigiani specializzati']
+}];
+const ProjectCard = ({
+  project,
+  index,
+  onOpenModal
+}: {
+  project: Project;
+  index: number;
+  onOpenModal: (project: Project) => void;
+}) => {
   const [sliderValue, setSliderValue] = useState([0]);
   const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group"
-      onMouseEnter={() => !isDragging && setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+  return <motion.div initial={{
+    opacity: 0,
+    y: 30
+  }} animate={{
+    opacity: 1,
+    y: 0
+  }} transition={{
+    duration: 0.6,
+    delay: index * 0.1
+  }} className="group" onMouseEnter={() => !isDragging && setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
       {/* Animated slider value for hover effect */}
-      <motion.div
-        animate={isHovered && !isDragging ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.3, delay: isHovered ? 0.2 : 0 }}
-        onAnimationComplete={() => {
-          if (isHovered && !isDragging) {
-            // Animate slider to 100% on hover
-            const interval = setInterval(() => {
-              setSliderValue(prev => {
-                const newValue = Math.min(prev[0] + 2, 100);
-                if (newValue >= 100) {
-                  clearInterval(interval);
-                }
-                return [newValue];
-              });
-            }, 16);
-          } else if (!isHovered && !isDragging) {
-            // Animate back to 0% when not hovered
-            const interval = setInterval(() => {
-              setSliderValue(prev => {
-                const newValue = Math.max(prev[0] - 2, 0);
-                if (newValue <= 0) {
-                  clearInterval(interval);
-                }
-                return [newValue];
-              });
-            }, 16);
-          }
-        }}
-      />
+      <motion.div animate={isHovered && !isDragging ? {
+      opacity: 1
+    } : {
+      opacity: 0
+    }} transition={{
+      duration: 0.3,
+      delay: isHovered ? 0.2 : 0
+    }} onAnimationComplete={() => {
+      if (isHovered && !isDragging) {
+        // Animate slider to 100% on hover
+        const interval = setInterval(() => {
+          setSliderValue(prev => {
+            const newValue = Math.min(prev[0] + 2, 100);
+            if (newValue >= 100) {
+              clearInterval(interval);
+            }
+            return [newValue];
+          });
+        }, 16);
+      } else if (!isHovered && !isDragging) {
+        // Animate back to 0% when not hovered
+        const interval = setInterval(() => {
+          setSliderValue(prev => {
+            const newValue = Math.max(prev[0] - 2, 0);
+            if (newValue <= 0) {
+              clearInterval(interval);
+            }
+            return [newValue];
+          });
+        }, 16);
+      }
+    }} />
       <Card className="overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer" onClick={() => onOpenModal(project)}>
         <div className="relative aspect-[4/3] overflow-hidden">
           {/* Before/After Images */}
           <div className="relative w-full h-full">
-            <img
-              src={project.beforeImage}
-              alt={`${project.title} - Prima`}
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{
-                clipPath: `polygon(0 0, ${sliderValue[0]}% 0, ${sliderValue[0]}% 100%, 0 100%)`
-              }}
-            />
-            <img
-              src={project.afterImage}
-              alt={`${project.title} - Dopo`}
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{
-                clipPath: `polygon(${sliderValue[0]}% 0, 100% 0, 100% 100%, ${sliderValue[0]}% 100%)`
-              }}
-            />
+            <img src={project.beforeImage} alt={`${project.title} - Prima`} className="absolute inset-0 w-full h-full object-cover" style={{
+            clipPath: `polygon(0 0, ${sliderValue[0]}% 0, ${sliderValue[0]}% 100%, 0 100%)`
+          }} />
+            <img src={project.afterImage} alt={`${project.title} - Dopo`} className="absolute inset-0 w-full h-full object-cover" style={{
+            clipPath: `polygon(${sliderValue[0]}% 0, 100% 0, 100% 100%, ${sliderValue[0]}% 100%)`
+          }} />
             
             {/* Slider Handle */}
-            <div
-              className="absolute top-0 bottom-0 w-1 bg-white/90 shadow-lg z-10 flex items-center justify-center"
-              style={{ left: `${sliderValue[0]}%`, transform: 'translateX(-50%)' }}
-            >
+            <div className="absolute top-0 bottom-0 w-1 bg-white/90 shadow-lg z-10 flex items-center justify-center" style={{
+            left: `${sliderValue[0]}%`,
+            transform: 'translateX(-50%)'
+          }}>
               <div className="w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
                 <div className="w-1 h-4 bg-gray-400 rounded-full mx-0.5"></div>
                 <div className="w-1 h-4 bg-gray-400 rounded-full mx-0.5"></div>
@@ -266,26 +230,21 @@ const ProjectCard = ({ project, index, onOpenModal }: { project: Project; index:
 
             {/* Hidden Slider for Interaction */}
             <div className="absolute inset-0">
-              <Slider
-                value={sliderValue}
-                onValueChange={setSliderValue}
-                onPointerDown={() => setIsDragging(true)}
-                onPointerUp={() => setIsDragging(false)}
-                max={100}
-                step={1}
-                className="w-full h-full opacity-0 cursor-grab active:cursor-grabbing"
-              />
+              <Slider value={sliderValue} onValueChange={setSliderValue} onPointerDown={() => setIsDragging(true)} onPointerUp={() => setIsDragging(false)} max={100} step={1} className="w-full h-full opacity-0 cursor-grab active:cursor-grabbing" />
             </div>
 
             {/* Value Increase Overlay */}
             <AnimatePresence>
-              {isHovered && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end justify-center pb-6"
-                >
+              {isHovered && <motion.div initial={{
+              opacity: 0,
+              y: 20
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} exit={{
+              opacity: 0,
+              y: 20
+            }} className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end justify-center pb-6">
                   <div className="text-center text-white">
                     <div className="flex items-center gap-2 justify-center mb-2">
                       <TrendingUp size={20} className="text-green-400" />
@@ -293,8 +252,7 @@ const ProjectCard = ({ project, index, onOpenModal }: { project: Project; index:
                     </div>
                     <div className="text-sm opacity-90">Aumento di valore</div>
                   </div>
-                </motion.div>
-              )}
+                </motion.div>}
             </AnimatePresence>
           </div>
         </div>
@@ -348,41 +306,43 @@ const ProjectCard = ({ project, index, onOpenModal }: { project: Project; index:
           </div>
         </CardContent>
       </Card>
-    </motion.div>
-  );
+    </motion.div>;
 };
-
 const ProgettiPage = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
   const handleOpenModal = (project: Project) => {
     setSelectedProject(project);
     setCurrentImageIndex(0);
   };
-
-  return (
-    <div className="relative bg-background">
+  return <div className="relative bg-background">
       <Navigation />
       
       <main className="pt-16 min-h-screen bg-background">
         {/* Header Section */}
         <div className="text-center py-16 px-6">
-          <motion.h1 
-            className="text-5xl lg:text-6xl font-light text-secondary mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <motion.h1 className="text-5xl lg:text-6xl font-light text-secondary mb-6" initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.8
+        }}>
             I Nostri
             <span className="block text-primary font-medium">Progetti</span>
           </motion.h1>
-          <motion.p 
-            className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+          <motion.p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.8,
+          delay: 0.2
+        }}>
             Scopri le trasformazioni straordinarie dei nostri progetti. 
             Trascina il cursore per vedere il prima e dopo di ogni ristrutturazione.
           </motion.p>
@@ -391,23 +351,20 @@ const ProgettiPage = () => {
         {/* Projects Grid */}
         <div className="max-w-7xl mx-auto px-6 pb-20">
           <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <ProjectCard 
-                key={project.id} 
-                project={project} 
-                index={index} 
-                onOpenModal={handleOpenModal}
-              />
-            ))}
+            {projects.map((project, index) => <ProjectCard key={project.id} project={project} index={index} onOpenModal={handleOpenModal} />)}
           </div>
 
           {/* CTA Section */}
-          <motion.div 
-            className="text-center mt-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
+          <motion.div className="text-center mt-16" initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.8,
+          delay: 0.6
+        }}>
             <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl p-8">
               <h3 className="text-2xl font-semibold text-secondary mb-4">
                 Trasforma anche tu la tua casa
@@ -417,7 +374,7 @@ const ProgettiPage = () => {
                 Contattaci per scoprire come possiamo aumentare il valore della tua proprietà.
               </p>
               <button className="group relative px-8 py-4 bg-gradient-to-r from-primary to-primary/80 text-white rounded-2xl font-medium tracking-wide hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                <span className="relative z-10">Richiedi Consulenza Gratuita</span>
+                <span className="relative z-10">Richiedi Preventivo</span>
                 <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </button>
             </div>
@@ -428,68 +385,32 @@ const ProgettiPage = () => {
       {/* Project Modal */}
       <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
         <DialogContent className="max-w-7xl w-full h-[90vh] p-0 overflow-hidden">
-          {selectedProject && (
-            <div className="grid lg:grid-cols-2 h-full">
+          {selectedProject && <div className="grid lg:grid-cols-2 h-full">
               {/* Image Gallery Section */}
               <div className="relative bg-secondary/5">
                 <DialogHeader className="absolute top-4 right-4 z-10">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="h-8 w-8 p-0 bg-white/90 hover:bg-white"
-                    onClick={() => setSelectedProject(null)}
-                  >
+                  <Button variant="outline" size="sm" className="h-8 w-8 p-0 bg-white/90 hover:bg-white" onClick={() => setSelectedProject(null)}>
                     <X className="h-4 w-4" />
                   </Button>
                 </DialogHeader>
                 
                 <div className="relative h-full">
-                  <img
-                    src={selectedProject.gallery[currentImageIndex]}
-                    alt={`${selectedProject.title} - Immagine ${currentImageIndex + 1}`}
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={selectedProject.gallery[currentImageIndex]} alt={`${selectedProject.title} - Immagine ${currentImageIndex + 1}`} className="w-full h-full object-cover" />
                   
                   {/* Navigation arrows */}
-                  {selectedProject.gallery.length > 1 && (
-                    <>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="absolute left-4 top-1/2 transform -translate-y-1/2 h-10 w-10 p-0 bg-white/90 hover:bg-white"
-                        onClick={() => setCurrentImageIndex(prev => 
-                          prev === 0 ? selectedProject.gallery.length - 1 : prev - 1
-                        )}
-                      >
+                  {selectedProject.gallery.length > 1 && <>
+                      <Button variant="outline" size="sm" className="absolute left-4 top-1/2 transform -translate-y-1/2 h-10 w-10 p-0 bg-white/90 hover:bg-white" onClick={() => setCurrentImageIndex(prev => prev === 0 ? selectedProject.gallery.length - 1 : prev - 1)}>
                         <ChevronLeft className="h-4 w-4" />
                       </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="absolute right-4 top-1/2 transform -translate-y-1/2 h-10 w-10 p-0 bg-white/90 hover:bg-white"
-                        onClick={() => setCurrentImageIndex(prev => 
-                          prev === selectedProject.gallery.length - 1 ? 0 : prev + 1
-                        )}
-                      >
+                      <Button variant="outline" size="sm" className="absolute right-4 top-1/2 transform -translate-y-1/2 h-10 w-10 p-0 bg-white/90 hover:bg-white" onClick={() => setCurrentImageIndex(prev => prev === selectedProject.gallery.length - 1 ? 0 : prev + 1)}>
                         <ChevronRight className="h-4 w-4" />
                       </Button>
-                    </>
-                  )}
+                    </>}
                   
                   {/* Image indicators */}
-                  {selectedProject.gallery.length > 1 && (
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                      {selectedProject.gallery.map((_, index) => (
-                        <button
-                          key={index}
-                          className={`w-2 h-2 rounded-full transition-all ${
-                            index === currentImageIndex ? 'bg-white' : 'bg-white/50'
-                          }`}
-                          onClick={() => setCurrentImageIndex(index)}
-                        />
-                      ))}
-                    </div>
-                  )}
+                  {selectedProject.gallery.length > 1 && <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                      {selectedProject.gallery.map((_, index) => <button key={index} className={`w-2 h-2 rounded-full transition-all ${index === currentImageIndex ? 'bg-white' : 'bg-white/50'}`} onClick={() => setCurrentImageIndex(index)} />)}
+                    </div>}
                 </div>
               </div>
 
@@ -548,12 +469,10 @@ const ProgettiPage = () => {
                   <div>
                     <h3 className="text-lg font-semibold text-secondary mb-3">Caratteristiche Principali</h3>
                     <div className="grid grid-cols-1 gap-2">
-                      {selectedProject.features.map((feature, index) => (
-                        <div key={index} className="flex items-center gap-2 text-sm">
+                      {selectedProject.features.map((feature, index) => <div key={index} className="flex items-center gap-2 text-sm">
                           <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
                           <span>{feature}</span>
-                        </div>
-                      ))}
+                        </div>)}
                     </div>
                   </div>
 
@@ -561,12 +480,10 @@ const ProgettiPage = () => {
                   <div>
                     <h3 className="text-lg font-semibold text-secondary mb-3">Sfide Superate</h3>
                     <div className="grid grid-cols-1 gap-2">
-                      {selectedProject.challenges.map((challenge, index) => (
-                        <div key={index} className="flex items-center gap-2 text-sm">
+                      {selectedProject.challenges.map((challenge, index) => <div key={index} className="flex items-center gap-2 text-sm">
                           <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
                           <span>{challenge}</span>
-                        </div>
-                      ))}
+                        </div>)}
                     </div>
                   </div>
 
@@ -578,14 +495,11 @@ const ProgettiPage = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          )}
+            </div>}
         </DialogContent>
       </Dialog>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default ProgettiPage;
