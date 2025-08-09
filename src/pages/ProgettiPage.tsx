@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Building, Zap, Leaf, Clock, Hammer, TrendingUp, Calendar, Euro, X, ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Slider } from '@/components/ui/slider';
@@ -311,6 +312,7 @@ const ProjectCard = ({
 const ProgettiPage = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const navigate = useNavigate();
   const handleOpenModal = (project: Project) => {
     setSelectedProject(project);
     setCurrentImageIndex(0);
@@ -373,7 +375,10 @@ const ProgettiPage = () => {
                 Ogni progetto inizia con un'idea e si realizza con la nostra esperienza. 
                 Contattaci per scoprire come possiamo aumentare il valore della tua proprietà.
               </p>
-              <button className="group relative px-8 py-4 bg-gradient-to-r from-primary to-primary/80 text-white rounded-2xl font-medium tracking-wide hover:shadow-2xl transition-all duration-300 overflow-hidden">
+              <button 
+                className="group relative px-8 py-4 bg-gradient-to-r from-primary to-primary/80 text-white rounded-2xl font-medium tracking-wide hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                onClick={() => navigate('/contatti')}
+              >
                 <span className="relative z-10">Richiedi Preventivo</span>
                 <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </button>
