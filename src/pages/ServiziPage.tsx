@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Construction } from 'lucide-react';
+import { ChefHat, Sofa, Bath, Bed, Warehouse } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
@@ -29,35 +29,35 @@ const ServiziPage = () => {
     {
       title: 'Cucina',
       description: 'Progettazione e ristrutturazione cucine moderne e funzionali',
-      image: '/lovable-uploads/36938368-ad52-4a38-b70d-1ae8cda58b44.png',
+      icon: ChefHat,
       link: '/cucina',
       delay: 0
     },
     {
       title: 'Living',
       description: 'Trasformazione del soggiorno in spazi eleganti e accoglienti',
-      image: '/lovable-uploads/9ff1f306-f456-4b2a-a066-af82388974f8.png',
+      icon: Sofa,
       link: '/progettazione',
       delay: 200
     },
     {
       title: 'Bagno',
       description: 'Ristrutturazione bagni con materiali di pregio e design contemporaneo',
-      image: '/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png',
+      icon: Bath,
       link: '/materiali',
       delay: 400
     },
     {
       title: 'Camera',
       description: 'Creazione di camere da letto rilassanti e personalizzate',
-      image: '/lovable-uploads/52676327-6506-4e69-9589-d64478bf5833.png',
-      link: '/efficienza',
+      icon: Bed,
+      link: '/camera',
       delay: 600
     },
     {
       title: 'Cantina',
       description: 'Realizzazione spazi interrati e cantine di design',
-      image: '/lovable-uploads/df7cdc40-846d-435b-94ad-e7adc8115c0c.png',
+      icon: Warehouse,
       link: null,
       delay: 800,
       comingSoon: true
@@ -110,11 +110,10 @@ const ServiziPage = () => {
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       
                       <div className="relative z-10 p-6">
-                        <div className="aspect-video mb-4 rounded-xl overflow-hidden bg-gray-100">
-                          <img 
-                            src={room.image} 
-                            alt={room.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        <div className="aspect-video mb-4 rounded-xl flex items-center justify-center bg-gradient-to-br from-muted/30 to-muted/50">
+                          <room.icon 
+                            size={64}
+                            className="text-primary group-hover:text-secondary transition-colors duration-300"
                           />
                         </div>
                         
@@ -140,11 +139,10 @@ const ServiziPage = () => {
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       
                       <div className="relative z-10 p-6">
-                        <div className="aspect-video mb-4 rounded-xl overflow-hidden bg-gray-100">
-                          <img 
-                            src={room.image} 
-                            alt={room.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        <div className="aspect-video mb-4 rounded-xl flex items-center justify-center bg-gradient-to-br from-muted/30 to-muted/50">
+                          <room.icon 
+                            size={64}
+                            className="text-primary group-hover:text-secondary transition-colors duration-300"
                           />
                         </div>
                         
