@@ -36,7 +36,7 @@ const AboutSection = () => {
           {/* Logo */}
           <div className="order-1 lg:order-2">
             <div className="flex justify-center lg:justify-end">
-              <div className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-card border border-border rounded-2xl p-8 flex items-center justify-center">
+              <div className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-gradient-to-br from-background to-muted/20 rounded-3xl p-12 flex items-center justify-center shadow-sm hover:shadow-lg transition-all duration-300 border border-border/30">
                 <img 
                   src="/lovable-uploads/012fb361-4926-4947-8016-0db47d733f90.png"
                   alt="EDIL FAST MILANO Logo"
