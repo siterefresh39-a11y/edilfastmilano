@@ -54,10 +54,10 @@ const SocialPage = () => {
       {/* Hero Section */}
       <section className="pt-16 pb-20 bg-background">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h1 className="text-5xl font-light text-foreground mb-6 animate-fade-in">
+          <h1 className="text-5xl font-light text-foreground mb-6">
             I Nostri Social Media
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in delay-200">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Seguici sui nostri canali social per rimanere aggiornato sui progetti, 
             le novità e i dietro le quinte di Edil Fast Milano
           </p>
@@ -84,8 +84,7 @@ const SocialPage = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`group relative p-8 rounded-3xl border-2 border-border bg-card hover:border-primary transition-all duration-500 transform hover:scale-105 hover:shadow-2xl ${social.bgColor} animate-fade-in`}
-                  style={{ animationDelay: `${index * 200}ms` }}
+                  className={`group relative p-8 rounded-3xl border-2 border-border bg-card hover:border-primary transition-all duration-500 transform hover:scale-105 hover:shadow-2xl ${social.bgColor}`}
                 >
                   <div className="flex items-center space-x-6">
                     {/* Icon Container */}
@@ -117,7 +116,7 @@ const SocialPage = () => {
 
           {/* Other Social Networks */}
           <div className="text-center">
-            <h3 className="text-lg font-medium text-foreground mb-8 animate-fade-in delay-500">
+            <h3 className="text-lg font-medium text-foreground mb-8">
               Ci trovi anche su
             </h3>
             
@@ -130,8 +129,7 @@ const SocialPage = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group p-4 rounded-2xl bg-muted hover:bg-background border border-border transition-all duration-300 transform hover:scale-125 hover:-translate-y-2 ${social.color} animate-fade-in hover:shadow-lg`}
-                    style={{ animationDelay: `${600 + index * 100}ms` }}
+                    className={`group p-4 rounded-2xl bg-muted hover:bg-background border border-border transition-all duration-300 transform hover:scale-125 hover:-translate-y-2 ${social.color} hover:shadow-lg`}
                     title={social.name}
                   >
                     <IconComponent className="w-6 h-6 transition-transform duration-300 group-hover:rotate-12" />
@@ -142,10 +140,6 @@ const SocialPage = () => {
           </div>
         </div>
 
-        {/* Floating Animation Elements */}
-        <div className="absolute top-10 left-10 w-2 h-2 bg-primary rounded-full animate-bounce delay-300"></div>
-        <div className="absolute bottom-20 right-20 w-3 h-3 bg-secondary rounded-full animate-bounce delay-700"></div>
-        <div className="absolute top-1/2 left-20 w-1 h-1 bg-accent rounded-full animate-bounce delay-1000"></div>
       </section>
 
       {/* Footer */}
