@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { Home, ArrowLeft } from 'lucide-react';
+import { Home, ArrowLeft, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 import Footer from '@/components/Footer';
 
 const SmartTechPage = () => {
@@ -147,6 +148,46 @@ const SmartTechPage = () => {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.4 }}
+            className="bg-card border border-border rounded-2xl p-8"
+          >
+            <h3 className="text-2xl font-bold text-card-foreground mb-4">
+              Trasforma la tua casa in una Smart Home
+            </h3>
+            <p className="text-muted-foreground mb-8">
+              Scopri come i nostri sistemi intelligenti possono migliorare il comfort e l'efficienza della tua abitazione
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link to="/contatti#contact-form">
+                <Button 
+                  size="lg"
+                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:scale-105 transition-all duration-300 px-12 py-6 text-lg font-semibold shadow-2xl"
+                >
+                  <Sparkles className="w-5 h-5 mr-3" />
+                  Richiedi Preventivo Smart Home
+                </Button>
+              </Link>
+              
+              <Link to="/progetti">
+                <Button 
+                  variant="outline"
+                  size="lg"
+                  className="px-12 py-6 text-lg font-semibold hover:scale-105 transition-all duration-300 border-2"
+                >
+                  Vedi i Nostri Progetti
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
       

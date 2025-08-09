@@ -267,15 +267,27 @@ const ProgettazionePage = () => {
                   transition={{ delay: 0.8 }}
                   className="mt-16 text-center"
                 >
-                  <div className="relative inline-block">
-                    <div className={`absolute inset-0 bg-gradient-to-r ${currentPackage.gradient} blur-xl opacity-50 rounded-2xl`} />
-                    <Link to="/contatti#contact-form">
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <div className="relative inline-block">
+                      <div className={`absolute inset-0 bg-gradient-to-r ${currentPackage.gradient} blur-xl opacity-50 rounded-2xl`} />
+                      <Link to="/contatti#contact-form">
+                        <Button 
+                          size="lg" 
+                          className={`relative z-10 bg-gradient-to-r ${currentPackage.gradient} hover:scale-105 transition-all duration-300 px-12 py-6 text-lg font-semibold shadow-2xl`}
+                        >
+                          <Sparkles className="w-5 h-5 mr-3" />
+                          Richiedi Preventivo {selectedPackage.charAt(0).toUpperCase() + selectedPackage.slice(1)}
+                        </Button>
+                      </Link>
+                    </div>
+                    
+                    <Link to="/progetti">
                       <Button 
-                        size="lg" 
-                        className={`relative z-10 bg-gradient-to-r ${currentPackage.gradient} hover:scale-105 transition-all duration-300 px-12 py-6 text-lg font-semibold shadow-2xl`}
+                        variant="outline"
+                        size="lg"
+                        className="px-12 py-6 text-lg font-semibold hover:scale-105 transition-all duration-300 border-2"
                       >
-                        <Sparkles className="w-5 h-5 mr-3" />
-                        Richiedi Preventivo {selectedPackage.charAt(0).toUpperCase() + selectedPackage.slice(1)}
+                        Vedi i Nostri Progetti
                       </Button>
                     </Link>
                   </div>
