@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Building, Zap, Leaf, Clock, Hammer, TrendingUp, Calendar, Euro, X, ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
+import { Building, Zap, Leaf, Clock, Hammer, TrendingUp, Calendar, Euro, X, ChevronLeft, ChevronRight, MapPin, Construction } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -28,6 +28,7 @@ interface Project {
   fullDescription: string;
   client: string;
   challenges: string[];
+  isPlaceholder?: boolean;
 }
 const projects: Project[] = [{
   id: '1',
@@ -50,99 +51,104 @@ const projects: Project[] = [{
   challenges: ['Rifacimento impianti', 'Coordinamento tempi ristretti', 'Smaltimento materiali', 'Impermeabilizzazione avanzata']
 }, {
   id: '2',
-  title: 'Villa Moderna Brianza',
-  description: 'Trasformazione completa di villa anni \'70 in moderna residenza eco-sostenibile',
-  beforeImage: '/lovable-uploads/36938368-ad52-4a38-b70d-1ae8cda58b44.png',
-  afterImage: '/lovable-uploads/3901b7c0-4d51-4c4c-be57-f18c9ea1fb35.png',
+  title: 'Titolo Progetto Residenziale',
+  description: 'Descrizione breve del progetto da inserire qui',
+  beforeImage: '',
+  afterImage: '',
   category: 'Residenziale',
-  year: '2023',
-  area: '350 m²',
-  duration: '6 mesi',
-  investment: '€450.000',
-  valueIncrease: '€650.000',
-  roi: '+44%',
-  location: 'Monza e Brianza',
-  gallery: ['/lovable-uploads/36938368-ad52-4a38-b70d-1ae8cda58b44.png', '/lovable-uploads/3901b7c0-4d51-4c4c-be57-f18c9ea1fb35.png', '/lovable-uploads/4daa0b20-6767-4ff7-a2f4-0d8a007514e7.png', '/lovable-uploads/52676327-6506-4e69-9589-d64478bf5833.png'],
-  features: ['Pannelli solari', 'Isolamento cappotto', 'Pompa di calore', 'Giardino zen', 'Garage doppio'],
-  fullDescription: 'Completa riqualificazione energetica e architettonica di una villa degli anni \'70. L\'intervento ha trasformato un\'abitazione obsoleta in una moderna residenza ad alta efficienza energetica, classe A+. Particolare attenzione è stata dedicata all\'integrazione con il verde circostante e alla sostenibilità ambientale.',
-  client: 'Famiglia con bambini',
-  challenges: ['Efficienza energetica', 'Preservare alberi esistenti', 'Normative locali', 'Budget ottimizzato']
+  year: 'Anno',
+  area: 'XX m²',
+  duration: 'X mesi/settimane',
+  investment: '€XX.XXX',
+  valueIncrease: '€XX.XXX',
+  roi: 'XX%',
+  location: 'Zona da specificare',
+  gallery: [],
+  features: ['Caratteristica da inserire', 'Caratteristica da inserire', 'Caratteristica da inserire'],
+  fullDescription: 'Descrizione completa del progetto da inserire qui. Includere dettagli sui lavori eseguiti, materiali utilizzati e risultati ottenuti.',
+  client: 'Tipologia cliente',
+  challenges: ['Sfida da inserire', 'Sfida da inserire'],
+  isPlaceholder: true
 }, {
   id: '3',
-  title: 'Loft Industriale Navigli',
-  description: 'Conversione di ex-fabbrica in lussuoso loft con design industriale contemporaneo',
-  beforeImage: '/lovable-uploads/4daa0b20-6767-4ff7-a2f4-0d8a007514e7.png',
-  afterImage: '/lovable-uploads/52676327-6506-4e69-9589-d64478bf5833.png',
-  category: 'Conversione',
-  year: '2024',
-  area: '220 m²',
-  duration: '5 mesi',
-  investment: '€320.000',
-  valueIncrease: '€480.000',
-  roi: '+50%',
-  location: 'Navigli, Milano',
-  gallery: ['/lovable-uploads/4daa0b20-6767-4ff7-a2f4-0d8a007514e7.png', '/lovable-uploads/52676327-6506-4e69-9589-d64478bf5833.png', '/lovable-uploads/819c5323-6436-4de6-9198-c17175c038bf.png', '/lovable-uploads/864e5ad9-2366-4aba-824b-9a51a154d926.png'],
-  features: ['Soffitti alti 4m', 'Travi a vista', 'Cucina open space', 'Mezzanino studio', 'Cortile privato'],
-  fullDescription: 'Straordinaria conversione di un ex-capannone industriale nei Navigli in un esclusivo loft contemporaneo. Il progetto ha saputo valorizzare gli elementi architettonici originali, come i soffitti alti e le strutture in ferro, integrandoli con soluzioni di design moderne e funzionali per creare uno spazio abitativo unico.',
-  client: 'Artista contemporaneo',
-  challenges: ['Strutture industriali esistenti', 'Acustica spazi aperti', 'Normative antincendio', 'Integrazione impianti moderni']
+  title: 'Nome Progetto Commerciale',
+  description: 'Breve descrizione dei lavori eseguiti',
+  beforeImage: '',
+  afterImage: '',
+  category: 'Commerciale',
+  year: 'Anno',
+  area: 'XX m²',
+  duration: 'X mesi/settimane',
+  investment: '€XX.XXX',
+  valueIncrease: '€XX.XXX',
+  roi: 'XX%',
+  location: 'Zona da specificare',
+  gallery: [],
+  features: ['Caratteristica da inserire', 'Caratteristica da inserire', 'Caratteristica da inserire'],
+  fullDescription: 'Descrizione completa del progetto da inserire qui. Includere dettagli sui lavori eseguiti, materiali utilizzati e risultati ottenuti.',
+  client: 'Tipologia cliente',
+  challenges: ['Sfida da inserire', 'Sfida da inserire'],
+  isPlaceholder: true
 }, {
   id: '4',
-  title: 'Appartamento Brera',
-  description: 'Ristrutturazione conservativa con materiali di pregio e tecnologie integrate',
-  beforeImage: '/lovable-uploads/819c5323-6436-4de6-9198-c17175c038bf.png',
-  afterImage: '/lovable-uploads/864e5ad9-2366-4aba-824b-9a51a154d926.png',
+  title: 'Titolo Ristrutturazione',
+  description: 'Descrizione breve del progetto da inserire qui',
+  beforeImage: '',
+  afterImage: '',
   category: 'Ristrutturazione',
-  year: '2023',
-  area: '120 m²',
-  duration: '3 mesi',
-  investment: '€180.000',
-  valueIncrease: '€260.000',
-  roi: '+44%',
-  location: 'Brera, Milano',
-  gallery: ['/lovable-uploads/819c5323-6436-4de6-9198-c17175c038bf.png', '/lovable-uploads/864e5ad9-2366-4aba-824b-9a51a154d926.png', '/lovable-uploads/8c69dd49-3b04-426a-addf-0157c027eb9a.png'],
-  features: ['Affreschi restaurati', 'Pavimenti originali', 'Illuminazione LED', 'Climatizzazione invisibile', 'Arredamento su misura'],
-  fullDescription: 'Delicata ristrutturazione di un appartamento storico nel cuore di Brera, con particolare attenzione alla conservazione degli elementi originali. Il progetto ha integrato le tecnologie moderne nel rispetto dell\'identità storica dell\'immobile, creando un perfetto equilibrio tra passato e presente.',
-  client: 'Collezionista d\'arte',
-  challenges: ['Vincoli soprintendenza', 'Elementi storici da preservare', 'Spazi compatti', 'Integrazione discreta tecnologie']
+  year: 'Anno',
+  area: 'XX m²',
+  duration: 'X mesi/settimane',
+  investment: '€XX.XXX',
+  valueIncrease: '€XX.XXX',
+  roi: 'XX%',
+  location: 'Zona da specificare',
+  gallery: [],
+  features: ['Caratteristica da inserire', 'Caratteristica da inserire', 'Caratteristica da inserire'],
+  fullDescription: 'Descrizione completa del progetto da inserire qui. Includere dettagli sui lavori eseguiti, materiali utilizzati e risultati ottenuti.',
+  client: 'Tipologia cliente',
+  challenges: ['Sfida da inserire', 'Sfida da inserire'],
+  isPlaceholder: true
 }, {
   id: '5',
-  title: 'Penthouse Citylife',
-  description: 'Creazione di penthouse di lusso con terrazza panoramica e domotica avanzata',
-  beforeImage: '/lovable-uploads/8c69dd49-3b04-426a-addf-0157c027eb9a.png',
-  afterImage: '/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png',
+  title: 'Nome Progetto Luxury',
+  description: 'Breve descrizione dei lavori eseguiti',
+  beforeImage: '',
+  afterImage: '',
   category: 'Luxury',
-  year: '2024',
-  area: '280 m²',
-  duration: '7 mesi',
-  investment: '€550.000',
-  valueIncrease: '€850.000',
-  roi: '+55%',
-  location: 'CityLife, Milano',
-  gallery: ['/lovable-uploads/8c69dd49-3b04-426a-addf-0157c027eb9a.png', '/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png', '/lovable-uploads/9ff1f306-f456-4b2a-a066-af82388974f8.png', '/lovable-uploads/a40ad856-6cad-4b3d-8aa6-0c9ef4e19ff6.png'],
-  features: ['Terrazza 120mq', 'Vista Bosco Verticale', 'Home theater', 'Wine cellar', 'Sistema domotico integrale'],
-  fullDescription: 'Esclusivo penthouse nel prestigioso quartiere CityLife, progettato per offrire il massimo del comfort e del lusso. La terrazza panoramica offre una vista mozzafiato sui grattacieli e sul Bosco Verticale, mentre gli interni sono stati concepiti come un\'opera d\'arte abitabile con tecnologie all\'avanguardia.',
-  client: 'Imprenditore fashion',
-  challenges: ['Logistica grattacielo', 'Peso strutturale terrazza', 'Integrazione domotica complessa', 'Standard luxury internazionali']
+  year: 'Anno',
+  area: 'XX m²',
+  duration: 'X mesi/settimane',
+  investment: '€XX.XXX',
+  valueIncrease: '€XX.XXX',
+  roi: 'XX%',
+  location: 'Zona da specificare',
+  gallery: [],
+  features: ['Caratteristica da inserire', 'Caratteristica da inserire', 'Caratteristica da inserire'],
+  fullDescription: 'Descrizione completa del progetto da inserire qui. Includere dettagli sui lavori eseguiti, materiali utilizzati e risultati ottenuti.',
+  client: 'Tipologia cliente',
+  challenges: ['Sfida da inserire', 'Sfida da inserire'],
+  isPlaceholder: true
 }, {
   id: '6',
-  title: 'Casa Storica Centro',
-  description: 'Restauro conservativo di palazzo storico con modernizzazione degli impianti',
-  beforeImage: '/lovable-uploads/9ff1f306-f456-4b2a-a066-af82388974f8.png',
-  afterImage: '/lovable-uploads/a40ad856-6cad-4b3d-8aa6-0c9ef4e19ff6.png',
+  title: 'Titolo Progetto Restauro',
+  description: 'Descrizione breve del progetto da inserire qui',
+  beforeImage: '',
+  afterImage: '',
   category: 'Restauro',
-  year: '2023',
-  area: '200 m²',
-  duration: '8 mesi',
-  investment: '€380.000',
-  valueIncrease: '€520.000',
-  roi: '+37%',
-  location: 'Centro Storico, Milano',
-  gallery: ['/lovable-uploads/9ff1f306-f456-4b2a-a066-af82388974f8.png', '/lovable-uploads/a40ad856-6cad-4b3d-8aa6-0c9ef4e19ff6.png', '/lovable-uploads/b37da651-34fa-4a23-a57d-a86da509e8bc.png', '/lovable-uploads/b413d1ec-e2d9-46b5-ac7e-7c0586505184.png'],
-  features: ['Affreschi XVIII secolo', 'Pavimenti alla veneziana', 'Caminetto restaurato', 'Impianti a scomparsa', 'Giardino interno'],
-  fullDescription: 'Prestigioso restauro conservativo di un appartamento in palazzo storico del XVIII secolo. Il progetto ha riportato agli antichi splendori gli elementi decorativi originali, integrando discretamente tutti i comfort moderni per creare un ambiente di rara eleganza e comfort.',
-  client: 'Famiglia storica milanese',
-  challenges: ['Approvazione soprintendenza', 'Tecniche restauro tradizionali', 'Impianti non invasivi', 'Coordinamento artigiani specializzati']
+  year: 'Anno',
+  area: 'XX m²',
+  duration: 'X mesi/settimane',
+  investment: '€XX.XXX',
+  valueIncrease: '€XX.XXX',
+  roi: 'XX%',
+  location: 'Zona da specificare',
+  gallery: [],
+  features: ['Caratteristica da inserire', 'Caratteristica da inserire', 'Caratteristica da inserire'],
+  fullDescription: 'Descrizione completa del progetto da inserire qui. Includere dettagli sui lavori eseguiti, materiali utilizzati e risultati ottenuti.',
+  client: 'Tipologia cliente',
+  challenges: ['Sfida da inserire', 'Sfida da inserire'],
+  isPlaceholder: true
 }];
 const ProjectCard = ({
   project,
@@ -199,63 +205,78 @@ const ProjectCard = ({
         }, 16);
       }
     }} />
-      <Card className="overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer" onClick={() => onOpenModal(project)}>
+    <Card className="overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer" onClick={() => onOpenModal(project)}>
         <div className="relative aspect-[4/3] overflow-hidden">
-          {/* Before/After Images */}
-          <div className="relative w-full h-full">
-            <img src={project.beforeImage} alt={`${project.title} - Prima`} className="absolute inset-0 w-full h-full object-cover" style={{
-            clipPath: `polygon(0 0, ${sliderValue[0]}% 0, ${sliderValue[0]}% 100%, 0 100%)`
-          }} />
-            <img src={project.afterImage} alt={`${project.title} - Dopo`} className="absolute inset-0 w-full h-full object-cover" style={{
-            clipPath: `polygon(${sliderValue[0]}% 0, 100% 0, 100% 100%, ${sliderValue[0]}% 100%)`
-          }} />
-            
-            {/* Slider Handle */}
-            <div className="absolute top-0 bottom-0 w-1 bg-white/90 shadow-lg z-10 flex items-center justify-center" style={{
-            left: `${sliderValue[0]}%`,
-            transform: 'translateX(-50%)'
-          }}>
-              <div className="w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
-                <div className="w-1 h-4 bg-gray-400 rounded-full mx-0.5"></div>
-                <div className="w-1 h-4 bg-gray-400 rounded-full mx-0.5"></div>
+          {project.isPlaceholder ? (
+            /* Construction Placeholder */
+            <div className="relative w-full h-full bg-muted/20 flex items-center justify-center">
+              <div className="text-center">
+                <Construction size={64} className="text-muted-foreground/40 mx-auto mb-4" />
+                <div className="text-muted-foreground/60 text-sm font-medium">In Costruzione</div>
+              </div>
+              <div className="absolute top-4 right-4">
+                <Badge variant="secondary" className="bg-orange-100 text-orange-700 border-orange-200">
+                  In Preparazione
+                </Badge>
               </div>
             </div>
+          ) : (
+            /* Before/After Images */
+            <div className="relative w-full h-full">
+              <img src={project.beforeImage} alt={`${project.title} - Prima`} className="absolute inset-0 w-full h-full object-cover" style={{
+              clipPath: `polygon(0 0, ${sliderValue[0]}% 0, ${sliderValue[0]}% 100%, 0 100%)`
+            }} />
+              <img src={project.afterImage} alt={`${project.title} - Dopo`} className="absolute inset-0 w-full h-full object-cover" style={{
+              clipPath: `polygon(${sliderValue[0]}% 0, 100% 0, 100% 100%, ${sliderValue[0]}% 100%)`
+            }} />
+              
+              {/* Slider Handle */}
+              <div className="absolute top-0 bottom-0 w-1 bg-white/90 shadow-lg z-10 flex items-center justify-center" style={{
+              left: `${sliderValue[0]}%`,
+              transform: 'translateX(-50%)'
+            }}>
+                <div className="w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
+                  <div className="w-1 h-4 bg-gray-400 rounded-full mx-0.5"></div>
+                  <div className="w-1 h-4 bg-gray-400 rounded-full mx-0.5"></div>
+                </div>
+              </div>
 
-            {/* Labels */}
-            <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full">
-              <span className="text-white text-sm font-medium">Prima</span>
-            </div>
-            <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full">
-              <span className="text-white text-sm font-medium">Dopo</span>
-            </div>
+              {/* Labels */}
+              <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full">
+                <span className="text-white text-sm font-medium">Prima</span>
+              </div>
+              <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full">
+                <span className="text-white text-sm font-medium">Dopo</span>
+              </div>
 
-            {/* Hidden Slider for Interaction */}
-            <div className="absolute inset-0">
-              <Slider value={sliderValue} onValueChange={setSliderValue} onPointerDown={() => setIsDragging(true)} onPointerUp={() => setIsDragging(false)} max={100} step={1} className="w-full h-full opacity-0 cursor-grab active:cursor-grabbing" />
-            </div>
+              {/* Hidden Slider for Interaction */}
+              <div className="absolute inset-0">
+                <Slider value={sliderValue} onValueChange={setSliderValue} onPointerDown={() => setIsDragging(true)} onPointerUp={() => setIsDragging(false)} max={100} step={1} className="w-full h-full opacity-0 cursor-grab active:cursor-grabbing" />
+              </div>
 
-            {/* Value Increase Overlay */}
-            <AnimatePresence>
-              {isHovered && <motion.div initial={{
-              opacity: 0,
-              y: 20
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} exit={{
-              opacity: 0,
-              y: 20
-            }} className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end justify-center pb-6">
-                  <div className="text-center text-white">
-                    <div className="flex items-center gap-2 justify-center mb-2">
-                      <TrendingUp size={20} className="text-green-400" />
-                      <span className="text-2xl font-bold text-green-400">{project.roi}</span>
+              {/* Value Increase Overlay */}
+              <AnimatePresence>
+                {isHovered && <motion.div initial={{
+                opacity: 0,
+                y: 20
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} exit={{
+                opacity: 0,
+                y: 20
+              }} className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end justify-center pb-6">
+                    <div className="text-center text-white">
+                      <div className="flex items-center gap-2 justify-center mb-2">
+                        <TrendingUp size={20} className="text-green-400" />
+                        <span className="text-2xl font-bold text-green-400">{project.roi}</span>
+                      </div>
+                      <div className="text-sm opacity-90">Aumento di valore</div>
                     </div>
-                    <div className="text-sm opacity-90">Aumento di valore</div>
-                  </div>
-                </motion.div>}
-            </AnimatePresence>
-          </div>
+                  </motion.div>}
+              </AnimatePresence>
+            </div>
+          )}
         </div>
 
         <CardContent className="p-6">
@@ -400,22 +421,34 @@ const ProgettiPage = () => {
                 </DialogHeader>
                 
                 <div className="relative h-full">
-                  <img src={selectedProject.gallery[currentImageIndex]} alt={`${selectedProject.title} - Immagine ${currentImageIndex + 1}`} className="w-full h-full object-cover" />
-                  
-                  {/* Navigation arrows */}
-                  {selectedProject.gallery.length > 1 && <>
-                      <Button variant="outline" size="sm" className="absolute left-4 top-1/2 transform -translate-y-1/2 h-10 w-10 p-0 bg-white/90 hover:bg-white" onClick={() => setCurrentImageIndex(prev => prev === 0 ? selectedProject.gallery.length - 1 : prev - 1)}>
-                        <ChevronLeft className="h-4 w-4" />
-                      </Button>
-                      <Button variant="outline" size="sm" className="absolute right-4 top-1/2 transform -translate-y-1/2 h-10 w-10 p-0 bg-white/90 hover:bg-white" onClick={() => setCurrentImageIndex(prev => prev === selectedProject.gallery.length - 1 ? 0 : prev + 1)}>
-                        <ChevronRight className="h-4 w-4" />
-                      </Button>
-                    </>}
-                  
-                  {/* Image indicators */}
-                  {selectedProject.gallery.length > 1 && <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                      {selectedProject.gallery.map((_, index) => <button key={index} className={`w-2 h-2 rounded-full transition-all ${index === currentImageIndex ? 'bg-white' : 'bg-white/50'}`} onClick={() => setCurrentImageIndex(index)} />)}
-                    </div>}
+                  {selectedProject.isPlaceholder ? (
+                    <div className="w-full h-full flex items-center justify-center bg-muted/10">
+                      <div className="text-center">
+                        <Construction size={120} className="text-muted-foreground/30 mx-auto mb-6" />
+                        <h3 className="text-2xl font-semibold text-muted-foreground/60 mb-2">Contenuto in Preparazione</h3>
+                        <p className="text-muted-foreground/50">Questo progetto sarà disponibile presto con foto e dettagli completi.</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      <img src={selectedProject.gallery[currentImageIndex]} alt={`${selectedProject.title} - Immagine ${currentImageIndex + 1}`} className="w-full h-full object-cover" />
+                      
+                      {/* Navigation arrows */}
+                      {selectedProject.gallery.length > 1 && <>
+                          <Button variant="outline" size="sm" className="absolute left-4 top-1/2 transform -translate-y-1/2 h-10 w-10 p-0 bg-white/90 hover:bg-white" onClick={() => setCurrentImageIndex(prev => prev === 0 ? selectedProject.gallery.length - 1 : prev - 1)}>
+                            <ChevronLeft className="h-4 w-4" />
+                          </Button>
+                          <Button variant="outline" size="sm" className="absolute right-4 top-1/2 transform -translate-y-1/2 h-10 w-10 p-0 bg-white/90 hover:bg-white" onClick={() => setCurrentImageIndex(prev => prev === selectedProject.gallery.length - 1 ? 0 : prev + 1)}>
+                            <ChevronRight className="h-4 w-4" />
+                          </Button>
+                        </>}
+                      
+                      {/* Image indicators */}
+                      {selectedProject.gallery.length > 1 && <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                          {selectedProject.gallery.map((_, index) => <button key={index} className={`w-2 h-2 rounded-full transition-all ${index === currentImageIndex ? 'bg-white' : 'bg-white/50'}`} onClick={() => setCurrentImageIndex(index)} />)}
+                        </div>}
+                    </>
+                  )}
                 </div>
               </div>
 
