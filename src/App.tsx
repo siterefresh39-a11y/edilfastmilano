@@ -3,6 +3,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { FEATURES } from "@/config/features";
+import BetaWelcomeModal from "@/components/BetaWelcomeModal";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ProgettazionePage from "./pages/ProgettazionePage";
@@ -24,6 +26,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      {FEATURES.SHOW_BETA_WELCOME && <BetaWelcomeModal />}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
