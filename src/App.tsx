@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FEATURES } from "@/config/features";
 import BetaWelcomeModal from "@/components/BetaWelcomeModal";
+import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ProgettazionePage from "./pages/ProgettazionePage";
@@ -28,6 +29,7 @@ const App = () => (
       <Sonner />
       {FEATURES.SHOW_BETA_WELCOME && <BetaWelcomeModal />}
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/progettazione" element={<ProgettazionePage />} />
