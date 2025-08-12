@@ -74,23 +74,13 @@ const CameraPage = () => {
       {/* Hero Section con icona */}
       <section className="relative pt-20 pb-12 overflow-hidden">
         <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ duration: 0.8, type: "spring", bounce: 0.5 }}
-            className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-primary to-primary/80 rounded-2xl mb-8 shadow-lg"
-          >
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-primary to-primary/80 rounded-2xl mb-8 shadow-lg">
             <BedDouble className="w-10 h-10 text-white" />
-          </motion.div>
+          </div>
           
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-6"
-          >
+          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-6">
             Ristrutturazione Camera da letto
-          </motion.h1>
+          </h1>
         </div>
       </section>
 
@@ -129,14 +119,10 @@ const CameraPage = () => {
             </div>
           </div>
 
-          <motion.div className="relative max-w-7xl mx-auto">
+          <div className="relative max-w-7xl mx-auto">
             <AnimatePresence mode="wait">
-              <motion.div
+              <div
                 key={selectedPackage}
-                initial={{ opacity: 0, scale: 0.9, y: 50 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: -50 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
                 className="relative"
               >
                 {/* Header pacchetto */}
@@ -158,33 +144,25 @@ const CameraPage = () => {
                       <p className="text-lg leading-relaxed text-white/80">{currentPackage.description}</p>
                     </div>
                     <div className="flex justify-center lg:justify-end lg:w-1/2">
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.3, duration: 0.6 }}
-                        className="relative"
-                      >
+                      <div className="relative">
                         <div className="absolute inset-0 bg-white/20 rounded-lg blur-md transform rotate-1" />
                         <img
                           src={currentPackage.image}
                           alt={currentPackage.imageAlt}
                           className="relative w-[120px] h-[120px] sm:w-[160px] sm:h-[160px] lg:w-[200px] lg:h-[200px] object-cover rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.1)] border-2 border-white/30"
                         />
-                      </motion.div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Servizi */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {currentPackage.services.map((service, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      transition={{ delay: index * 0.1, duration: 0.5, type: "spring", stiffness: 100 }}
-                      className="group relative p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-2xl hover:scale-105 transition-all duration-300"
-                    >
+                   {currentPackage.services.map((service, index) => (
+                     <div
+                       key={index}
+                       className="group relative p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                     >
                       <div className={`absolute inset-0 bg-gradient-to-r ${currentPackage.gradient} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`} />
                       <div className="relative z-10">
                         <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
@@ -201,17 +179,12 @@ const CameraPage = () => {
                           <span className="text-xs text-green-600 dark:text-green-400 font-medium">Incluso</span>
                         </div>
                       </div>
-                    </motion.div>
+                     </div>
                   ))}
                 </div>
 
-                {/* CTA */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8 }}
-                  className="mt-16 text-center"
-                >
+                 {/* CTA */}
+                 <div className="mt-16 text-center">
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <div className="relative inline-block">
                       <div className={`absolute inset-0 bg-gradient-to-r ${currentPackage.gradient} blur-xl opacity-50 rounded-2xl`} />
@@ -236,10 +209,10 @@ const CameraPage = () => {
                       </Button>
                     </Link>
                   </div>
-                </motion.div>
-              </motion.div>
-            </AnimatePresence>
-          </motion.div>
+                 </div>
+               </div>
+             </AnimatePresence>
+           </div>
         </div>
       </section>
 
