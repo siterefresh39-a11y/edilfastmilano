@@ -27,24 +27,24 @@ const ProjectsSection = () => {
       category: 'Residenziale',
       year: '2024',
       description: 'Trasformazione completa di camera da letto con armadi su misura e parquet',
-      beforeImage: '/lovable-uploads/473e2cec-e809-4bbb-9b84-5b8ef7a1a2b5.png',
-      afterImage: '/lovable-uploads/243b5db1-cf12-4b29-a8c9-2c2538519289.png'
+      beforeImage: 'public/lovable-uploads/473e2cec-e809-4bbb-9b84-5b8ef7a1a2b5.png',
+      afterImage: 'public/lovable-uploads/243b5db1-cf12-4b29-a8c9-2c2538519289.png'
     },
     {
       title: 'Ristrutturazione Camera con Armadi Integrati',
       category: 'Residenziale', 
       year: '2024',
       description: 'Renovazione camera con soluzioni di storage personalizzate e pavimentazione in legno',
-      beforeImage: '/lovable-uploads/193b9d28-2a7e-4284-a0fe-be68e97eac7c.png',
-      afterImage: '/lovable-uploads/cb484ba9-08f9-49ab-bc96-f407a0bc4a9e.png'
+      beforeImage: 'public/lovable-uploads/193b9d28-2a7e-4284-a0fe-be68e97eac7c.png',
+      afterImage: 'public/lovable-uploads/cb484ba9-08f9-49ab-bc96-f407a0bc4a9e.png'
     },
     {
       title: 'Ristrutturazione Cucina Moderna',
       category: 'Residenziale',
       year: '2024',
       description: 'Completo restyling cucina con design contemporaneo e funzionalità ottimizzate',
-      beforeImage: '/lovable-uploads/168b1c0d-0330-4212-80c7-57e78676e204.png',
-      afterImage: '/lovable-uploads/089ccc2c-1d21-46d8-883d-03f85be2cd58.png'
+      beforeImage: 'public/lovable-uploads/168b1c0d-0330-4212-80c7-57e78676e204.png',
+      afterImage: 'public/lovable-uploads/089ccc2c-1d21-46d8-883d-03f85be2cd58.png'
     }
   ];
 
