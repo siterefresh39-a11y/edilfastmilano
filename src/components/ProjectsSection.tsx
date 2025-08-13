@@ -23,22 +23,28 @@ const ProjectsSection = () => {
 
   const projects = [
     {
-      title: 'Residence Milano Centro',
+      title: 'Ristrutturazione Camera da Letto Moderna',
       category: 'Residenziale',
       year: '2024',
-      description: 'Complesso residenziale di lusso nel cuore di Milano'
+      description: 'Trasformazione completa di camera da letto con armadi su misura e parquet',
+      beforeImage: '/lovable-uploads/473e2cec-e809-4bbb-9b84-5b8ef7a1a2b5.png',
+      afterImage: '/lovable-uploads/243b5db1-cf12-4b29-a8c9-2c2538519289.png'
     },
     {
-      title: 'Torre Corporate',
-      category: 'Commerciale',
-      year: '2023',
-      description: 'Edificio per uffici con design architettonico innovativo'
+      title: 'Ristrutturazione Camera con Armadi Integrati',
+      category: 'Residenziale', 
+      year: '2024',
+      description: 'Renovazione camera con soluzioni di storage personalizzate e pavimentazione in legno',
+      beforeImage: '/lovable-uploads/193b9d28-2a7e-4284-a0fe-be68e97eac7c.png',
+      afterImage: '/lovable-uploads/cb484ba9-08f9-49ab-bc96-f407a0bc4a9e.png'
     },
     {
-      title: 'Villa Moderna',
+      title: 'Ristrutturazione Cucina Moderna',
       category: 'Residenziale',
-      year: '2023',
-      description: 'Villa unifamiliare con tecnologie smart home'
+      year: '2024',
+      description: 'Completo restyling cucina con design contemporaneo e funzionalità ottimizzate',
+      beforeImage: '/lovable-uploads/168b1c0d-0330-4212-80c7-57e78676e204.png',
+      afterImage: '/lovable-uploads/089ccc2c-1d21-46d8-883d-03f85be2cd58.png'
     }
   ];
 
@@ -78,12 +84,28 @@ const ProjectsSection = () => {
               style={{ transitionDelay: `${index * 200}ms` }}
             >
               <div className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
-                <div className="aspect-[4/3] bg-gradient-to-br from-primary/20 to-secondary/20 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-secondary/40 group-hover:from-primary/60 group-hover:to-secondary/60 transition-all duration-500" />
+                <div className="aspect-[4/3] relative overflow-hidden">
+                  {/* Before Image */}
+                  <img 
+                    src={project.beforeImage} 
+                    alt={`${project.title} - Prima`}
+                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0"
+                  />
+                  {/* After Image */}
+                  <img 
+                    src={project.afterImage} 
+                    alt={`${project.title} - Dopo`}
+                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100"
+                  />
+                  {/* Overlay with project info */}
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all duration-500" />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-white text-center">
                       <div className="text-2xl font-light mb-2">{project.year}</div>
                       <div className="text-sm tracking-wider">{project.category.toUpperCase()}</div>
+                      <div className="text-xs mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        Passa il mouse per vedere il dopo
+                      </div>
                     </div>
                   </div>
                 </div>
