@@ -23,28 +23,12 @@ const ProjectsSection = () => {
 
   const projects = [
     {
-      title: 'Ristrutturazione Camera da Letto Moderna',
+      title: 'Progetto Residenziale',
       category: 'Residenziale',
       year: '2024',
-      description: 'Trasformazione completa di camera da letto con armadi su misura e parquet',
-      beforeImage: 'public/lovable-uploads/473e2cec-e809-4bbb-9b84-5b8ef7a1a2b5.png',
-      afterImage: 'public/lovable-uploads/243b5db1-cf12-4b29-a8c9-2c2538519289.png'
-    },
-    {
-      title: 'Ristrutturazione Camera con Armadi Integrati',
-      category: 'Residenziale', 
-      year: '2024',
-      description: 'Renovazione camera con soluzioni di storage personalizzate e pavimentazione in legno',
-      beforeImage: 'public/lovable-uploads/193b9d28-2a7e-4284-a0fe-be68e97eac7c.png',
-      afterImage: 'public/lovable-uploads/cb484ba9-08f9-49ab-bc96-f407a0bc4a9e.png'
-    },
-    {
-      title: 'Ristrutturazione Cucina Moderna',
-      category: 'Residenziale',
-      year: '2024',
-      description: 'Completo restyling cucina con design contemporaneo e funzionalità ottimizzate',
-      beforeImage: 'public/lovable-uploads/168b1c0d-0330-4212-80c7-57e78676e204.png',
-      afterImage: 'public/lovable-uploads/089ccc2c-1d21-46d8-883d-03f85be2cd58.png'
+      description: 'Completa trasformazione di ambiente residenziale con ristrutturazione totale di camera da letto. Il progetto ha previsto la demolizione e ricostruzione degli spazi interni, installazione di parquet in legno di alta qualità, realizzazione di armadi su misura a tutta parete con sistema di illuminazione LED integrato, e installazione di impianto elettrico completamente nuovo con punti luce moderni.',
+      beforeImage: '/lovable-uploads/e043ab21-2898-4ebc-b299-8bfb4886f621.png',
+      afterImage: '/lovable-uploads/6241ae0f-2a26-4e53-860d-8db5b1e1c98c.png'
     }
   ];
 
