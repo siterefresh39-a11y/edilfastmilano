@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -16,8 +16,8 @@ interface Pin {
 const pins: Pin[] = [
   {
     id: '1',
-    x: 25,
-    y: 75,
+    x: 45,
+    y: 55,
     title: 'Progettazione 3D',
     description: 'Utilizziamo tecnologie avanzate per la progettazione tridimensionale, permettendo di visualizzare ogni dettaglio prima della costruzione.',
     icon: Home,
@@ -25,8 +25,8 @@ const pins: Pin[] = [
   },
   {
     id: '2', 
-    x: 75,
-    y: 25,
+    x: 60,
+    y: 20,
     title: 'Ristrutturazione Bagno',
     description: 'Trasformiamo il tuo bagno con soluzioni complete e professionali, dal design alla realizzazione.',
     icon: Home,
@@ -35,7 +35,7 @@ const pins: Pin[] = [
   {
     id: '3',
     x: 25,
-    y: 25,
+    y: 55,
     title: 'Ristrutturazione Camera da letto',
     description: 'Rinnova la zona notte con soluzioni su misura e finiture coordinate.',
     icon: Home,
@@ -43,8 +43,8 @@ const pins: Pin[] = [
   },
   {
     id: '4',
-    x: 75,
-    y: 75,
+    x: 65,
+    y: 40,
     title: 'Ristrutturazione Cucina',
     description: 'Scopri i nostri pacchetti per la ristrutturazione della cucina: Entry Level, Premium e Super Premium.',
     icon: Home,
@@ -57,15 +57,6 @@ const InteractiveHouseSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isAnimating, setIsAnimating] = useState(false);
   const [clickedPin, setClickedPin] = useState<Pin | null>(null);
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  // Preload the house image
-  useEffect(() => {
-    const img = new Image();
-    img.src = '/lovable-uploads/a226c082-58de-4cd9-b8e8-d85553fc967d.png';
-    img.onload = () => setImageLoaded(true);
-    img.onerror = () => setImageLoaded(true); // Still show content even if image fails
-  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (isAnimating) return;
@@ -129,32 +120,13 @@ const InteractiveHouseSection = () => {
             ease: "easeOut"
           }}
         >
-          {/* Casa centrale con loading ottimizzato */}
+          {/* Casa centrale - molto più grande e senza effetti 3D */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative w-full max-w-4xl aspect-square">
-              {/* Loading placeholder */}
-              {!imageLoaded && (
-                <div className="absolute inset-0 bg-muted/20 rounded-lg animate-pulse flex items-center justify-center">
-                  <div className="text-muted-foreground">Caricamento...</div>
-                </div>
-              )}
-              
-              {/* House image */}
-              <motion.img 
-                src="/lovable-uploads/a226c082-58de-4cd9-b8e8-d85553fc967d.png"
-                alt="Casa 3D EDIL FAST - Ristrutturazioni complete"
+              <img 
+                src="/lovable-uploads/20b3c721-294a-443e-ba2d-afa196163db2.png"
+                alt="Progetto EDIL FAST"
                 className="w-full h-full object-contain drop-shadow-2xl"
-                loading="eager"
-                fetchPriority="high"
-                style={{ 
-                  backgroundColor: '#f8f9fa',
-                  minHeight: '400px'
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: imageLoaded ? 1 : 0 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                onLoad={() => setImageLoaded(true)}
-                onError={() => setImageLoaded(true)}
               />
             </div>
           </div>
