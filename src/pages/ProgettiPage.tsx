@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Building, Zap, Leaf, Clock, Hammer, TrendingUp, Calendar, Euro, X, ChevronLeft, ChevronRight, MapPin, Construction } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -6,9 +6,10 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Slider } from '@/components/ui/slider';
 import { Card, CardContent } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { ScrollArea } from '@/components/ui/scroll-area';
 interface Project {
   id: string;
   title: string;
@@ -160,6 +161,60 @@ const ProjectCard = ({
   const [sliderValue, setSliderValue] = useState([0]);
   const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const animationRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Clean animation function
+  const cleanAnimation = useCallback(() => {
+    if (animationRef.current) {
+      clearInterval(animationRef.current);
+      animationRef.current = null;
+    }
+  }, []);
+
+  // Handle hover animations with proper cleanup
+  useEffect(() => {
+    if (isDragging) return;
+
+    cleanAnimation();
+
+    if (isHovered) {
+      // Animate to 100% on hover
+      animationRef.current = setInterval(() => {
+        setSliderValue(prev => {
+          const newValue = Math.min(prev[0] + 3, 100);
+          if (newValue >= 100) {
+            if (animationRef.current) {
+              clearInterval(animationRef.current);
+              animationRef.current = null;
+            }
+          }
+          return [newValue];
+        });
+      }, 16);
+    } else {
+      // Animate back to 0% when not hovered
+      animationRef.current = setInterval(() => {
+        setSliderValue(prev => {
+          const newValue = Math.max(prev[0] - 3, 0);
+          if (newValue <= 0) {
+            if (animationRef.current) {
+              clearInterval(animationRef.current);
+              animationRef.current = null;
+            }
+          }
+          return [newValue];
+        });
+      }, 16);
+    }
+
+    return cleanAnimation;
+  }, [isHovered, isDragging, cleanAnimation]);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return cleanAnimation;
+  }, [cleanAnimation]);
+
   return <motion.div initial={{
     opacity: 0,
     y: 30
@@ -170,39 +225,6 @@ const ProjectCard = ({
     duration: 0.6,
     delay: index * 0.1
   }} className="group" onMouseEnter={() => !isDragging && setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-      {/* Animated slider value for hover effect */}
-      <motion.div animate={isHovered && !isDragging ? {
-      opacity: 1
-    } : {
-      opacity: 0
-    }} transition={{
-      duration: 0.3,
-      delay: isHovered ? 0.2 : 0
-    }} onAnimationComplete={() => {
-      if (isHovered && !isDragging) {
-        // Animate slider to 100% on hover
-        const interval = setInterval(() => {
-          setSliderValue(prev => {
-            const newValue = Math.min(prev[0] + 2, 100);
-            if (newValue >= 100) {
-              clearInterval(interval);
-            }
-            return [newValue];
-          });
-        }, 16);
-      } else if (!isHovered && !isDragging) {
-        // Animate back to 0% when not hovered
-        const interval = setInterval(() => {
-          setSliderValue(prev => {
-            const newValue = Math.max(prev[0] - 2, 0);
-            if (newValue <= 0) {
-              clearInterval(interval);
-            }
-            return [newValue];
-          });
-        }, 16);
-      }
-    }} />
     <Card className="overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer" onClick={() => onOpenModal(project)}>
         <div className="relative aspect-[4/3] overflow-hidden">
           {project.isPlaceholder ? (
@@ -408,10 +430,13 @@ const ProgettiPage = () => {
 
       {/* Project Modal */}
       <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-        <DialogContent className="max-w-7xl w-full h-[90vh] p-0 overflow-hidden">
-          {selectedProject && <div className="grid lg:grid-cols-2 h-full">
+        <DialogContent className="max-w-7xl w-full max-h-[95vh] lg:h-[90vh] p-0 overflow-hidden">
+          <DialogDescription className="sr-only">
+            Dettagli del progetto di ristrutturazione
+          </DialogDescription>
+          {selectedProject && <div className="flex flex-col lg:grid lg:grid-cols-2 h-full">
               {/* Image Gallery Section */}
-              <div className="relative bg-secondary/5">
+              <div className="relative bg-secondary/5 h-[40vh] lg:h-full">
                 <DialogHeader className="absolute top-4 right-4 z-10">
                   <Button variant="outline" size="sm" className="h-8 w-8 p-0 bg-white/90 hover:bg-white" onClick={() => setSelectedProject(null)}>
                     <X className="h-4 w-4" />
@@ -450,86 +475,88 @@ const ProgettiPage = () => {
                 </div>
               </div>
 
-              {/* Content Section */}
-              <div className="p-8 overflow-y-auto">
-                <div className="space-y-6">
-                  {/* Header */}
-                  <div>
-                    <div className="flex items-center gap-3 mb-2">
-                      <Badge variant="secondary" className="text-xs">
-                        {selectedProject.category}
-                      </Badge>
-                      <span className="text-sm text-muted-foreground">{selectedProject.year}</span>
+              {/* Content Section with ScrollArea */}
+              <div className="flex-1 lg:h-full">
+                <ScrollArea className="h-[55vh] lg:h-full">
+                  <div className="p-6 lg:p-8 space-y-6">
+                    {/* Header */}
+                    <div>
+                      <div className="flex items-center gap-3 mb-2">
+                        <Badge variant="secondary" className="text-xs">
+                          {selectedProject.category}
+                        </Badge>
+                        <span className="text-sm text-muted-foreground">{selectedProject.year}</span>
+                      </div>
+                      <DialogTitle className="text-2xl lg:text-3xl font-bold text-secondary mb-4">
+                        {selectedProject.title}
+                      </DialogTitle>
+                      <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
+                        {selectedProject.fullDescription}
+                      </p>
                     </div>
-                    <DialogTitle className="text-3xl font-bold text-secondary mb-4">
-                      {selectedProject.title}
-                    </DialogTitle>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                      {selectedProject.fullDescription}
-                    </p>
-                  </div>
 
-                  {/* Project Details */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-2 text-sm">
-                        <MapPin className="h-4 w-4 text-primary" />
-                        <span>{selectedProject.location}</span>
+                    {/* Project Details */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-2 text-sm">
+                          <MapPin className="h-4 w-4 text-primary flex-shrink-0" />
+                          <span>{selectedProject.location}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm">
+                          <Calendar className="h-4 w-4 text-primary flex-shrink-0" />
+                          <span>{selectedProject.duration}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm">
+                          <Building className="h-4 w-4 text-primary flex-shrink-0" />
+                          <span>{selectedProject.area}</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2 text-sm">
-                        <Calendar className="h-4 w-4 text-primary" />
-                        <span>{selectedProject.duration}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm">
-                        <Building className="h-4 w-4 text-primary" />
-                        <span>{selectedProject.area}</span>
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-2 text-sm">
+                          <Euro className="h-4 w-4 text-primary flex-shrink-0" />
+                          <span>{selectedProject.investment}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm">
+                          <TrendingUp className="h-4 w-4 text-primary flex-shrink-0" />
+                          <span className="text-green-600 font-medium">{selectedProject.roi}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm">
+                          <span className="text-primary">👤</span>
+                          <span>{selectedProject.client}</span>
+                        </div>
                       </div>
                     </div>
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-2 text-sm">
-                        <Euro className="h-4 w-4 text-primary" />
-                        <span>{selectedProject.investment}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm">
-                        <TrendingUp className="h-4 w-4 text-primary" />
-                        <span className="text-green-600 font-medium">{selectedProject.roi}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm">
-                        <span className="text-primary">👤</span>
-                        <span>{selectedProject.client}</span>
-                      </div>
-                    </div>
-                  </div>
 
-                  {/* Features */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-secondary mb-3">Caratteristiche Principali</h3>
-                    <div className="grid grid-cols-1 gap-2">
-                      {selectedProject.features.map((feature, index) => <div key={index} className="flex items-center gap-2 text-sm">
-                          <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                          <span>{feature}</span>
-                        </div>)}
+                    {/* Features */}
+                    <div>
+                      <h3 className="text-lg font-semibold text-secondary mb-3">Caratteristiche Principali</h3>
+                      <div className="grid grid-cols-1 gap-2">
+                        {selectedProject.features.map((feature, index) => <div key={index} className="flex items-start gap-2 text-sm">
+                            <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                            <span className="leading-relaxed">{feature}</span>
+                          </div>)}
+                      </div>
+                    </div>
+
+                    {/* Challenges */}
+                    <div>
+                      <h3 className="text-lg font-semibold text-secondary mb-3">Sfide Superate</h3>
+                      <div className="grid grid-cols-1 gap-2">
+                        {selectedProject.challenges.map((challenge, index) => <div key={index} className="flex items-start gap-2 text-sm">
+                            <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <span className="leading-relaxed">{challenge}</span>
+                          </div>)}
+                      </div>
+                    </div>
+
+                    {/* CTA */}
+                    <div className="pt-4 border-t sticky bottom-0 bg-background/95 backdrop-blur-sm">
+                      <Button className="w-full" onClick={() => navigate('/contatti')}>
+                        Richiedi Preventivo per Progetto Simile
+                      </Button>
                     </div>
                   </div>
-
-                  {/* Challenges */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-secondary mb-3">Sfide Superate</h3>
-                    <div className="grid grid-cols-1 gap-2">
-                      {selectedProject.challenges.map((challenge, index) => <div key={index} className="flex items-center gap-2 text-sm">
-                          <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                          <span>{challenge}</span>
-                        </div>)}
-                    </div>
-                  </div>
-
-                  {/* CTA */}
-                  <div className="pt-4 border-t">
-                    <Button className="w-full">
-                      Richiedi Preventivo per Progetto Simile
-                    </Button>
-                  </div>
-                </div>
+                </ScrollArea>
               </div>
             </div>}
         </DialogContent>
