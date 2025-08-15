@@ -62,7 +62,7 @@ const InteractiveHouseSection = () => {
   // Preload the house image
   useEffect(() => {
     const img = new Image();
-    img.src = '/lovable-uploads/8ea9894f-8c57-4caf-9e78-9096e6db295f.png';
+    img.src = '/lovable-uploads/a226c082-58de-4cd9-b8e8-d85553fc967d.png';
     img.onload = () => setImageLoaded(true);
     img.onerror = () => setImageLoaded(true); // Still show content even if image fails
   }, []);
@@ -141,7 +141,7 @@ const InteractiveHouseSection = () => {
               
               {/* House image */}
               <motion.img 
-                src="/lovable-uploads/8ea9894f-8c57-4caf-9e78-9096e6db295f.png"
+                src="/lovable-uploads/a226c082-58de-4cd9-b8e8-d85553fc967d.png"
                 alt="Casa 3D EDIL FAST - Ristrutturazioni complete"
                 className="w-full h-full object-contain drop-shadow-2xl"
                 loading="eager"
