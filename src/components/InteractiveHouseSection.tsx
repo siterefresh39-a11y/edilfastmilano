@@ -285,7 +285,7 @@ const InteractiveHouseSection = () => {
           </AnimatePresence>
         </motion.div>
 
-        {/* Istruzioni aggiornate */}
+        {/* Istruzioni esaltate */}
         <motion.div 
           className="text-center mt-12"
           animate={{
@@ -294,9 +294,31 @@ const InteractiveHouseSection = () => {
           }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-muted-foreground">
-            Clicca sui pin per scoprire nel dettaglio i punti di forza del nostro metodo
-          </p>
+          <div className="relative inline-block">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 blur-xl rounded-full" />
+            <div className="relative bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              <div className="flex items-center justify-center gap-3 text-lg md:text-xl font-bold mb-2">
+                <motion.div
+                  animate={{ rotate: [0, 360] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                  className="text-primary"
+                >
+                  ✨
+                </motion.div>
+                <span>Clicca sui pin per scoprire nel dettaglio i punti di forza del nostro metodo</span>
+                <motion.div
+                  animate={{ rotate: [0, 360] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                  className="text-secondary"
+                >
+                  🏠
+                </motion.div>
+              </div>
+              <p className="text-sm font-medium text-muted-foreground">
+                Esplora le nostre specializzazioni cliccando sulle icone interattive
+              </p>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

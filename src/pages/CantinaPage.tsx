@@ -13,11 +13,11 @@ const CantinaPage = () => {
   const getImageForPackage = (pkg: 'standard' | 'premium' | 'super-premium') => {
     switch (pkg) {
       case 'standard':
-        return "/lovable-uploads/93914c07-47ca-4dec-bc2d-80e52e4d99ea.png"; // placeholder - to be replaced
+        return "/lovable-uploads/e20f78ad-a65d-42a0-bdd5-631684908dfb.png";
       case 'premium':
-        return "/lovable-uploads/819c5323-6436-4de6-9198-c17175c038bf.png"; // placeholder - to be replaced
+        return "/lovable-uploads/b190553f-747a-4d5e-92a8-38887c0697a2.png";
       case 'super-premium':
-        return "/lovable-uploads/cb8f97e5-a7ab-40df-b2e6-dd1c77820187.png"; // placeholder - to be replaced
+        return "/lovable-uploads/6254d67a-6da1-4b8a-8033-5b2da2f61369.png";
     }
   };
 
