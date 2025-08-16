@@ -56,9 +56,8 @@ const ServicesSection = () => {
       title: 'Cantina',
       description: 'Realizzazione spazi interrati e cantine di design',
       icon: Warehouse,
-      link: null,
-      delay: 800,
-      comingSoon: true
+      link: '/cantina',
+      delay: 800
     }
   ];
 
@@ -97,66 +96,32 @@ const ServicesSection = () => {
               }`}
               style={{ transitionDelay: `${room.delay}ms` }}
             >
-              {room.link ? (
-                <Link
-                  to={room.link}
-                  className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-border/50 hover:border-primary/30 h-full block cursor-pointer"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
-                  <div className="relative z-10 p-6">
-                    <div className="aspect-video mb-4 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
-                      {(() => {
-                        const IconComponent = room.icon;
-                        return <IconComponent 
-                          size={48}
-                          className="text-primary group-hover:text-secondary transition-colors duration-300"
-                        />;
-                      })()}
-                    </div>
-                    
-                    <h3 className="text-lg font-semibold text-secondary mb-3 group-hover:text-primary transition-colors duration-300">
-                      {room.title}
-                    </h3>
-                    
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {room.description}
-                    </p>
+              <Link
+                to={room.link}
+                className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-border/50 hover:border-primary/30 h-full block cursor-pointer"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="relative z-10 p-6">
+                  <div className="aspect-video mb-4 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
+                    {(() => {
+                      const IconComponent = room.icon;
+                      return <IconComponent 
+                        size={48}
+                        className="text-primary group-hover:text-secondary transition-colors duration-300"
+                      />;
+                    })()}
                   </div>
-                </Link>
-              ) : (
-                <div className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-border/50 hover:border-primary/30 h-full cursor-default">
-                  {room.comingSoon && (
-                    <div className="absolute inset-0 bg-black/50 z-20 flex items-center justify-center rounded-3xl">
-                      <div className="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium">
-                        Work in Progress
-                      </div>
-                    </div>
-                  )}
                   
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <h3 className="text-lg font-semibold text-secondary mb-3 group-hover:text-primary transition-colors duration-300">
+                    {room.title}
+                  </h3>
                   
-                  <div className="relative z-10 p-6">
-                    <div className="aspect-video mb-4 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
-                      {(() => {
-                        const IconComponent = room.icon;
-                        return <IconComponent 
-                          size={48}
-                          className="text-primary group-hover:text-secondary transition-colors duration-300"
-                        />;
-                      })()}
-                    </div>
-                    
-                    <h3 className="text-lg font-semibold text-secondary mb-3 group-hover:text-primary transition-colors duration-300">
-                      {room.title}
-                    </h3>
-                    
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {room.description}
-                    </p>
-                  </div>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {room.description}
+                  </p>
                 </div>
-              )}
+              </Link>
             </div>
           ))}
         </div>
