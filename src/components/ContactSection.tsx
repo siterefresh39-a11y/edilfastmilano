@@ -36,12 +36,6 @@ const ContactSection = () => {
       action: 'mailto:info@edilfastmilano.it'
     },
     {
-      icon: MapPin,
-      title: 'Indirizzo',
-      value: 'Via Brera 10, 20121 Milano',
-      action: null
-    },
-    {
       icon: Clock,
       title: 'Orari',
       value: 'Lun-Ven 8:00-18:00',
