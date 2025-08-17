@@ -113,7 +113,7 @@ const ContattiPage = () => {
     {
       icon: Clock,
       title: 'Orari',
-      value: 'Lun-Ven 8:00-18:00',
+      value: 'Lun-Sab 7:00 - 20:00',
       action: null
     }
   ];
