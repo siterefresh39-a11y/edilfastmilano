@@ -8,8 +8,8 @@ const SocialPage = () => {
       name: "YouTube",
       icon: Youtube,
       url: "https://youtube.com/@edilfastmilano",
-      color: "hover:text-red-500",
-      bgColor: "hover:bg-red-50",
+      color: "hover:text-white text-red-600",
+      bgColor: "hover:bg-gradient-to-br hover:from-red-500 hover:to-red-600 bg-red-100",
       description: "Video dei nostri progetti"
     },
     {
@@ -20,30 +20,34 @@ const SocialPage = () => {
         </svg>
       ),
       url: "https://tiktok.com/@edilfastmilano",
-      color: "hover:text-black",
-      bgColor: "hover:bg-gray-50",
+      color: "hover:text-white text-gray-800",
+      bgColor: "hover:bg-gradient-to-br hover:from-gray-800 hover:to-black bg-gray-100",
       description: "Contenuti creativi e innovativi"
+    },
+    {
+      name: "Instagram",
+      icon: Instagram,
+      url: "https://instagram.com/edilfastmilano",
+      color: "hover:text-white text-pink-600",
+      bgColor: "hover:bg-gradient-to-br hover:from-pink-500 hover:via-red-500 hover:to-yellow-500 bg-pink-100",
+      description: "Foto e storie dei nostri lavori"
     }
   ];
 
   const otherSocials = [
     {
-      name: "Instagram",
-      icon: Instagram,
-      url: "https://instagram.com/edilfastmilano",
-      color: "hover:text-pink-500"
-    },
-    {
       name: "LinkedIn",
       icon: Linkedin,
       url: "https://linkedin.com/company/edilfastmilano",
-      color: "hover:text-blue-600"
+      color: "hover:text-white text-blue-600",
+      bgColor: "hover:bg-gradient-to-br hover:from-blue-600 hover:to-blue-700 bg-blue-100"
     },
     {
       name: "Facebook",
       icon: Facebook,
       url: "https://facebook.com/edilfastmilano",
-      color: "hover:text-blue-500"
+      color: "hover:text-white text-blue-500",
+      bgColor: "hover:bg-gradient-to-br hover:from-blue-500 hover:to-blue-600 bg-blue-100"
     }
   ];
 
@@ -75,7 +79,7 @@ const SocialPage = () => {
 
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           {/* Main Social Platforms */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {mainSocials.map((social, index) => {
               const IconComponent = social.icon;
               return (
@@ -129,7 +133,7 @@ const SocialPage = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group p-4 rounded-2xl bg-muted hover:bg-background border border-border transition-all duration-300 transform hover:scale-125 hover:-translate-y-2 ${social.color} hover:shadow-lg`}
+                    className={`group p-4 rounded-2xl transition-all duration-300 transform hover:scale-125 hover:-translate-y-2 ${social.color} ${social.bgColor} hover:shadow-lg border border-border`}
                     title={social.name}
                   >
                     <IconComponent className="w-6 h-6 transition-transform duration-300 group-hover:rotate-12" />
