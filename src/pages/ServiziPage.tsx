@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ChefHat, Sofa, Bath, Bed, Warehouse } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const ServiziPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -132,6 +133,7 @@ const ServiziPage = () => {
       </main>
 
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

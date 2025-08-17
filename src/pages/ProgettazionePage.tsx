@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { Home, Check, ChevronLeft, ChevronRight, Sparkles, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -266,6 +267,7 @@ const ProgettazionePage = () => {
       </section>
 
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

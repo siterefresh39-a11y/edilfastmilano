@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { Warehouse, Check, Sparkles, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -262,6 +263,7 @@ const CantinaPage = () => {
       </section>
 
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

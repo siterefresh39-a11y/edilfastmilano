@@ -1,6 +1,7 @@
 import { Youtube, Instagram, Linkedin, Facebook } from "lucide-react";
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const SocialPage = () => {
   const mainSocials = [
@@ -148,6 +149,7 @@ const SocialPage = () => {
 
       {/* Footer */}
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { Building, Zap, Leaf, Clock, Hammer, TrendingUp, Calendar, Euro, X, Chev
 import { useNavigate } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
 import { Slider } from '@/components/ui/slider';
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
@@ -563,6 +564,7 @@ const ProgettiPage = () => {
       </Dialog>
 
       <Footer />
+      <WhatsAppButton />
     </div>;
 };
 export default ProgettiPage;

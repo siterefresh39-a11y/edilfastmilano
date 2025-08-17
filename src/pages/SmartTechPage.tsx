@@ -3,6 +3,7 @@ import { Home, ArrowLeft, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import Footer from '@/components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const SmartTechPage = () => {
   return (
@@ -192,6 +193,7 @@ const SmartTechPage = () => {
       </section>
       
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

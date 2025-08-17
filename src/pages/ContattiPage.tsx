@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Mail, Phone, MapPin, Clock, Loader2 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -458,6 +459,7 @@ const ContattiPage = () => {
       </main>
 
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
