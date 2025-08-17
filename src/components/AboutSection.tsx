@@ -17,19 +17,74 @@ const AboutSection = () => {
             
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p className="text-lg">
-                Edil Fast Milano rappresenta l'eccellenza nell'edilizia moderna, 
-                combinando tradizione artigianale e innovazione tecnologica per 
-                creare spazi architettonici di prestigio.
+                Siamo i fratelli di Edil Fast Milano, il nostro obiettivo è semplice: aumentare realmente il valore della tua casa con ristrutturazioni pensate su misura per te.
+                Siamo nati per portare un nuovo modo di lavorare nel settore edile: più rapido, più trasparente e totalmente incentrato sulle tue esigenze.
               </p>
-              <p>
-                Con oltre 20 anni di esperienza nel settore, ci specializziamo 
-                in progetti residenziali e commerciali di alta gamma, 
-                garantendo qualità, tempistiche precise e design all'avanguardia.
-              </p>
-              <p>
-                La nostra filosofia si basa sulla ricerca dell'eccellenza, 
-                l'attenzione ai dettagli e la soddisfazione totale del cliente.
-              </p>
+              
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <span className="text-xl">🚀</span>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-1">Tempistiche veloci</h3>
+                    <p className="text-sm">
+                      Ogni giorno dimostriamo che qualità e velocità possono andare d'accordo. Pianifichiamo ogni intervento nei minimi dettagli per ridurre al minimo i tempi di esecuzione, senza compromessi sul risultato finale.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="text-xl">📄</span>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-1">Preventivi gratuiti e su misura</h3>
+                    <p className="text-sm">
+                      Ti ascoltiamo, analizziamo le tue necessità e ti forniamo un preventivo chiaro, personalizzato e completamente gratuito. Nessuna sorpresa, solo trasparenza.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="text-xl">💬</span>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-1">Comunicazione velocissima</h3>
+                    <p className="text-sm">
+                      Per noi il dialogo è fondamentale. Rispondiamo velocemente, ti aggiorniamo in tempo reale sull'andamento dei lavori e siamo sempre disponibili per qualsiasi esigenza o modifica.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="text-xl">💰</span>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-1">Il prezzo lo decide il cliente</h3>
+                    <p className="text-sm">
+                      Siamo convinti che ogni persona debba poter scegliere in piena libertà. Per questo, ti proponiamo più soluzioni, sarai tu a decidere quella che ritieni più adatta al tuo budget.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="text-xl">📈</span>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-1">Ristrutturiamo per aumentare il reale valore del tuo immobile</h3>
+                    <p className="text-sm">
+                      Ogni nostra scelta progettuale ha un obiettivo preciso: aumentare il valore dell'immobile.
+                      Non ci limitiamo a "rifare una stanza", ma studiamo il potenziale reale degli spazi e li trasformiamo in veri investimenti.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="border-t border-border/30 pt-6 mt-8">
+                <div className="text-center">
+                  <h3 className="font-bold text-foreground text-lg mb-2">Edil Fast Milano</h3>
+                  <p className="text-sm font-medium">
+                    Veloci. Precisi. Concreti.
+                  </p>
+                  <p className="text-sm mt-1">
+                    E sempre focalizzati su ciò che conta davvero: valorizzare la tua casa.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
