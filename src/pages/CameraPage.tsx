@@ -50,14 +50,25 @@ const CameraPage = () => {
     'super-premium': {
       title: 'Pacchetto Super Premium Camera',
       subtitle: 'Chiavi in mano di livello superiore',
-      description: 'Trasformazione completa della zona notte con progettazione su misura e finiture di pregio.',
+      description: 'Trasformazione completa all-inclusive che include tutti i servizi Standard e Premium più progettazione su misura e finiture di pregio per una camera da letto di livello superiore.',
       gradient: 'from-amber-500 to-orange-500',
       image: '/lovable-uploads/cea07f37-a634-457a-aaa8-9afa6497024b.png',
       imageAlt: 'Camera da letto luxury - Pacchetto Super Premium',
       services: [
+        // Servizi dal pacchetto Standard
+        { icon: '🛏️', title: 'Posa pavimento', description: 'Gres, parquet o laminato con finiture precise' },
+        { icon: '🎨', title: 'Tinteggiatura pareti e soffitto', description: 'Verniciatura con prodotti lavabili' },
+        // Servizi dal pacchetto Premium
+        { icon: '🛠️', title: 'Sostituzione porte/interruttori', description: 'Aggiornamento elementi interni' },
+        { icon: '💡', title: 'Illuminazione LED', description: 'Nuovi punti luce e atmosfera regolabile' },
+        { icon: '🪵', title: 'Boiserie o pannelli decorativi', description: 'Parete testata letto con elementi decorativi' },
+        { icon: '🔨', title: 'Creazione cartongesso/controsoffitti', description: 'Controsoffitti o velette in cartongesso su misura' },
+        { icon: '🚚', title: 'Trasporto e montaggio arredo', description: 'Consegna e installazione mobili e complementi' },
+        { icon: '📦', title: 'Trasporto materiale', description: 'Consegna di tutti i materiali necessari' },  
+        { icon: '🎨', title: 'Imbiancatura', description: 'Verniciatura completa con finiture di qualità' },
+        // Servizi Super Premium esclusivi
         { icon: '📐', title: 'Progettazione su misura', description: 'Layout ottimizzato per comfort e ordine' },
         { icon: '🛏️', title: 'Cabina armadio/armadi su misura', description: 'Soluzioni contenitive personalizzate' },
-        { icon: '🔇', title: 'Isolamento acustico', description: 'Miglior comfort e silenziosità' },
         { icon: '💡', title: 'Illuminazione scenografica', description: 'LED perimetrali e luci d\'accento' },
         { icon: '✨', title: 'Pulizia e consegna', description: 'Collaudo e consegna chiavi in mano' }
       ]
