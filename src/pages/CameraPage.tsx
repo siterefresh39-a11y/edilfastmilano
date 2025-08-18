@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { BedDouble, Check, Sparkles, ArrowLeft } from "lucide-react";
+import { BedDouble, Check, Sparkles, ArrowLeft, Hammer, Truck, Package, PaintBucket } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const CameraPage = () => {
@@ -27,15 +27,24 @@ const CameraPage = () => {
     'premium': {
       title: 'Pacchetto Premium Camera',
       subtitle: 'Restyling completo',
-      description: 'Rinnovo sostanziale con nuovi elementi, illuminazione e finiture coordinate.',
+      description: 'Rinnovo completo con tutti i servizi standard più elementi premium: nuova illuminazione, finiture coordinate e servizi aggiuntivi specializzati.',
       gradient: 'from-fuchsia-500 to-pink-500',
       image: '/lovable-uploads/cea07f37-a634-457a-aaa8-9afa6497024b.png',
       imageAlt: 'Camera da letto moderna - Pacchetto Premium',
       services: [
+        // Servizi dal pacchetto Standard
+        { icon: '🛏️', title: 'Posa pavimento', description: 'Gres, parquet o laminato con finiture precise' },
+        { icon: '🎨', title: 'Tinteggiatura pareti e soffitto', description: 'Verniciatura con prodotti lavabili' },
+        // Servizi Premium esistenti
         { icon: '🛠️', title: 'Sostituzione porte/interruttori', description: 'Aggiornamento elementi interni' },
         { icon: '💡', title: 'Illuminazione LED', description: 'Nuovi punti luce e atmosfera regolabile' },
         { icon: '🪵', title: 'Boiserie o pannelli decorativi', description: 'Parete testata letto con elementi decorativi' },
-        { icon: '✨', title: 'Pulizia finale', description: 'Sanificazione e riordino' }
+        // Nuovi servizi richiesti
+        { icon: '🔨', title: 'Creazione cartongesso/controsoffitti', description: 'Controsoffitti o velette in cartongesso su misura' },
+        { icon: '🚚', title: 'Trasporto e montaggio arredo', description: 'Consegna e installazione mobili e complementi' },
+        { icon: '📦', title: 'Trasporto materiale', description: 'Consegna di tutti i materiali necessari' },  
+        { icon: '🎨', title: 'Imbiancatura', description: 'Verniciatura completa con finiture di qualità' },
+        { icon: '✨', title: 'Pulizia finale', description: 'Sanificazione e riordino completo' }
       ]
     },
     'super-premium': {
