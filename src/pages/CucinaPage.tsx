@@ -37,50 +37,47 @@ const CucinaPage = () => {
     'standard': {
       title: "Pacchetto Standard Cucina",
       subtitle: "Funzionale ed efficiente",
-      description: "Una soluzione completa e accessibile per rinnovare la tua cucina mantenendo funzionalità e stile.",
+      description: "Servizi essenziali di rifinitura per rinnovare la tua cucina con soluzioni di base.",
       gradient: "from-orange-500 to-red-500",
       image: getImageForPackage('standard'),
       imageAlt: getImageAlt('standard'),
       services: [
-        { icon: "🍳", title: 'Mobili base componibili', description: 'Arredi modulari standard di buona qualità' },
-        { icon: "🎨", title: 'Verniciatura pareti', description: 'Tinteggiatura con idropittura lavabile' },
-        { icon: "📦", title: 'Elettrodomestici essenziali', description: 'Fornello, frigorifero e lavastoviglie base' },
-        { icon: "🔧", title: 'Allacci idraulici ed elettrici', description: 'Collegamenti sicuri e a norma' },
-        { icon: "✨", title: 'Pulizia post installazione', description: 'Ambiente pronto per l\'utilizzo immediato' }
+        { icon: "🎨", title: 'Tinteggiatura', description: 'Verniciatura pareti con prodotti di qualità' },
+        { icon: "🔲", title: 'Piastrelamento', description: 'Posa piastrelle per rivestimenti cucina' },
+        { icon: "✨", title: 'Pulizia post lavori', description: 'Pulizia completa post intervento' }
       ]
     },
     'premium': {
       title: "Pacchetto Premium Cucina",
       subtitle: "Qualità e stile",
-      description: "Il perfetto equilibrio tra qualità superiore e investimento ragionevole per una cucina moderna e funzionale.",
+      description: "Soluzione che include mobili ed arredo con finiture essenziali per una cucina completa.",
       gradient: "from-green-500 to-emerald-500",
       image: getImageForPackage('premium'),
       imageAlt: getImageAlt('premium'),
       services: [
-        { icon: "🛠️", title: 'Demolizione controllata', description: 'Rimozione elementi obsoleti con precisione' },
-        { icon: "🍳", title: 'Mobili cucina di qualità', description: 'Arredi modulari con finiture curate' },
-        { icon: "⚡", title: 'Adeguamento impianti base', description: 'Aggiornamento impianti alle normative' },
-        { icon: "📦", title: 'Elettrodomestici di marca', description: 'Fornitura apparecchi efficienti e moderni' },
-        { icon: "🎨", title: 'Pavimenti e rivestimenti', description: 'Posa materiali resistenti e facili da pulire' },
-        { icon: "✨", title: 'Finitura e pulizia ambiente', description: 'Completamento lavori e sanificazione' }
+        { icon: "🚚", title: 'Trasporto montaggio mobili ed arredo', description: 'Consegna e installazione completa mobili cucina' },
+        { icon: "🎨", title: 'Tinteggiatura', description: 'Verniciatura pareti con prodotti di qualità' },
+        { icon: "🔲", title: 'Piastrelamento', description: 'Posa piastrelle per rivestimenti cucina' },
+        { icon: "📦", title: 'Trasporto materiale', description: 'Consegna di tutti i materiali necessari' },
+        { icon: "✨", title: 'Pulizia finale', description: 'Pulizia completa e sanificazione ambiente' }
       ]
     },
     'super-premium': {
       title: "Pacchetto Super Premium Cucina",
       subtitle: "Servizio chiavi in mano",
-      description: "Con il nostro servizio chiavi in mano, realizziamo la cucina dei tuoi sogni dall'inizio alla fine con finiture di lusso.",
+      description: "Servizio completo all-inclusive con demolizioni, finiture di lusso e gestione certificata dei materiali.",
       gradient: "from-purple-500 to-blue-500",
       image: getImageForPackage('super-premium'),
       imageAlt: getImageAlt('super-premium'),
       services: [
-        { icon: "📐", title: 'Progettazione personalizzata 3D', description: 'Design su misura con rendering fotorealistici' },
-        { icon: "🛠️", title: 'Demolizione completa ambiente', description: 'Rimozione impianti e strutture esistenti' },
-        { icon: "🔧", title: 'Rifacimento impianti', description: 'Impianti elettrico, idraulico e gas certificati' },
-        { icon: "♻️", title: 'Smaltimento certificato materiali', description: 'Gestione rifiuti con documentazione' },
-        { icon: "🍳", title: 'Mobili cucina su misura premium', description: 'Arredi di alta qualità con ante personalizzate' },
-        { icon: "⚙️", title: 'Elettrodomestici classe A+++', description: 'Fornitura e installazione elettrodomestici top' },
-        { icon: "🎨", title: 'Finiture di lusso complete', description: 'Top in quarzo, pavimenti e rivestimenti premium' },
-        { icon: "✨", title: 'Collaudo e consegna finale', description: 'Test funzionalità e pulizia professionale' }
+        { icon: "🚚", title: 'Trasporto montaggio mobili', description: 'Consegna e installazione professionale mobili' },
+        { icon: "📦", title: 'Trasporto materiale', description: 'Consegna di tutti i materiali necessari' },
+        { icon: "🔲", title: 'Piastrelamento', description: 'Posa piastrelle per rivestimenti cucina' },
+        { icon: "🎨", title: 'Tinteggiatura', description: 'Verniciatura pareti con prodotti di qualità' },
+        { icon: "🛠️", title: 'Demolizione creazioni pareti', description: 'Demolizioni e creazione nuove strutture murarie' },
+        { icon: "♻️", title: 'Smaltimento certificato', description: 'Gestione rifiuti con documentazione ufficiale' },
+        { icon: "💎", title: 'Finiture di lusso', description: 'Materiali e rifiniture di alta gamma' },
+        { icon: "✨", title: 'Pulizia finale', description: 'Pulizia completa e sanificazione professionale' }
       ]
     }
   } as const;
