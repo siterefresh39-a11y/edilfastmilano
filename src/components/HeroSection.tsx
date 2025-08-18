@@ -11,12 +11,12 @@ const HeroSection = () => {
   const scale = Math.max(1, 1 + scrollY / 2000);
   return <section className="relative h-screen overflow-hidden">
       <div className="absolute inset-0 bg-no-repeat transition-all duration-1000 ease-out
-                      bg-cover bg-[center_top_25%] 
-                      md:bg-cover md:bg-[center_top_15%]
-                      lg:bg-cover lg:bg-[center_top_10%]
-                      mobile:bg-contain mobile:bg-center" 
+                      bg-cover bg-[center_top_10%] 
+                      md:bg-cover md:bg-[center_top_5%]
+                      lg:bg-cover lg:bg-[center_top]
+                      mobile:bg-contain mobile:bg-[center_top_20%]" 
             style={{
-              backgroundImage: `url(/lovable-uploads/12b055c6-e16c-429a-9cd0-410fdaab31bf.png)`,
+              backgroundImage: `url(/lovable-uploads/4daf6c1a-5692-4b88-be36-a794f6a7d228.png)`,
               opacity: opacity,
               transform: `scale(${scale})`
             }}>
