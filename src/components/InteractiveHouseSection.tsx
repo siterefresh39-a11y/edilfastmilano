@@ -49,6 +49,15 @@ const pins: Pin[] = [
     description: 'Scopri i nostri pacchetti per la ristrutturazione della cucina: Entry Level, Premium e Super Premium.',
     icon: Home,
     link: '/cucina'
+  },
+  {
+    id: '5',
+    x: 78,
+    y: 68,
+    title: 'Ristrutturazione Cantina',
+    description: 'Trasforma la tua cantina in uno spazio funzionale e moderno con i nostri pacchetti specializzati.',
+    icon: Home,
+    link: '/cantina'
   }
 ];
 
