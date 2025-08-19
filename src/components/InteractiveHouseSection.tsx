@@ -16,8 +16,8 @@ interface Pin {
 const pins: Pin[] = [
   {
     id: '1',
-    x: 45,
-    y: 55,
+    x: 30,
+    y: 70,
     title: 'Progettazione 3D',
     description: 'Utilizziamo tecnologie avanzate per la progettazione tridimensionale, permettendo di visualizzare ogni dettaglio prima della costruzione.',
     icon: Home,
@@ -25,8 +25,8 @@ const pins: Pin[] = [
   },
   {
     id: '2', 
-    x: 60,
-    y: 20,
+    x: 50,
+    y: 25,
     title: 'Ristrutturazione Bagno',
     description: 'Trasformiamo il tuo bagno con soluzioni complete e professionali, dal design alla realizzazione.',
     icon: Home,
@@ -35,7 +35,7 @@ const pins: Pin[] = [
   {
     id: '3',
     x: 25,
-    y: 55,
+    y: 35,
     title: 'Ristrutturazione Camera da letto',
     description: 'Rinnova la zona notte con soluzioni su misura e finiture coordinate.',
     icon: Home,
@@ -43,8 +43,8 @@ const pins: Pin[] = [
   },
   {
     id: '4',
-    x: 65,
-    y: 40,
+    x: 75,
+    y: 35,
     title: 'Ristrutturazione Cucina',
     description: 'Scopri i nostri pacchetti per la ristrutturazione della cucina: Entry Level, Premium e Super Premium.',
     icon: Home,
@@ -124,8 +124,8 @@ const InteractiveHouseSection = () => {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative w-full max-w-4xl aspect-square">
               <img 
-                src="/lovable-uploads/20b3c721-294a-443e-ba2d-afa196163db2.png"
-                alt="Progetto EDIL FAST"
+                src="/lovable-uploads/320b6eae-ca56-4de2-b449-db1c14d58a0b.png"
+                alt="Progetto EDIL FAST - Planimetria Interattiva"
                 className="w-full h-full object-contain drop-shadow-2xl"
               />
             </div>
