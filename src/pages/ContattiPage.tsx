@@ -89,6 +89,7 @@ const ContattiPage = () => {
     { id: 'salotto', label: 'Salotto' },
     { id: 'bagno', label: 'Bagno' },
     { id: 'camera', label: 'Camera da letto' },
+    { id: 'casa-completa', label: 'Casa completa' },
     { id: 'altro', label: 'Altro' }
   ];
 
