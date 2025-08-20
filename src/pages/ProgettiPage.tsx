@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Building, Zap, Leaf, Clock, Hammer, TrendingUp, Calendar, Euro, X, ChevronLeft, ChevronRight, MapPin, Construction } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Building, Zap, Leaf, Clock, Hammer, TrendingUp, Calendar, Euro, X, ChevronLeft, ChevronRight, MapPin, Construction, Instagram, ArrowRight } from 'lucide-react';
+import { useNavigate, Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -364,6 +364,38 @@ const ProgettiPage = () => {
                 <span className="relative z-10">Richiedi Preventivo</span>
                 <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </button>
+            </div>
+          </motion.div>
+
+          {/* Social Media CTA Section */}
+          <motion.div 
+            className="text-center mt-16" 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            <div className="bg-gradient-to-br from-secondary/5 to-primary/5 rounded-3xl p-8">
+              <div className="mb-8">
+                <Instagram size={48} className="text-primary mx-auto mb-4" />
+                <h3 className="text-3xl lg:text-4xl font-light text-secondary mb-4">
+                  Vuoi vedere più progetti?
+                </h3>
+                <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                  Scopri tutti i nostri lavori completati sui nostri canali social. 
+                  Troverai tante ispirazioni e idee per la tua casa.
+                </p>
+              </div>
+              
+              <Link to="/social">
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-primary to-secondary hover:scale-105 transition-all duration-300 px-12 py-6 text-lg font-semibold shadow-xl group"
+                >
+                  <Instagram className="w-5 h-5 mr-3 group-hover:rotate-12 transition-transform duration-300" />
+                  Visita i Nostri Social
+                  <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
+                </Button>
+              </Link>
             </div>
           </motion.div>
         </div>

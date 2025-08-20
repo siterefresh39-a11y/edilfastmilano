@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChefHat, Sofa, Bath, Bed, Warehouse, Instagram, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { ChefHat, Sofa, Bath, Bed, Warehouse } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-
 import WhatsAppButton from '@/components/WhatsAppButton';
 
 const ServiziPage = () => {
@@ -129,42 +127,6 @@ const ServiziPage = () => {
                   </Link>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Sezione Social CTA */}
-        <section className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <div
-              className={`transition-all duration-1000 ${
-                isVisible 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-12'
-              }`}
-              style={{ transitionDelay: '1000ms' }}
-            >
-              <div className="mb-8">
-                <Instagram size={48} className="text-primary mx-auto mb-4" />
-                <h2 className="text-3xl lg:text-4xl font-light text-secondary mb-4">
-                  Vuoi vedere più progetti?
-                </h2>
-                <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                  Scopri tutti i nostri lavori completati sui nostri canali social. 
-                  Troverai tante ispirazioni e idee per la tua casa.
-                </p>
-              </div>
-              
-              <Link to="/social">
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-primary to-secondary hover:scale-105 transition-all duration-300 px-12 py-6 text-lg font-semibold shadow-xl group"
-                >
-                  <Instagram className="w-5 h-5 mr-3 group-hover:rotate-12 transition-transform duration-300" />
-                  Visita i Nostri Social
-                  <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
-                </Button>
-              </Link>
             </div>
           </div>
         </section>
