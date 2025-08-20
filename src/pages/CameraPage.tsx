@@ -16,7 +16,7 @@ const CameraPage = () => {
       subtitle: 'Essenziale e confortevole',
       description: 'Rinnovo mirato della camera da letto per un ambiente pulito, ordinato e accogliente.',
       gradient: 'from-indigo-500 to-blue-500',
-      image: '/lovable-uploads/cea07f37-a634-457a-aaa8-9afa6497024b.png',
+      image: '/lovable-uploads/43abe474-7d1a-4008-8f45-f898dcf57153.png',
       imageAlt: 'Camera da letto in ristrutturazione - Pacchetto Standard',
       services: [
         { icon: '🛏️', title: 'Posa pavimento', description: 'Gres, parquet o laminato con finiture precise' },
@@ -29,7 +29,7 @@ const CameraPage = () => {
       subtitle: 'Restyling completo',
       description: 'Rinnovo completo con tutti i servizi standard più elementi premium: nuova illuminazione, finiture coordinate e servizi aggiuntivi specializzati.',
       gradient: 'from-fuchsia-500 to-pink-500',
-      image: '/lovable-uploads/cea07f37-a634-457a-aaa8-9afa6497024b.png',
+      image: '/lovable-uploads/43129a15-d26b-471f-baba-eae072172a9c.png',
       imageAlt: 'Camera da letto moderna - Pacchetto Premium',
       services: [
         // Servizi dal pacchetto Standard
@@ -52,7 +52,7 @@ const CameraPage = () => {
       subtitle: 'Chiavi in mano di livello superiore',
       description: 'Trasformazione completa all-inclusive che include tutti i servizi Standard e Premium più progettazione su misura e finiture di pregio per una camera da letto di livello superiore.',
       gradient: 'from-amber-500 to-orange-500',
-      image: '/lovable-uploads/cea07f37-a634-457a-aaa8-9afa6497024b.png',
+      image: '/lovable-uploads/fbdca36a-9c95-4643-9c10-e98d29ed8c86.png',
       imageAlt: 'Camera da letto luxury - Pacchetto Super Premium',
       services: [
         // Servizi dal pacchetto Standard
