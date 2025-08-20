@@ -18,8 +18,8 @@ const ProgettazionePage = () => {
       subtitle: "Rinnovo essenziale, risultato garantito",
       description: "Intervento rapido e professionale per rinfrescare la tua zona giorno con le lavorazioni più richieste, mantenendo ordine, qualità e tempi contenuti.",
       gradient: "from-blue-500 to-cyan-500",
-      image: "/lovable-uploads/9ff1f306-f456-4b2a-a066-af82388974f8.png",
-      imageAlt: "Cucina in fase di ristrutturazione - Pacchetto Standard",
+      image: "/lovable-uploads/86953308-280f-46ea-93b3-e075597a20e2.png",
+      imageAlt: "Sala living in ristrutturazione con parete arancione - Pacchetto Standard",
       services: [
         { icon: "🏠", title: "Posa pavimento", description: "Installazione di rivestimenti a scelta (parquet, gres, laminato, PVC) con precisione e pulizia nei dettagli" },
         { icon: "🎨", title: "Tinteggiatura", description: "Verniciatura con prodotti professionali per una resa uniforme e duratura" },
@@ -32,8 +32,8 @@ const ProgettazionePage = () => {
       subtitle: "Restyling completo e funzionale",
       description: "Un servizio su misura per chi desidera rinnovare e valorizzare la zona giorno, senza interventi strutturali ma con un impatto visivo e pratico notevole.",
       gradient: "from-purple-500 to-pink-500",
-      image: "/lovable-uploads/864e5ad9-2366-4aba-824b-9a51a154d926.png",
-      imageAlt: "Ristrutturazione cucina con parete verde - Pacchetto Premium",
+      image: "/lovable-uploads/e336e4cb-64dc-4a5c-91b8-e99c82e28e0f.png",
+      imageAlt: "Sala living moderna con arredamento chiaro - Pacchetto Premium",
       services: [
         { icon: "📦", title: "Sgombero e trasloco", description: "Rimozione completa di mobili, oggetti e materiali, con eventuale trasporto in altro luogo" },
         { icon: "🏠", title: "Posa pavimento", description: "Installazione professionale di parquet, gres, PVC o laminato con finiture di precisione" },
@@ -50,8 +50,8 @@ const ProgettazionePage = () => {
       subtitle: "Restyling completo chiavi in mano",
       description: "Un pacchetto pensato per chi desidera rinnovare totalmente il soggiorno con un intervento preciso, ordinato e di alto livello estetico. Ci occupiamo di ogni fase del lavoro.",
       gradient: "from-amber-500 to-orange-500",
-      image: "/lovable-uploads/ec6c37b8-066e-44bf-b28f-1cb86548bcd5.png",
-      imageAlt: "Cucina elegante con parete blu navy - Pacchetto Super Premium",
+      image: "/lovable-uploads/51ce46c8-7cfc-4749-a3b4-de44082c3c89.png",
+      imageAlt: "Sala living elegante con mobili di lusso e parete bordeaux - Pacchetto Super Premium",
       services: [
         { icon: "📦", title: "Sgombero e trasloco dell'arredamento esistente", description: "Rimozione completa e trasporto degli arredi presenti, con possibilità di ricollocazione in altro spazio o smaltimento" },
         { icon: "🗑️", title: "Smaltimento vecchi mobili e porte", description: "Disassemblaggio e conferimento in discarica autorizzata di porte interne usurate, arredi fuori uso e materiali ingombranti" },
