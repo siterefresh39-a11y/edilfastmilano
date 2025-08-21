@@ -46,12 +46,12 @@ const Index = () => {
               Richiedi subito un preventivo personalizzato e scopri come possiamo realizzare i tuoi progetti
             </p>
             
-            <div className="relative group inline-block">
+            <div className="relative group inline-block w-full sm:w-auto flex justify-center">
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary blur-xl opacity-50 rounded-2xl group-hover:opacity-70 transition-opacity duration-300" />
-              <Link to="/contatti#contact-form">
+              <Link to="/contatti#contact-form" className="w-full sm:w-auto">
                 <Button 
                   size="lg" 
-                  className="relative z-10 bg-gradient-to-r from-primary to-secondary hover:scale-105 transition-all duration-300 px-12 py-6 text-lg font-semibold shadow-2xl group-hover:shadow-3xl"
+                  className="relative z-10 bg-gradient-to-r from-primary to-secondary hover:scale-105 transition-all duration-300 px-8 sm:px-12 py-6 text-lg font-semibold shadow-2xl group-hover:shadow-3xl w-full sm:w-auto"
                 >
                   <motion.div
                     animate={{ rotate: [0, 10, -10, 0] }}

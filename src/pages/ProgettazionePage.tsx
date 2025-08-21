@@ -115,15 +115,15 @@ const ProgettazionePage = () => {
       {/* Sezione di navigazione pacchetti innovativa */}
       <section className="py-12">
         <div className="container mx-auto px-4">
-          <div className="flex justify-center mb-16">
-            <div className="flex bg-white dark:bg-slate-800 rounded-2xl p-2 shadow-xl border border-slate-200 dark:border-slate-700">
+          <div className="flex justify-center mb-16 px-2">
+            <div className="flex bg-white dark:bg-slate-800 rounded-2xl p-2 shadow-xl border border-slate-200 dark:border-slate-700 w-full sm:w-auto overflow-x-auto">
               {Object.entries(packages).map(([key, pkg]) => (
                 <Button
                   key={key}
                   variant={selectedPackage === key ? "default" : "ghost"}
                   onClick={() => handlePackageChange(key as any)}
                   className={`
-                    relative px-8 py-4 rounded-xl transition-all duration-300 font-semibold
+                    relative px-4 sm:px-8 py-4 rounded-xl transition-all duration-300 font-semibold flex-shrink-0 text-sm sm:text-base
                     ${selectedPackage === key 
                       ? `bg-gradient-to-r ${pkg.gradient} text-white shadow-lg scale-105` 
                       : 'hover:bg-slate-100 dark:hover:bg-slate-700'

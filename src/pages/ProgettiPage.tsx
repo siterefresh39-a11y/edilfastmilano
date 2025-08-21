@@ -386,16 +386,18 @@ const ProgettiPage = () => {
                 </p>
               </div>
               
-              <Link to="/social">
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-primary to-secondary hover:scale-105 transition-all duration-300 px-12 py-6 text-lg font-semibold shadow-xl group"
-                >
-                  <Instagram className="w-5 h-5 mr-3 group-hover:rotate-12 transition-transform duration-300" />
-                  Visita i Nostri Social
-                  <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
-                </Button>
-              </Link>
+              <div className="w-full flex justify-center">
+                <Link to="/social">
+                  <Button 
+                    size="lg" 
+                    className="bg-gradient-to-r from-primary to-secondary hover:scale-105 transition-all duration-300 px-8 sm:px-12 py-6 text-lg font-semibold shadow-xl group"
+                  >
+                    <Instagram className="w-5 h-5 mr-3 group-hover:rotate-12 transition-transform duration-300" />
+                    Visita i Nostri Social
+                    <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
+                  </Button>
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>
