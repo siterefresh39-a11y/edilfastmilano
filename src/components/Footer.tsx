@@ -10,7 +10,7 @@ const Footer = () => {
             <img 
               src="/lovable-uploads/cea07f37-a634-457a-aaa8-9afa6497024b.png" 
               alt="EDIL FAST Milano Logo"
-              className="h-16 w-auto rounded-xl"
+              className="h-20 w-auto object-contain rounded-xl"
             />
           </div>
           
