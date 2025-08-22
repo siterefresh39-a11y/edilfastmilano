@@ -16,7 +16,7 @@ const HeroSection = () => {
                       lg:bg-cover lg:bg-[center_top]
                       mobile:bg-contain mobile:bg-[center_top_20%]" 
             style={{
-              backgroundImage: `url(/lovable-uploads/16f643e8-746e-4ae9-a189-a40453c0835a.png)`,
+              backgroundImage: `url(/lovable-uploads/69e8ec4d-7f2e-4387-a5e0-facf174a7b69.png)`,
               opacity: opacity,
               transform: `scale(${scale})`
             }}>
