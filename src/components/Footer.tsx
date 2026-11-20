@@ -28,6 +28,9 @@ const Footer = () => {
             </p>
           </div>
         </div>
+        <p className="mt-6 text-center text-xs opacity-70">
+          O.M.P. S.A.S. DI PALERMO ANTONIO &amp; C. · P.IVA 09786740960 · Via Dante 33, 22070 Carbonate (CO)
+        </p>
       </div>
     </footer>
   );
