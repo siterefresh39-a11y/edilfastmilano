@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { OPEN_SETTINGS_EVENT } from '@/lib/consent';
 
 const Footer = () => {
   return (
@@ -22,6 +23,14 @@ const Footer = () => {
             >
               Privacy Policy
             </Link>
+            <span className="hidden md:inline text-sm opacity-80">|</span>
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new Event(OPEN_SETTINGS_EVENT))}
+              className="text-sm opacity-80 hover:opacity-100 transition-opacity underline"
+            >
+              Gestisci cookie
+            </button>
             <span className="hidden md:inline text-sm opacity-80">|</span>
             <p className="text-sm opacity-80">
               © 2025 Edil Fast Milano. Tutti i diritti riservati.
