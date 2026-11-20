@@ -71,7 +71,8 @@ const PrivacyPolicyPage = () => {
               <CardContent>
                 <p className="text-muted-foreground mb-4">Il titolare del trattamento è:</p>
                 <div className="bg-muted/50 rounded-lg p-4">
-                  <p className="font-semibold">EDILFAST</p>
+                  <p className="font-semibold">EDILFAST – O.M.P. S.A.S. DI PALERMO ANTONIO &amp; C.</p>
+                  <p>P.IVA 09786740960 – Via Dante 33, 22070 Carbonate (CO)</p>
                   <p>Email di contatto: <a href="mailto:edilfastmilan@gmail.com" className="text-primary hover:underline">edilfastmilan@gmail.com</a></p>
                 </div>
               </CardContent>

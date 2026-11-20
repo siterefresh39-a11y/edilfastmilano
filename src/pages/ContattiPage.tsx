@@ -17,9 +17,9 @@ import { Checkbox } from '@/components/ui/checkbox';
 // Form validation schema
 const formSchema = z.object({
   name: z.string().min(2, 'Il nome deve avere almeno 2 caratteri'),
-  surname: z.string().min(2, 'Il cognome deve avere almeno 2 caratteri'),
-  email: z.string().email('Inserisci un indirizzo email valido'),
-  phone: z.string().optional(),
+  surname: z.string().optional(),
+  email: z.string().email('Inserisci un indirizzo email valido').optional().or(z.literal('')),
+  phone: z.string().min(6, 'Inserisci un numero di telefono per essere richiamato'),
   interestedRooms: z.array(z.string()).min(1, 'Seleziona almeno una stanza'),
   projectDescription: z.string().optional(),
   privacy: z.boolean().refine(val => val === true, 'Devi accettare la privacy policy')
@@ -30,6 +30,7 @@ type FormData = z.infer<typeof formSchema>;
 const ContattiPage = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
@@ -128,9 +129,9 @@ const ContattiPage = () => {
       // Prepare email data
       const emailData = {
         name: data.name,
-        surname: data.surname,
-        email: data.email,
-        phone: data.phone || 'Non fornito',
+        surname: data.surname || '-',
+        email: data.email || 'Non fornita',
+        phone: data.phone,
         interested_rooms: formattedRooms,
         project_description: data.projectDescription || 'Nessuna descrizione fornita'
       };
@@ -149,8 +150,14 @@ const ContattiPage = () => {
         description: "Ti ricontatteremo presto per discutere del tuo progetto.",
       });
 
+      // Evento per il tracciamento delle richieste (usato più avanti da Google Tag Manager)
+      const w = window as unknown as { dataLayer?: Record<string, unknown>[] };
+      w.dataLayer = w.dataLayer || [];
+      w.dataLayer.push({ event: 'richiesta_preventivo_inviata' });
+
       // Reset form
       form.reset();
+      setSubmitted(true);
       
     } catch (error) {
       console.error('Error sending email:', error);
@@ -245,6 +252,12 @@ const ContattiPage = () => {
                 }`}
               >
                 <div className="bg-white rounded-3xl p-8 shadow-2xl border border-border/50">
+                  {submitted && (
+                    <div role="status" className="mb-6 rounded-xl border border-green-300 bg-green-50 p-4 text-green-800">
+                      <p className="font-semibold">Richiesta inviata. Grazie!</p>
+                      <p className="text-sm">Ti richiamiamo al più presto per fissare il sopralluogo gratuito.</p>
+                    </div>
+                  )}
                   <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                       {/* Nome e Cognome */}
@@ -275,7 +288,7 @@ const ContattiPage = () => {
                           render={({ field }) => (
                             <FormItem>
                               <FormLabel className="text-sm font-medium text-secondary">
-                                Cognome *
+                                Cognome
                               </FormLabel>
                               <FormControl>
                                 <Input
@@ -297,7 +310,7 @@ const ContattiPage = () => {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="text-sm font-medium text-secondary">
-                              Email *
+                              Email
                             </FormLabel>
                             <FormControl>
                               <Input
@@ -319,13 +332,13 @@ const ContattiPage = () => {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="text-sm font-medium text-secondary">
-                              Telefono
+                              Telefono *
                             </FormLabel>
                             <FormControl>
                               <Input
                                 {...field}
                                 type="tel"
-                                placeholder="+39 123 456 7890"
+                                placeholder="Es. 351 123 4567"
                                 className="px-4 py-3 rounded-xl border border-border bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300"
                               />
                             </FormControl>
