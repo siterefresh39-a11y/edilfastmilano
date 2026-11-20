@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
@@ -24,8 +25,33 @@ const HeroSection = () => {
       </div>
       
       
+      {/* Testo e pulsanti principali */}
+      <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-36 pt-24 bg-gradient-to-t from-black/80 via-black/50 to-transparent text-center">
+        <h1 className="text-3xl md:text-5xl font-semibold text-white mb-3">
+          Ristrutturazioni a Milano
+        </h1>
+        <p className="text-base md:text-xl text-white/90 mb-6 max-w-2xl mx-auto">
+          Bagni, cucine e appartamenti. Sopralluogo e preventivo gratuiti.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+          <a
+            href="tel:+393515663803"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-4 text-lg shadow-lg transition-colors"
+          >
+            <Phone className="w-5 h-5" />
+            Chiama ora
+          </a>
+          <Link
+            to="/contatti#contact-form"
+            className="w-full sm:w-auto inline-flex items-center justify-center rounded-full bg-white text-secondary hover:bg-white/90 font-semibold px-8 py-4 text-lg shadow-lg transition-colors"
+          >
+            Richiedi preventivo gratuito
+          </Link>
+        </div>
+      </div>
+
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce" style={{
+      <div className="hidden" style={{
       opacity: opacity
     }}>
         <div className="flex flex-col items-center space-y-2 text-white/80">
