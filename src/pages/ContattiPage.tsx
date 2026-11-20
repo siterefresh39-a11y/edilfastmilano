@@ -13,6 +13,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
+import { trackFormConversion } from '@/lib/consent';
 
 // Form validation schema
 const formSchema = z.object({
@@ -150,10 +151,8 @@ const ContattiPage = () => {
         description: "Ti ricontatteremo presto per discutere del tuo progetto.",
       });
 
-      // Evento per il tracciamento delle richieste (usato più avanti da Google Tag Manager)
-      const w = window as unknown as { dataLayer?: Record<string, unknown>[] };
-      w.dataLayer = w.dataLayer || [];
-      w.dataLayer.push({ event: 'richiesta_preventivo_inviata' });
+      // Conversione "richiesta preventivo" per Google Ads (solo se l'utente ha dato il consenso)
+      trackFormConversion();
 
       // Reset form
       form.reset();
