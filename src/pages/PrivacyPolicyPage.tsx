@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Shield, ArrowLeft, Construction } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -5,6 +6,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import Footer from '@/components/Footer';
 
 const PrivacyPolicyPage = () => {
+  useEffect(() => {
+    // Se l'indirizzo contiene un'ancora (es. #cookie), scorre fino a quella sezione
+    if (window.location.hash) {
+      const el = document.getElementById(window.location.hash.slice(1));
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 1200);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
       {/* Navigation */}
@@ -193,6 +202,48 @@ const PrivacyPolicyPage = () => {
                 </ul>
                 <p className="text-muted-foreground">
                   Per esercitare i propri diritti è possibile scrivere a: <a href="mailto:edilfastmilan@gmail.com" className="text-primary hover:underline">edilfastmilan@gmail.com</a>
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div
+            id="cookie"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.95 }}
+          >
+            <Card>
+              <CardHeader>
+                <CardTitle>8. Cookie e misurazione pubblicitaria</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  <strong>Cookie tecnici.</strong> Il sito memorizza sul tuo dispositivo la scelta che fai
+                  sui cookie, in modo da non richiedertela a ogni visita. Questo dato è necessario al
+                  funzionamento del sito e non richiede consenso. La scelta viene riproposta dopo 6 mesi.
+                </p>
+                <p className="text-muted-foreground mb-4">
+                  <strong>Misurazione pubblicitaria (Google Ads).</strong> Solo se dai il consenso, il sito carica
+                  il tag di Google (Google Ireland Limited / Google LLC), che salva sul tuo dispositivo
+                  cookie come _gcl_au e _gcl_aw (durata fino a 90 giorni). Servono a sapere se una richiesta
+                  di preventivo o un clic sul numero di telefono è arrivato da un nostro annuncio. Non li
+                  usiamo per altri scopi. Se rifiuti, il tag di Google non viene caricato e non viene
+                  inviata alcuna informazione di misurazione.
+                </p>
+                <p className="text-muted-foreground">
+                  Puoi cambiare o revocare la scelta in qualsiasi momento dal link «Gestisci cookie» in fondo
+                  a ogni pagina. Revocando il consenso, i cookie di Google presenti sul sito vengono eliminati.
+                  Per maggiori informazioni sul trattamento dei dati da parte di Google puoi consultare la{' '}
+                  <a
+                    href="https://policies.google.com/privacy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    informativa privacy di Google
+                  </a>
+                  .
                 </p>
               </CardContent>
             </Card>
