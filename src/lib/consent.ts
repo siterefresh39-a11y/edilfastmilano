@@ -82,7 +82,7 @@ export function initConsent() {
     w.gtag!('consent', 'update', {
       ad_storage: 'granted',
       ad_user_data: 'granted',
-      ad_personalization: 'granted',
+      ad_personalization: 'denied',
     });
     loadGoogleTag();
   }
@@ -100,7 +100,7 @@ export function saveChoice(choice: Choice) {
     w.gtag!('consent', 'update', {
       ad_storage: 'granted',
       ad_user_data: 'granted',
-      ad_personalization: 'granted',
+      ad_personalization: 'denied',
     });
     loadGoogleTag();
   } else {
