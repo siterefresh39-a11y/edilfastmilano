@@ -28,8 +28,8 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: SPA fallback (GitHub Pages)
-        run: cp dist/index.html dist/404.html
+      - name: Pagine statiche con SEO per ogni indirizzo e 404.html
+        run: node scripts/postbuild-seo.mjs
 
       - name: Upload production-ready files
         uses: actions/upload-pages-artifact@v3
