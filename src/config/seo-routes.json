@@ -1,0 +1,55 @@
+{
+  "siteUrl": "https://www.edilfastmilano.it",
+  "siteName": "Edilfast Milano",
+  "routes": {
+    "/": {
+      "title": "Ristrutturazioni a Milano | Edilfast Milano",
+      "description": "Ristrutturazioni di bagni, cucine e appartamenti a Milano. Sopralluogo e preventivo gratuiti. Chiama Edilfast Milano o richiedi un preventivo online."
+    },
+    "/servizi": {
+      "title": "Servizi di ristrutturazione a Milano | Edilfast Milano",
+      "description": "Soluzioni complete per ogni esigenza edilizia, dalla progettazione alla realizzazione finale. Scopri i servizi di Edilfast Milano e chiedi un preventivo gratuito."
+    },
+    "/progetti": {
+      "title": "Progetti realizzati | Edilfast Milano",
+      "description": "Guarda alcuni dei lavori di ristrutturazione realizzati da Edilfast Milano e chiedi il tuo preventivo gratuito."
+    },
+    "/contatti": {
+      "title": "Contatti e preventivo gratuito | Edilfast Milano",
+      "description": "Contatta Edilfast Milano per una consulenza e un preventivo gratuiti. Chiama il 351 566 3803 o compila il modulo: ti ricontatteremo."
+    },
+    "/materiali": {
+      "title": "Ristrutturazione bagno a Milano | Edilfast Milano",
+      "description": "Ristrutturazione del bagno a Milano con pacchetti completi. Scopri le soluzioni di Edilfast Milano e richiedi sopralluogo e preventivo gratuiti."
+    },
+    "/cucina": {
+      "title": "Ristrutturazione cucina a Milano | Edilfast Milano",
+      "description": "Ristrutturazione della cucina a Milano con soluzioni complete e professionali. Richiedi sopralluogo e preventivo gratuiti a Edilfast Milano."
+    },
+    "/progettazione": {
+      "title": "Ristrutturazione soggiorno a Milano | Edilfast Milano",
+      "description": "Ristrutturazione della sala living a Milano con soluzioni innovative e design moderno. Richiedi un preventivo gratuito a Edilfast Milano."
+    },
+    "/camera": {
+      "title": "Ristrutturazione camera da letto a Milano | Edilfast Milano",
+      "description": "Ristrutturazione della camera da letto a Milano con Edilfast Milano. Richiedi sopralluogo e preventivo gratuiti."
+    },
+    "/cantina": {
+      "title": "Ristrutturazione cantina a Milano | Edilfast Milano",
+      "description": "Trasformiamo la cantina in un ambiente funzionale, asciutto e ordinato. Ristrutturazione cantina a Milano: preventivo gratuito."
+    },
+    "/smart-tech": {
+      "title": "Domotica e smart home | Edilfast Milano",
+      "description": "Sistemi domotici avanzati per il controllo intelligente di ogni aspetto della casa. Scopri la smart technology di Edilfast Milano."
+    },
+    "/social": {
+      "title": "Social | Edilfast Milano",
+      "description": "Segui Edilfast Milano sui social per vedere progetti, novità e dietro le quinte dei nostri lavori di ristrutturazione."
+    },
+    "/privacy-policy": {
+      "title": "Privacy Policy | Edilfast Milano",
+      "description": "Informativa sul trattamento dei dati personali e sui cookie del sito di Edilfast Milano.",
+      "sitemap": false
+    }
+  }
+}

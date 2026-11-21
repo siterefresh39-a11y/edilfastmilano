@@ -7,6 +7,7 @@ import { FEATURES } from "@/config/features";
 import BetaWelcomeModal from "@/components/BetaWelcomeModal";
 import ScrollToTop from "@/components/ScrollToTop";
 import CookieBanner from "@/components/CookieBanner";
+import SeoManager from "@/components/SeoManager";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ProgettazionePage from "./pages/ProgettazionePage";
@@ -33,6 +34,7 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop />
         <CookieBanner />
+        <SeoManager />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/progettazione" element={<ProgettazionePage />} />
